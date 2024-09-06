@@ -26,3 +26,6 @@ UserSettings/
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+# Exclude Visual Studio Code settings folder
+.vscode/
