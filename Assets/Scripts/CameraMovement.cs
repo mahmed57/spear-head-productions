@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour
   public Transform player;
   public float smoothing;
   public Vector3 offset;
-  void FixedUpdate(){
+  void Update(){
     if(player != null){
     
     Vector3 newPosition = Vector3.Lerp(transform.position, player.position + offset, smoothing);
