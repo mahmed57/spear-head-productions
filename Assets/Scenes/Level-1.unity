@@ -277,7 +277,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2894959575052051750, guid: f2fcd2046531d0c46a702f7f97aabaa4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1554405247}
   m_SourcePrefab: {fileID: 100100000, guid: f2fcd2046531d0c46a702f7f97aabaa4, type: 3}
 --- !u!4 &866345949 stripped
 Transform:
@@ -299,6 +302,10 @@ PrefabInstance:
     - target: {fileID: 1037262554525084068, guid: 8fa6989a2a1873842a1474fea5daafa1, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246500886612901738, guid: 8fa6989a2a1873842a1474fea5daafa1, type: 3}
+      propertyPath: dash_range
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4246500886612901738, guid: 8fa6989a2a1873842a1474fea5daafa1, type: 3}
       propertyPath: player_speed
@@ -367,8 +374,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1037262554525084068, guid: 8fa6989a2a1873842a1474fea5daafa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1041522796}
   m_SourcePrefab: {fileID: 100100000, guid: 8fa6989a2a1873842a1474fea5daafa1, type: 3}
+--- !u!1 &1041522795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1037262554525084068, guid: 8fa6989a2a1873842a1474fea5daafa1, type: 3}
+  m_PrefabInstance: {fileID: 1041522794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1041522796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041522795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fed3837caf8b44c88237a4ab48564f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  present_health: 100
+  max_health: 100
 --- !u!1 &1117985172
 GameObject:
   m_ObjectHideFlags: 0
@@ -6931,6 +6960,25 @@ MonoBehaviour:
   player: {fileID: 866345949}
   smoothing: 1
   offset: {x: 0, y: 0, z: -1}
+--- !u!1 &1554405246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2894959575052051750, guid: f2fcd2046531d0c46a702f7f97aabaa4, type: 3}
+  m_PrefabInstance: {fileID: 823208737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1554405247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554405246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073447c488e9bd44fb67e3a699892050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  present_health: 0
+  max_health: 0
 --- !u!1 &2070634094
 GameObject:
   m_ObjectHideFlags: 0
