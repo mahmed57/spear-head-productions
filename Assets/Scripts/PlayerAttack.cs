@@ -13,7 +13,6 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttacking = false;
     private bool isAttackOnCooldown = false;
     private Animator animator;
-    Gamepad gamepad = Gamepad.current;
 
     void Start()
     {
@@ -42,11 +41,7 @@ public class PlayerAttack : MonoBehaviour
     private bool IsHeavyAttackInput()
     {
         // Adjust the joystick button based on your controller mapping
-        if (gamepad!= null){
-        return gamepad.buttonEast.wasPressedThisFrame || // Square button
-               Input.GetMouseButtonDown(1) ||               // Mouse Right Click
-               Input.GetKeyDown(KeyCode.P);
-        }
+        
         return  Input.GetMouseButtonDown(1) ||               // Mouse Right Click
                Input.GetKeyDown(KeyCode.P);
         
@@ -55,16 +50,9 @@ public class PlayerAttack : MonoBehaviour
 
     private bool IsLightAttackInput()
     {
-        if (gamepad!= null){
-        return Input.GetMouseButtonDown(0) ||               // Mouse Left Click
-               Input.GetKeyDown(KeyCode.O) || 
-               gamepad.buttonWest.wasPressedThisFrame;                 // 'O' key
-        }
-        else
-        {
             return Input.GetMouseButtonDown(0) ||               // Mouse Left Click
                Input.GetKeyDown(KeyCode.O);
-        }
+        
     }
 
     private IEnumerator PerformAttack(float damageAmount, bool isHeavyAttack)
