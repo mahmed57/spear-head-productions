@@ -331,6 +331,24 @@ MonoBehaviour:
   lightAttackDamage: 5
   attackDuration: 0
   attackCooldown: 0
+--- !u!114 &451204023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451204004}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbd2912f5bad234684f7bb96ca4707b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallDetectionDistance: 0.5
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  first: 1
+  default_speed: 6
 --- !u!1 &710426190
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +593,7 @@ GameObject:
   - component: {fileID: 1024244439}
   - component: {fileID: 1024244438}
   - component: {fileID: 1024244437}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1225,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1001 &1801583020
 PrefabInstance:
@@ -1218,6 +1236,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2344963406680570078, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344963406680570078, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1227,15 +1249,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4022763122041362462, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4022763122041362462, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4022763122041362462, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
-      propertyPath: m_CollisionDetection
+      propertyPath: m_Interpolate
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022763122041362462, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5031863237049788695, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       propertyPath: m_SortingLayer
@@ -1313,6 +1339,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7521469065870341452, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 451204017}
+    - targetCorrespondingSourceObject: {fileID: 7521469065870341452, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 451204023}
     - targetCorrespondingSourceObject: {fileID: 5887110092788232016, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 25082766}

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovements : MonoBehaviour
 {
-    public float player_speed;
+    public float speed;
     private Vector2 direction;
     public float dash_range;
     private Vector2 controller_input;
@@ -14,8 +14,10 @@ public class PlayerMovements : MonoBehaviour
     private bool facingRight = true;
 
     private Animator animator;
-
     public Transform characterVisuals;
+
+    // Reference to the wall detection script
+    private WallDetection wallDetection;
 
     void Start()
     {
@@ -28,6 +30,9 @@ public class PlayerMovements : MonoBehaviour
         {
             characterVisuals = animator.transform;
         }
+
+        // Initialize the wall detection reference
+        wallDetection = GetComponent<WallDetection>();
     }
 
     void Update()
@@ -97,16 +102,30 @@ public class PlayerMovements : MonoBehaviour
                 }
             }
 
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            // Disable dash if any wall detection is true
+            if (!IsTouchingWall())
+            {
+                if (gamepad.buttonSouth.wasPressedThisFrame)
+                {
+                    Dash();
+                }
+            }
+        }
+
+        if (!IsTouchingWall())
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Dash();
             }
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Dash();
-        }
+    // Method to check if the player is touching any walls
+    private bool IsTouchingWall()
+    {
+        return wallDetection.isTouchingWallRight || wallDetection.isTouchingWallLeft || 
+               wallDetection.isTouchingWallTop || wallDetection.isTouchingWallBottom;
     }
 
     private void Dash()
@@ -136,6 +155,19 @@ public class PlayerMovements : MonoBehaviour
 
     private void move()
     {
+        // Prevent movement if touching walls
+        if ((wallDetection.isTouchingWallRight && direction.x > 0) || 
+            (wallDetection.isTouchingWallLeft && direction.x < 0))
+        {
+            direction.x = 0;
+        }
+
+        if ((wallDetection.isTouchingWallTop && direction.y > 0) || 
+            (wallDetection.isTouchingWallBottom && direction.y < 0))
+        {
+            direction.y = 0;
+        }
+
         if (direction != Vector2.zero)
         {
             animator.SetBool("isWalking", true);
@@ -155,8 +187,7 @@ public class PlayerMovements : MonoBehaviour
         }
 
         Vector3 movement = new Vector3(direction.x, direction.y, 0);
-
-        transform.Translate(movement.normalized * player_speed * Time.deltaTime, Space.World);
+        transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
     }
 
     private void Flip()

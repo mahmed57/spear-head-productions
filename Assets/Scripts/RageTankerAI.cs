@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RageTankerAI : MonoBehaviour
 {
-    public float moveSpeed = 2f;         // Movement speed
+    public float speed = 2f;         // Movement speed
     public float detectionRange = 5f;    // Range to detect the player
     public int health = 100;             // Health points
 
@@ -50,7 +50,7 @@ public class RageTankerAI : MonoBehaviour
 
     void MoveCharacter(Vector2 direction)
     {
-        rb.velocity = direction * moveSpeed;
+        rb.velocity = direction * speed;
     }
 
     public void TakeDamage(int damage)
