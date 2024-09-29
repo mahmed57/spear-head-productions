@@ -8,7 +8,7 @@ public class CharacterHealthManager : MonoBehaviour
    public float present_health;
    public float max_health;
 
-   protected void deal_damage(float damage)
+   public void deal_damage(float damage)
    {
         present_health -= damage;
 
