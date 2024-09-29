@@ -2,8 +2,23 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
+/// <summary>
+/// Generates a procedural dungeon with rooms and corridors.
+/// </summary>
 public class ProceduralLevelGenerator : MonoBehaviour
 {
+    [System.Serializable]
+    public class EnemyType
+    {
+        public string name;
+        public GameObject enemyPrefab;
+        public int minEnemiesPerRoom;
+        public int maxEnemiesPerRoom;
+    }
+
+    [Header("Enemy Settings")]
+    public List<EnemyType> enemyTypes;
+
     [Header("Tilemap and Tiles")]
     public Tilemap floorTilemap;  // Floor Tilemap
     public Tilemap wallTilemap;   // Wall Tilemap
@@ -19,7 +34,10 @@ public class ProceduralLevelGenerator : MonoBehaviour
     public int mapWidth = 50;
     public int mapHeight = 50;
 
-    private List<RectInt> rooms;
+    [Header("Room Prefab")]
+    public GameObject roomPrefab; // Assign this in the Inspector
+
+    private List<Room> rooms;
     private Vector3Int dungeonOffset;
 
     // HashSet to keep track of floor positions
@@ -27,15 +45,19 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void Start()
     {
-        rooms = new List<RectInt>();
+        rooms = new List<Room>();
         GenerateRooms();
         CalculateDungeonOffset();
         ApplyDungeonOffset();
         GenerateCorridors();
         DrawFloors();
         DrawWalls();
+        InstantiateRoomGameObjects();
     }
 
+    /// <summary>
+    /// Generates random rooms within the dungeon bounds.
+    /// </summary>
     void GenerateRooms()
     {
         int maxAttempts = roomCount * 5;
@@ -50,12 +72,12 @@ public class ProceduralLevelGenerator : MonoBehaviour
             int x = Random.Range(0, mapWidth - width);
             int y = Random.Range(0, mapHeight - height);
 
-            RectInt newRoom = new RectInt(x, y, width, height);
+            RectInt newRect = new RectInt(x, y, width, height);
 
             bool overlaps = false;
-            foreach (RectInt room in rooms)
+            foreach (Room room in rooms)
             {
-                if (newRoom.Overlaps(room))
+                if (newRect.Overlaps(room.bounds))
                 {
                     overlaps = true;
                     break;
@@ -64,33 +86,41 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             if (!overlaps)
             {
+                Room newRoom = new Room(newRect);
                 rooms.Add(newRoom);
             }
         }
     }
 
+    /// <summary>
+    /// Calculates the offset to center the dungeon around (0,0).
+    /// </summary>
     void CalculateDungeonOffset()
     {
-        Vector2Int firstRoomCenter = GetRoomCenter(rooms[0]);
+        Vector2Int firstRoomCenter = GetRoomCenter(rooms[0].bounds);
         dungeonOffset = new Vector3Int(-firstRoomCenter.x, -firstRoomCenter.y, 0);
     }
 
+    /// <summary>
+    /// Applies the calculated offset to all rooms.
+    /// </summary>
     void ApplyDungeonOffset()
     {
-        for (int i = 0; i < rooms.Count; i++)
+        foreach (Room room in rooms)
         {
-            RectInt room = rooms[i];
-            room.position += new Vector2Int(dungeonOffset.x, dungeonOffset.y);
-            rooms[i] = room;
+            room.bounds.position += new Vector2Int(dungeonOffset.x, dungeonOffset.y);
         }
     }
 
+    /// <summary>
+    /// Generates corridors connecting the rooms using a minimum spanning tree.
+    /// </summary>
     void GenerateCorridors()
     {
         List<Vector2Int> roomCenters = new List<Vector2Int>();
-        foreach (RectInt room in rooms)
+        foreach (Room room in rooms)
         {
-            roomCenters.Add(GetRoomCenter(room));
+            roomCenters.Add(GetRoomCenter(room.bounds));
         }
 
         List<Edge> allEdges = new List<Edge>();
@@ -123,23 +153,31 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws the floor tiles for all rooms.
+    /// </summary>
     void DrawFloors()
     {
-        foreach (RectInt room in rooms)
+        foreach (Room room in rooms)
         {
-            for (int x = room.xMin; x < room.xMin + room.width; x++)
+            for (int x = room.bounds.xMin; x < room.bounds.xMax; x++)
             {
-                for (int y = room.yMin; y < room.yMin + room.height; y++)
+                for (int y = room.bounds.yMin; y < room.bounds.yMax; y++)
                 {
                     Vector3Int tilePosition = new Vector3Int(x, y, 0);
                     floorTilemap.SetTile(tilePosition, floorTile);
-                    // Add to floor positions
                     floorPositions.Add(tilePosition);
+
+                    // Add to the room's floor tiles
+                    room.floorTiles.Add(tilePosition);
                 }
             }
         }
     }
 
+    /// <summary>
+    /// Draws walls around the floor tiles.
+    /// </summary>
     void DrawWalls()
     {
         // For each floor position, check adjacent positions for walls
@@ -153,6 +191,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Attempts to place a wall tile at the specified position.
+    /// </summary>
     void TryPlaceWall(Vector3Int pos)
     {
         // Only place wall if there's no floor at this position and no existing wall
@@ -177,40 +218,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
-    void PlaceWallIfNeeded(Vector3Int pos)
-    {
-        if (!floorPositions.Contains(pos) && !wallTilemap.HasTile(pos))
-        {
-            PlaceWall(pos);
-        }
-    }
-
-    void PlaceWall(Vector3Int pos)
-    {
-        bool hasFloorLeft = floorPositions.Contains(pos + Vector3Int.left);
-        bool hasFloorRight = floorPositions.Contains(pos + Vector3Int.right);
-        bool hasFloorUp = floorPositions.Contains(pos + Vector3Int.up);
-        bool hasFloorDown = floorPositions.Contains(pos + Vector3Int.down);
-
-        // Logic for placing walls
-        if ((hasFloorLeft && hasFloorRight) || (hasFloorUp && hasFloorDown))
-        {
-            wallTilemap.SetTile(pos, wallTopBottomTile);
-        }
-        else if (hasFloorLeft)
-        {
-            wallTilemap.SetTile(pos, wallLeftTile);
-        }
-        else if (hasFloorRight)
-        {
-            wallTilemap.SetTile(pos, wallRightTile);
-        }
-        else
-        {
-            wallTilemap.SetTile(pos, wallTopBottomTile);
-        }
-    }
-
+    /// <summary>
+    /// Gets the center position of a room.
+    /// </summary>
     Vector2Int GetRoomCenter(RectInt room)
     {
         int x = Mathf.RoundToInt(room.xMin + (room.width - 1) / 2f);
@@ -218,6 +228,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
         return new Vector2Int(x, y);
     }
 
+    /// <summary>
+    /// Creates a corridor between two points.
+    /// </summary>
     void CreateCorridor(Vector2Int from, Vector2Int to)
     {
         List<Vector2Int> path = GetShortestPath(from, to);
@@ -267,7 +280,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Gets the shortest path between two points.
+    /// </summary>
     List<Vector2Int> GetShortestPath(Vector2Int start, Vector2Int end)
     {
         List<Vector2Int> path = new List<Vector2Int>();
@@ -292,6 +307,53 @@ public class ProceduralLevelGenerator : MonoBehaviour
         return path;
     }
 
+    /// <summary>
+    /// Instantiates room GameObjects with trigger colliders.
+    /// </summary>
+    /// 
+    void InstantiateRoomGameObjects()
+    {
+        foreach (Room room in rooms)
+        {
+            // Access the Grid component associated with the tilemap
+            Grid grid = floorTilemap.layoutGrid;
+
+            // Get the bottom-left corner of the room in cell coordinates
+            Vector3Int roomCellPosition = new Vector3Int(room.bounds.xMin, room.bounds.yMin, 0);
+
+            // Convert the cell position to world position using the grid
+            Vector3 roomWorldPosition = grid.CellToWorld(roomCellPosition);
+
+            // Get the cell size from the tilemap
+            Vector3 cellSize = floorTilemap.cellSize;
+
+            // Calculate the room's world size based on cell size and room dimensions
+            Vector3 roomWorldSize = new Vector3(room.bounds.width * cellSize.x, room.bounds.height * cellSize.y, 0);
+
+            // Calculate the center position of the room in world coordinates
+            Vector3 roomCenterPosition = roomWorldPosition + new Vector3(roomWorldSize.x / 2f, roomWorldSize.y / 2f, 0);
+
+            // Instantiate the room GameObject at the calculated center position
+            GameObject roomGO = Instantiate(roomPrefab, roomCenterPosition, Quaternion.identity);
+            roomGO.name = "Room_" + roomCenterPosition;
+
+            // Get the BoxCollider2D component and set its size to match the room's world size
+            BoxCollider2D collider = roomGO.GetComponent<BoxCollider2D>();
+            collider.size = new Vector2(roomWorldSize.x, roomWorldSize.y);
+            collider.offset = Vector2.zero; // Ensure the collider is centered
+
+            // Assign references to the RoomController script
+            RoomController roomController = roomGO.GetComponent<RoomController>();
+            roomController.room = room;
+            roomController.floorTilemap = floorTilemap;
+            roomController.enemyTypes = enemyTypes;
+        }
+    }
+
+
+    /// <summary>
+    /// Represents an edge between two points, used for corridor generation.
+    /// </summary>
     class Edge
     {
         public Vector2Int from;
@@ -306,6 +368,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Disjoint Set (Union-Find) data structure for Kruskal's algorithm.
+    /// </summary>
     class DisjointSet
     {
         private Dictionary<Vector2Int, Vector2Int> parent = new Dictionary<Vector2Int, Vector2Int>();

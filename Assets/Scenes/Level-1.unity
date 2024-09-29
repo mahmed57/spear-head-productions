@@ -1019,6 +1019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7521469065870341452, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7976761217862732565, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1130,6 +1134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5cc51678d354e509855b54f4b29302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTypes:
+  - name: RageTanker
+    enemyPrefab: {fileID: 5904279906149629936, guid: 5db55b22907784cbe9a436ea39a0f1af, type: 3}
+    minEnemiesPerRoom: 1
+    maxEnemiesPerRoom: 3
   floorTilemap: {fileID: 1117985175}
   wallTilemap: {fileID: 1024244436}
   floorTile: {fileID: 11400000, guid: 2e61ed5348533ae4c9ec0a1ee1cbb491, type: 2}
@@ -1141,6 +1150,7 @@ MonoBehaviour:
   maxRoomSize: 15
   mapWidth: 75
   mapHeight: 50
+  roomPrefab: {fileID: 2908291702883658222, guid: 4dea4fc50abb54f2f802e72440b7c1e4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
