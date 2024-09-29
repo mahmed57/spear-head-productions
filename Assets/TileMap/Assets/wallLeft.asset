@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: wallTop
+  m_Name: wallLeft
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 76b14b629df26894f9853a85b52fbb34, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f2dfc1d47d5c048bac0f9afccec375, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
