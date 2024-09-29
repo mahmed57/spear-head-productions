@@ -1416,10 +1416,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.94716984, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.57048464, g: 0.8792453, b: 0.5491135, a: 1}
-    m_PressedColor: {r: 0.6830188, g: 0.034795243, b: 0.034795243, a: 1}
-    m_SelectedColor: {r: 0.050815158, g: 0.690566, b: 0.14426357, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1.13
     m_FadeDuration: 0.1
@@ -2032,6 +2032,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   options_menu: {fileID: 2134322418}
   credit_menu: {fileID: 1694095791}
+  playButton: {fileID: 1513636082}
+  optionsButton: {fileID: 1832570770}
+  creditsButton: {fileID: 235994773}
+  quitButton: {fileID: 1435916832}
+  optionsBackButton: {fileID: 287283621}
+  creditsBackButton: {fileID: 1433064351}
+  inputDelay: 0.2
+  normalMaterial: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  highlightedMaterial: {fileID: 0}
 --- !u!1 &1832570768
 GameObject:
   m_ObjectHideFlags: 0
