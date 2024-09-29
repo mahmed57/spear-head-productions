@@ -1,4 +1,0 @@
-repository "spear-head-productions@adilahmed2001@cloud"
-  path "/"
-    br "/main"
-    co "/main"
