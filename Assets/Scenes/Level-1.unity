@@ -8225,6 +8225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2070634096}
   - component: {fileID: 2070634095}
+  - component: {fileID: 2070634097}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -8261,6 +8262,26 @@ Transform:
   - {fileID: 1024244434}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2070634097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070634094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5cc51678d354e509855b54f4b29302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1117985175}
+  floorTile: {fileID: 11400000, guid: 2e61ed5348533ae4c9ec0a1ee1cbb491, type: 2}
+  wallTile: {fileID: 11400000, guid: 5659b567533a89248b832e76ee4155bc, type: 2}
+  roomCount: 5
+  minRoomSize: 4
+  maxRoomSize: 8
+  mapWidth: 50
+  mapHeight: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
