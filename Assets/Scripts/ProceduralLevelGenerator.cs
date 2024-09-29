@@ -5,23 +5,32 @@ using System.Collections.Generic;
 public class ProceduralLevelGenerator : MonoBehaviour
 {
     [Header("Tilemap and Tiles")]
-    public Tilemap tilemap;
+    public Tilemap floorTilemap;  // Floor Tilemap
+    public Tilemap wallTilemap;   // Wall Tilemap
     public TileBase floorTile;
-    public TileBase wallTile;
+    public TileBase wallLeftTile;
+    public TileBase wallRightTile;
+    public TileBase wallTopBottomTile;
 
     [Header("Dungeon Generation Parameters")]
-    public int roomCount = 5;
+    public int roomCount = 10;
     public int minRoomSize = 4;
     public int maxRoomSize = 8;
     public int mapWidth = 50;
     public int mapHeight = 50;
 
     private List<RectInt> rooms;
+    private Vector3Int dungeonOffset;
+
+    // New: HashSet to keep track of floor positions
+    private HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
 
     void Start()
     {
         rooms = new List<RectInt>();
         GenerateRooms();
+        CalculateDungeonOffset();
+        ApplyDungeonOffset();
         GenerateCorridors();
         DrawFloors();
         DrawWalls();
@@ -29,8 +38,13 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void GenerateRooms()
     {
-        for (int i = 0; i < roomCount; i++)
+        int maxAttempts = roomCount * 5;
+        int attempts = 0;
+
+        while (rooms.Count < roomCount && attempts < maxAttempts)
         {
+            attempts++;
+
             int width = Random.Range(minRoomSize, maxRoomSize + 1);
             int height = Random.Range(minRoomSize, maxRoomSize + 1);
             int x = Random.Range(0, mapWidth - width);
@@ -52,30 +66,60 @@ public class ProceduralLevelGenerator : MonoBehaviour
             {
                 rooms.Add(newRoom);
             }
-            else
-            {
-                i--; // Try again
-            }
+        }
+    }
+
+    void CalculateDungeonOffset()
+    {
+        Vector2Int firstRoomCenter = GetRoomCenter(rooms[0]);
+        dungeonOffset = new Vector3Int(-firstRoomCenter.x, -firstRoomCenter.y, 0);
+    }
+
+    void ApplyDungeonOffset()
+    {
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            RectInt room = rooms[i];
+            room.position += new Vector2Int(dungeonOffset.x, dungeonOffset.y);
+            rooms[i] = room;
         }
     }
 
     void GenerateCorridors()
     {
-        for (int i = 0; i < rooms.Count - 1; i++)
+        List<Vector2Int> roomCenters = new List<Vector2Int>();
+        foreach (RectInt room in rooms)
         {
-            Vector2Int currentCenter = GetRoomCenter(rooms[i]);
-            Vector2Int nextCenter = GetRoomCenter(rooms[i + 1]);
+            roomCenters.Add(GetRoomCenter(room));
+        }
 
-            if (Random.value < 0.5f)
+        List<Edge> allEdges = new List<Edge>();
+        for (int i = 0; i < roomCenters.Count; i++)
+        {
+            for (int j = i + 1; j < roomCenters.Count; j++)
             {
-                CreateHorizontalCorridor(currentCenter.x, nextCenter.x, currentCenter.y);
-                CreateVerticalCorridor(currentCenter.y, nextCenter.y, nextCenter.x);
+                float distance = Vector2Int.Distance(roomCenters[i], roomCenters[j]);
+                allEdges.Add(new Edge(roomCenters[i], roomCenters[j], distance));
             }
-            else
+        }
+
+        allEdges.Sort((a, b) => a.distance.CompareTo(b.distance));
+
+        DisjointSet ds = new DisjointSet(roomCenters);
+        List<Edge> mst = new List<Edge>();
+
+        foreach (Edge edge in allEdges)
+        {
+            if (ds.Find(edge.from) != ds.Find(edge.to))
             {
-                CreateVerticalCorridor(currentCenter.y, nextCenter.y, currentCenter.x);
-                CreateHorizontalCorridor(currentCenter.x, nextCenter.x, nextCenter.y);
+                ds.Union(edge.from, edge.to);
+                mst.Add(edge);
             }
+        }
+
+        foreach (Edge edge in mst)
+        {
+            CreateCorridor(edge.from, edge.to);
         }
     }
 
@@ -87,7 +131,10 @@ public class ProceduralLevelGenerator : MonoBehaviour
             {
                 for (int y = room.yMin; y < room.yMax; y++)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
+                    Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                    floorTilemap.SetTile(tilePosition, floorTile);
+                    // Add to floor positions
+                    floorPositions.Add(tilePosition);
                 }
             }
         }
@@ -95,58 +142,69 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void DrawWalls()
     {
-        BoundsInt bounds = tilemap.cellBounds;
+        // Calculate bounds based on floorPositions
+        if (floorPositions.Count == 0)
+            return;
 
-        for (int x = bounds.xMin - 1; x <= bounds.xMax + 1; x++)
+        int xMin = int.MaxValue, xMax = int.MinValue;
+        int yMin = int.MaxValue, yMax = int.MinValue;
+
+        foreach (Vector3Int pos in floorPositions)
         {
-            for (int y = bounds.yMin - 1; y <= bounds.yMax + 1; y++)
+            if (pos.x < xMin) xMin = pos.x;
+            if (pos.x > xMax) xMax = pos.x;
+            if (pos.y < yMin) yMin = pos.y;
+            if (pos.y > yMax) yMax = pos.y;
+        }
+
+        // Expand bounds by 1 to check surrounding tiles
+        xMin -= 1; xMax += 1;
+        yMin -= 1; yMax += 1;
+
+        for (int x = xMin; x <= xMax; x++)
+        {
+            for (int y = yMin; y <= yMax; y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
-                if (tilemap.GetTile(pos) != floorTile && HasAdjacentFloor(pos))
+                if (!floorPositions.Contains(pos) && HasAdjacentFloor(pos))
                 {
-                    tilemap.SetTile(pos, wallTile);
-                    RotateWall(pos);
+                    PlaceWall(pos);
                 }
             }
         }
     }
 
-    void RotateWall(Vector3Int pos)
+    void PlaceWall(Vector3Int pos)
     {
-        Matrix4x4 matrix = Matrix4x4.identity;
-        TileBase tile = tilemap.GetTile(pos);
+        bool hasFloorLeft = floorPositions.Contains(pos + Vector3Int.left);
+        bool hasFloorRight = floorPositions.Contains(pos + Vector3Int.right);
+        bool hasFloorUp = floorPositions.Contains(pos + Vector3Int.up);
+        bool hasFloorDown = floorPositions.Contains(pos + Vector3Int.down);
 
-        bool hasFloorLeft = tilemap.GetTile(pos + Vector3Int.left) == floorTile;
-        bool hasFloorRight = tilemap.GetTile(pos + Vector3Int.right) == floorTile;
-        bool hasFloorUp = tilemap.GetTile(pos + Vector3Int.up) == floorTile;
-        bool hasFloorDown = tilemap.GetTile(pos + Vector3Int.down) == floorTile;
-
-        if (hasFloorLeft && !hasFloorRight)
+        // Corrected logic for placing walls based on adjacent floor tiles
+        if (hasFloorUp || hasFloorDown)
         {
-            matrix.SetTRS(Vector3.zero, Quaternion.Euler(0, 0, 90), Vector3.one);
+            wallTilemap.SetTile(pos, wallTopBottomTile);
         }
-        else if (!hasFloorLeft && hasFloorRight)
+        else if (hasFloorLeft || hasFloorRight)
         {
-            matrix.SetTRS(Vector3.zero, Quaternion.Euler(0, 0, -90), Vector3.one);
+            TileBase wallTile = hasFloorLeft ? wallLeftTile : wallRightTile;
+            wallTilemap.SetTile(pos, wallTile);
         }
-        else if (hasFloorUp && !hasFloorDown)
+        else
         {
-            matrix.SetTRS(Vector3.zero, Quaternion.Euler(0, 0, 0), Vector3.one);
+            // Place a default wall tile if necessary
+            wallTilemap.SetTile(pos, wallTopBottomTile);
         }
-        else if (!hasFloorUp && hasFloorDown)
-        {
-            matrix.SetTRS(Vector3.zero, Quaternion.Euler(0, 0, 180), Vector3.one);
-        }
-
-        tilemap.SetTransformMatrix(pos, matrix);
     }
 
     bool HasAdjacentFloor(Vector3Int pos)
     {
-        return tilemap.GetTile(pos + Vector3Int.up) == floorTile ||
-               tilemap.GetTile(pos + Vector3Int.down) == floorTile ||
-               tilemap.GetTile(pos + Vector3Int.left) == floorTile ||
-               tilemap.GetTile(pos + Vector3Int.right) == floorTile;
+        // Check in floorPositions instead of tilemap
+        return floorPositions.Contains(pos + Vector3Int.up) ||
+               floorPositions.Contains(pos + Vector3Int.down) ||
+               floorPositions.Contains(pos + Vector3Int.left) ||
+               floorPositions.Contains(pos + Vector3Int.right);
     }
 
     Vector2Int GetRoomCenter(RectInt room)
@@ -156,25 +214,87 @@ public class ProceduralLevelGenerator : MonoBehaviour
         return new Vector2Int(x, y);
     }
 
-    void CreateHorizontalCorridor(int xStart, int xEnd, int y)
+    void CreateCorridor(Vector2Int from, Vector2Int to)
     {
-        int xMin = Mathf.Min(xStart, xEnd);
-        int xMax = Mathf.Max(xStart, xEnd);
+        List<Vector2Int> path = GetShortestPath(from, to);
 
-        for (int x = xMin; x <= xMax; x++)
+        foreach (Vector2Int position in path)
         {
-            tilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
+            Vector3Int tilePosition = new Vector3Int(position.x, position.y, 0);
+            floorTilemap.SetTile(tilePosition, floorTile);
+            // Add to floor positions
+            floorPositions.Add(tilePosition);
         }
     }
 
-    void CreateVerticalCorridor(int yStart, int yEnd, int x)
+    List<Vector2Int> GetShortestPath(Vector2Int start, Vector2Int end)
     {
-        int yMin = Mathf.Min(yStart, yEnd);
-        int yMax = Mathf.Max(yStart, yEnd);
+        List<Vector2Int> path = new List<Vector2Int>();
+        Vector2Int current = start;
 
-        for (int y = yMin; y <= yMax; y++)
+        while (current != end)
         {
-            tilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
+            if (current.x != end.x)
+            {
+                int direction = end.x > current.x ? 1 : -1;
+                current = new Vector2Int(current.x + direction, current.y);
+            }
+            else if (current.y != end.y)
+            {
+                int direction = end.y > current.y ? 1 : -1;
+                current = new Vector2Int(current.x, current.y + direction);
+            }
+
+            path.Add(current);
+        }
+
+        return path;
+    }
+
+    class Edge
+    {
+        public Vector2Int from;
+        public Vector2Int to;
+        public float distance;
+
+        public Edge(Vector2Int from, Vector2Int to, float distance)
+        {
+            this.from = from;
+            this.to = to;
+            this.distance = distance;
+        }
+    }
+
+    class DisjointSet
+    {
+        private Dictionary<Vector2Int, Vector2Int> parent = new Dictionary<Vector2Int, Vector2Int>();
+
+        public DisjointSet(List<Vector2Int> elements)
+        {
+            foreach (Vector2Int elem in elements)
+            {
+                parent[elem] = elem;
+            }
+        }
+
+        public Vector2Int Find(Vector2Int item)
+        {
+            if (parent[item] != item)
+            {
+                parent[item] = Find(parent[item]);
+            }
+            return parent[item];
+        }
+
+        public void Union(Vector2Int itemA, Vector2Int itemB)
+        {
+            Vector2Int rootA = Find(itemA);
+            Vector2Int rootB = Find(itemB);
+
+            if (rootA != rootB)
+            {
+                parent[rootB] = rootA;
+            }
         }
     }
 }
