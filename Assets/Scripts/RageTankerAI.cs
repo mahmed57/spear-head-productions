@@ -1,8 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Controls the AI behavior of the RageTanker enemy.
-/// </summary>
 public class RageTankerAI : MonoBehaviour
 {
     public float moveSpeed = 2f;         // Movement speed
@@ -15,10 +12,12 @@ public class RageTankerAI : MonoBehaviour
 
     void Start()
     {
-        // Find the player by tag (make sure your player has the "Player" tag)
+        // Find the player by tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
+        {
             playerTransform = player.transform;
+        }
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -51,10 +50,9 @@ public class RageTankerAI : MonoBehaviour
 
     void MoveCharacter(Vector2 direction)
     {
-        rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+        rb.velocity = direction * moveSpeed;
     }
 
-    // Example of taking damage
     public void TakeDamage(int damage)
     {
         health -= damage;
