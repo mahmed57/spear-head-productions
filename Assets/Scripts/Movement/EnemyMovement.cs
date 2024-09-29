@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class RageTankerAI : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 2f;         // Movement speed
-    public float detectionRange = 5f;    // Range to detect the player
-    public int health = 100;             // Health points
-
+    public float speed = 2f;
+    public float detectionRange = 5f;
     private Transform playerTransform;
     private Rigidbody2D rb;
     private Vector2 movement;
 
+    // Reference to the wall detection script
+    private WallDetection wallDetection;
+
     void Start()
     {
-        // Find the player by tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -20,6 +20,9 @@ public class RageTankerAI : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
+
+        // Initialize the wall detection reference
+        wallDetection = GetComponent<WallDetection>();
     }
 
     void Update()
@@ -27,18 +30,29 @@ public class RageTankerAI : MonoBehaviour
         if (playerTransform == null)
             return;
 
-        // Calculate distance to the player
         float distance = Vector2.Distance(transform.position, playerTransform.position);
 
         if (distance <= detectionRange)
         {
-            // Move towards the player
             Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+            // Prevent movement if touching walls
+            if ((wallDetection.isTouchingWallRight && direction.x > 0) ||
+                (wallDetection.isTouchingWallLeft && direction.x < 0))
+            {
+                direction.x = 0;
+            }
+
+            if ((wallDetection.isTouchingWallTop && direction.y > 0) ||
+                (wallDetection.isTouchingWallBottom && direction.y < 0))
+            {
+                direction.y = 0;
+            }
+
             movement = direction;
         }
         else
         {
-            // Idle or patrol behavior can be added here
             movement = Vector2.zero;
         }
     }
@@ -51,15 +65,5 @@ public class RageTankerAI : MonoBehaviour
     void MoveCharacter(Vector2 direction)
     {
         rb.velocity = direction * speed;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            // Handle enemy death
-            Destroy(gameObject);
-        }
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4846731059976911675}
   - component: {fileID: -5866316693327691201}
   - component: {fileID: -2760911228048759678}
+  - component: {fileID: 1261762929853108457}
   m_Layer: 0
   m_Name: RageTanker
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6a4945edd917a40febf6b50f17a8d160, type: 3}
-  m_Color: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,9 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16ea635fa1fb41258205ab4ad9e759b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  speed: 2
   detectionRange: 50
-  health: 100
 --- !u!61 &-5866316693327691201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,3 +189,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   present_health: 50
   max_health: 50
+--- !u!114 &1261762929853108457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904279906149629936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c9678a93f2ced46ada79cfe89bf4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallDetectionDistance: 4
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  isTouchingWallLeft: 0
+  isTouchingWallRight: 0
+  isTouchingWallBottom: 0
+  isTouchingWallTop: 0
+  rb: {fileID: 0}
