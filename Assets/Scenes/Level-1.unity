@@ -367,8 +367,8 @@ Transform:
   m_GameObject: {fileID: 1024244433}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: -0.2}
+  m_LocalPosition: {x: 1, y: 1, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2070634096}
@@ -657,8 +657,8 @@ Transform:
   m_GameObject: {fileID: 1117985172}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3991, y: 0.4156, z: 0}
-  m_LocalScale: {x: 0.92677534, y: 0.7776512, z: -5}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2070634096}
@@ -821,7 +821,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.0037735105, g: 0.0037735105, b: 0.0037735105, a: 0}
+  m_BackGroundColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -991,6 +991,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2344963406680570078, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
+      propertyPath: player_speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4022763122041362462, guid: a56f2f4732edee94d95c9e67adb855d4, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -1127,15 +1131,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorTilemap: {fileID: 1117985175}
-  wallTilemap: {fileID: 1117985175}
+  wallTilemap: {fileID: 1024244436}
   floorTile: {fileID: 11400000, guid: 2e61ed5348533ae4c9ec0a1ee1cbb491, type: 2}
-  wallLeftTile: {fileID: 11400000, guid: e5f80e8e3824dfa4b8fba9ca09225862, type: 2}
-  wallRightTile: {fileID: 11400000, guid: 4fdc750eb5358b9428efc9c1eece0afb, type: 2}
+  wallLeftTile: {fileID: 11400000, guid: 4fdc750eb5358b9428efc9c1eece0afb, type: 2}
+  wallRightTile: {fileID: 11400000, guid: e5f80e8e3824dfa4b8fba9ca09225862, type: 2}
   wallTopBottomTile: {fileID: 11400000, guid: 5659b567533a89248b832e76ee4155bc, type: 2}
-  roomCount: 5
-  minRoomSize: 4
-  maxRoomSize: 8
-  mapWidth: 50
+  roomCount: 8
+  minRoomSize: 8
+  maxRoomSize: 15
+  mapWidth: 75
   mapHeight: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -22,7 +22,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
     private List<RectInt> rooms;
     private Vector3Int dungeonOffset;
 
-    // New: HashSet to keep track of floor positions
+    // HashSet to keep track of floor positions
     private HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
 
     void Start()
@@ -127,9 +127,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
     {
         foreach (RectInt room in rooms)
         {
-            for (int x = room.xMin; x < room.xMax; x++)
+            for (int x = room.xMin; x < room.xMin + room.width; x++)
             {
-                for (int y = room.yMin; y < room.yMax; y++)
+                for (int y = room.yMin; y < room.yMin + room.height; y++)
                 {
                     Vector3Int tilePosition = new Vector3Int(x, y, 0);
                     floorTilemap.SetTile(tilePosition, floorTile);
@@ -142,35 +142,46 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void DrawWalls()
     {
-        // Calculate bounds based on floorPositions
-        if (floorPositions.Count == 0)
-            return;
-
-        int xMin = int.MaxValue, xMax = int.MinValue;
-        int yMin = int.MaxValue, yMax = int.MinValue;
-
-        foreach (Vector3Int pos in floorPositions)
+        // For each floor position, check adjacent positions for walls
+        foreach (Vector3Int floorPos in floorPositions)
         {
-            if (pos.x < xMin) xMin = pos.x;
-            if (pos.x > xMax) xMax = pos.x;
-            if (pos.y < yMin) yMin = pos.y;
-            if (pos.y > yMax) yMax = pos.y;
+            // Check all four directions (up, down, left, right) for wall placement
+            TryPlaceWall(floorPos + Vector3Int.up);
+            TryPlaceWall(floorPos + Vector3Int.down);
+            TryPlaceWall(floorPos + Vector3Int.left);
+            TryPlaceWall(floorPos + Vector3Int.right);
         }
+    }
 
-        // Expand bounds by 1 to check surrounding tiles
-        xMin -= 1; xMax += 1;
-        yMin -= 1; yMax += 1;
-
-        for (int x = xMin; x <= xMax; x++)
+    void TryPlaceWall(Vector3Int pos)
+    {
+        // Only place wall if there's no floor at this position and no existing wall
+        if (!floorPositions.Contains(pos) && !wallTilemap.HasTile(pos))
         {
-            for (int y = yMin; y <= yMax; y++)
+            // Determine which wall tile to place based on adjacent floor tiles
+            bool hasFloorLeft = floorPositions.Contains(pos + Vector3Int.left);
+            bool hasFloorRight = floorPositions.Contains(pos + Vector3Int.right);
+            bool hasFloorUp = floorPositions.Contains(pos + Vector3Int.up);
+            bool hasFloorDown = floorPositions.Contains(pos + Vector3Int.down);
+
+            // Place appropriate wall tiles based on surrounding floors
+            if (hasFloorUp || hasFloorDown)
             {
-                Vector3Int pos = new Vector3Int(x, y, 0);
-                if (!floorPositions.Contains(pos) && HasAdjacentFloor(pos))
-                {
-                    PlaceWall(pos);
-                }
+                wallTilemap.SetTile(pos, wallTopBottomTile);
             }
+            else if (hasFloorLeft || hasFloorRight)
+            {
+                TileBase wallTile = hasFloorLeft ? wallLeftTile : wallRightTile;
+                wallTilemap.SetTile(pos, wallTile);
+            }
+        }
+    }
+
+    void PlaceWallIfNeeded(Vector3Int pos)
+    {
+        if (!floorPositions.Contains(pos) && !wallTilemap.HasTile(pos))
+        {
+            PlaceWall(pos);
         }
     }
 
@@ -181,36 +192,29 @@ public class ProceduralLevelGenerator : MonoBehaviour
         bool hasFloorUp = floorPositions.Contains(pos + Vector3Int.up);
         bool hasFloorDown = floorPositions.Contains(pos + Vector3Int.down);
 
-        // Corrected logic for placing walls based on adjacent floor tiles
-        if (hasFloorUp || hasFloorDown)
+        // Logic for placing walls
+        if ((hasFloorLeft && hasFloorRight) || (hasFloorUp && hasFloorDown))
         {
             wallTilemap.SetTile(pos, wallTopBottomTile);
         }
-        else if (hasFloorLeft || hasFloorRight)
+        else if (hasFloorLeft)
         {
-            TileBase wallTile = hasFloorLeft ? wallLeftTile : wallRightTile;
-            wallTilemap.SetTile(pos, wallTile);
+            wallTilemap.SetTile(pos, wallLeftTile);
+        }
+        else if (hasFloorRight)
+        {
+            wallTilemap.SetTile(pos, wallRightTile);
         }
         else
         {
-            // Place a default wall tile if necessary
             wallTilemap.SetTile(pos, wallTopBottomTile);
         }
-    }
-
-    bool HasAdjacentFloor(Vector3Int pos)
-    {
-        // Check in floorPositions instead of tilemap
-        return floorPositions.Contains(pos + Vector3Int.up) ||
-               floorPositions.Contains(pos + Vector3Int.down) ||
-               floorPositions.Contains(pos + Vector3Int.left) ||
-               floorPositions.Contains(pos + Vector3Int.right);
     }
 
     Vector2Int GetRoomCenter(RectInt room)
     {
-        int x = Mathf.RoundToInt(room.xMin + room.width / 2f);
-        int y = Mathf.RoundToInt(room.yMin + room.height / 2f);
+        int x = Mathf.RoundToInt(room.xMin + (room.width - 1) / 2f);
+        int y = Mathf.RoundToInt(room.yMin + (room.height - 1) / 2f);
         return new Vector2Int(x, y);
     }
 
@@ -218,14 +222,51 @@ public class ProceduralLevelGenerator : MonoBehaviour
     {
         List<Vector2Int> path = GetShortestPath(from, to);
 
-        foreach (Vector2Int position in path)
+        for (int i = 0; i < path.Count; i++)
         {
+            Vector2Int position = path[i];
             Vector3Int tilePosition = new Vector3Int(position.x, position.y, 0);
             floorTilemap.SetTile(tilePosition, floorTile);
-            // Add to floor positions
             floorPositions.Add(tilePosition);
+
+            // Determine direction of movement
+            Vector2Int direction;
+            if (i == 0)
+            {
+                if (path.Count > 1)
+                {
+                    direction = path[i + 1] - position;
+                }
+                else
+                {
+                    direction = Vector2Int.right; // Default direction
+                }
+            }
+            else
+            {
+                direction = position - path[i - 1];
+            }
+
+            // Get perpendicular direction
+            Vector2Int perpendicular = new Vector2Int(-direction.y, direction.x);
+            if (perpendicular == Vector2Int.zero)
+            {
+                perpendicular = Vector2Int.right; // Default perpendicular direction
+            }
+
+            // Place additional floor tile to widen the corridor
+            Vector2Int adjacentPosition = position + perpendicular;
+            Vector3Int tilePositionAdj = new Vector3Int(adjacentPosition.x, adjacentPosition.y, 0);
+
+            // Check if the tile hasn't been set already
+            if (!floorPositions.Contains(tilePositionAdj))
+            {
+                floorTilemap.SetTile(tilePositionAdj, floorTile);
+                floorPositions.Add(tilePositionAdj);
+            }
         }
     }
+
 
     List<Vector2Int> GetShortestPath(Vector2Int start, Vector2Int end)
     {
