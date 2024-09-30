@@ -7,19 +7,19 @@ public class PlayerAttack : MonoBehaviour
     public Collider2D swordCollider; // Assign the sword's Collider2D in the Inspector
     public float heavyAttackDamage = 20f;
     public float lightAttackDamage = 10f;
-    public float attackDuration = 0.3f; // Duration the attack collider is active
-    public float attackCooldown = 0.5f; // Time between attacks
+    public float heavyAttackDuration = 0.5f; // Duration for heavy attack collider
+    public float lightAttackDuration = 0.3f; // Duration for light attack collider
+    public float heavyAttackCooldown = 1.0f; // Cooldown time for heavy attacks
+    public float lightAttackCooldown = 0.5f; // Cooldown time for light attacks
 
-    private bool isAttacking = false;
+    public bool isAttacking = false;
     private bool isAttackOnCooldown = false;
     private Animator animator;
 
     void Start()
     {
-        // Get the Animator component attached to the player
         animator = GetComponent<Animator>();
 
-        // Ensure the sword's collider is disabled at the start
         if (swordCollider != null)
             swordCollider.enabled = false;
     }
@@ -27,35 +27,44 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         // Check for heavy attack input
-        if (!isAttackOnCooldown && (IsHeavyAttackInput()))
+        if (!isAttackOnCooldown && IsHeavyAttackInput())
         {
-            StartCoroutine(PerformAttack(heavyAttackDamage, isHeavyAttack: true));
+            StartCoroutine(PerformAttack(heavyAttackDamage, heavyAttackDuration, heavyAttackCooldown, isHeavyAttack: true));
         }
         // Check for light attack input
-        else if (!isAttackOnCooldown && (IsLightAttackInput()))
+        else if (!isAttackOnCooldown && IsLightAttackInput())
         {
-            StartCoroutine(PerformAttack(lightAttackDamage, isHeavyAttack: false));
+            StartCoroutine(PerformAttack(lightAttackDamage, lightAttackDuration, lightAttackCooldown, isHeavyAttack: false));
         }
     }
 
     private bool IsHeavyAttackInput()
     {
-        // Adjust the joystick button based on your controller mapping
-        
-        return  Input.GetMouseButtonDown(1) ||               // Mouse Right Click
-               Input.GetKeyDown(KeyCode.P);
-        
-                         // 'P' key
+        bool input_condition = Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.K);
+        Gamepad gamepad = Gamepad.current;
+
+        if (gamepad != null)
+        {
+            input_condition = input_condition || gamepad.buttonNorth.wasPressedThisFrame;
+        }
+
+        return input_condition;
     }
 
     private bool IsLightAttackInput()
     {
-            return Input.GetMouseButtonDown(0) ||               // Mouse Left Click
-               Input.GetKeyDown(KeyCode.O);
-        
+        bool input_condition = Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J);
+        Gamepad gamepad = Gamepad.current;
+
+        if (gamepad != null)
+        {
+            input_condition = input_condition || gamepad.buttonWest.wasPressedThisFrame;
+        }
+
+        return input_condition;
     }
 
-    private IEnumerator PerformAttack(float damageAmount, bool isHeavyAttack)
+    private IEnumerator PerformAttack(float damageAmount, float attackDuration, float attackCooldown, bool isHeavyAttack)
     {
         isAttacking = true;
         isAttackOnCooldown = true;
@@ -80,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
             swordAttack.damageAmount = damageAmount;
         }
 
-        // Wait for the attack duration
+        // Wait for the attack duration (to complete the attack animation)
         yield return new WaitForSeconds(attackDuration);
 
         // Disable the sword's collider
@@ -97,7 +106,7 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("isLightAttack", false);
         }
 
-        // Wait for attack cooldown
+        // Wait for the cooldown of the attack type
         yield return new WaitForSeconds(attackCooldown);
         isAttackOnCooldown = false;
     }

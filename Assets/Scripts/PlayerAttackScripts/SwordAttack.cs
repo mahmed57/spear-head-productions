@@ -3,7 +3,7 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     [HideInInspector]
-    public float damageAmount = 10f; // Default damage amount
+    public float damageAmount = 10f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

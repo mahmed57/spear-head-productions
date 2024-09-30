@@ -19,6 +19,9 @@ public class PlayerMovements : MonoBehaviour
     // Reference to the wall detection script
     private WallDetection wallDetection;
 
+    // Reference to the PlayerAttack script
+    private PlayerAttack playerAttack;
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -33,6 +36,9 @@ public class PlayerMovements : MonoBehaviour
 
         // Initialize the wall detection reference
         wallDetection = GetComponent<WallDetection>();
+
+        // Initialize the PlayerAttack reference
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     void Update()
@@ -43,6 +49,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void input()
     {
+        // Capture movement input even if attacking, but prevent movement while attacking
         direction = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -80,25 +87,11 @@ public class PlayerMovements : MonoBehaviour
             {
                 if (Mathf.Abs(controller_input.x) > Mathf.Abs(controller_input.y))
                 {
-                    if (controller_input.x > 0)
-                    {
-                        FacingDir = Facing.RIGHT;
-                    }
-                    else
-                    {
-                        FacingDir = Facing.LEFT;
-                    }
+                    FacingDir = (controller_input.x > 0) ? Facing.RIGHT : Facing.LEFT;
                 }
                 else
                 {
-                    if (controller_input.y > 0)
-                    {
-                        FacingDir = Facing.UP;
-                    }
-                    else
-                    {
-                        FacingDir = Facing.DOWN;
-                    }
+                    FacingDir = (controller_input.y > 0) ? Facing.UP : Facing.DOWN;
                 }
             }
 
@@ -112,24 +105,63 @@ public class PlayerMovements : MonoBehaviour
             }
         }
 
-        if (!IsTouchingWall())
+        if (!IsTouchingWall() && Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Dash();
-            }
+            Dash();
         }
     }
 
-    // Method to check if the player is touching any walls
-    private bool IsTouchingWall()
+    private void move()
     {
-        return wallDetection.isTouchingWallRight || wallDetection.isTouchingWallLeft || 
-               wallDetection.isTouchingWallTop || wallDetection.isTouchingWallBottom;
+        // Freeze movement while attacking
+        if (playerAttack.isAttacking)
+        {
+            // Stop walking animation
+            animator.SetBool("isWalking", false);
+            return;
+        }
+
+        // Prevent movement if touching walls
+        if ((wallDetection.isTouchingWallRight && direction.x > 0) || 
+            (wallDetection.isTouchingWallLeft && direction.x < 0))
+        {
+            direction.x = 0;
+        }
+
+        if ((wallDetection.isTouchingWallTop && direction.y > 0) || 
+            (wallDetection.isTouchingWallBottom && direction.y < 0))
+        {
+            direction.y = 0;
+        }
+
+        // Handle movement
+        if (direction != Vector2.zero)
+        {
+            animator.SetBool("isWalking", true);
+
+            if (direction.x > 0 && !facingRight)
+            {
+                Flip();
+            }
+            else if (direction.x < 0 && facingRight)
+            {
+                Flip();
+            }
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+        Vector3 movement = new Vector3(direction.x, direction.y, 0);
+        transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
     }
 
     private void Dash()
     {
+        // Prevent dash if the player is attacking
+        if (playerAttack.isAttacking) return;
+
         Vector2 target_pos = Vector2.zero;
 
         if (FacingDir == Facing.UP)
@@ -153,41 +185,10 @@ public class PlayerMovements : MonoBehaviour
         transform.Translate(dashMovement * dash_range, Space.World);
     }
 
-    private void move()
+    private bool IsTouchingWall()
     {
-        // Prevent movement if touching walls
-        if ((wallDetection.isTouchingWallRight && direction.x > 0) || 
-            (wallDetection.isTouchingWallLeft && direction.x < 0))
-        {
-            direction.x = 0;
-        }
-
-        if ((wallDetection.isTouchingWallTop && direction.y > 0) || 
-            (wallDetection.isTouchingWallBottom && direction.y < 0))
-        {
-            direction.y = 0;
-        }
-
-        if (direction != Vector2.zero)
-        {
-            animator.SetBool("isWalking", true);
-
-            if (direction.x > 0 && !facingRight)
-            {
-                Flip();
-            }
-            else if (direction.x < 0 && facingRight)
-            {
-                Flip();
-            }
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
-
-        Vector3 movement = new Vector3(direction.x, direction.y, 0);
-        transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
+        return wallDetection.isTouchingWallRight || wallDetection.isTouchingWallLeft || 
+               wallDetection.isTouchingWallTop || wallDetection.isTouchingWallBottom;
     }
 
     private void Flip()

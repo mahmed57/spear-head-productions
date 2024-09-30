@@ -8,7 +8,6 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
 
-    // Reference to the wall detection script
     private WallDetection wallDetection;
 
     void Start()
@@ -21,7 +20,6 @@ public class EnemyMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        // Initialize the wall detection reference
         wallDetection = GetComponent<WallDetection>();
     }
 
