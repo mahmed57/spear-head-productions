@@ -11,7 +11,7 @@ public class SwordAttack : MonoBehaviour
 
         if (enemyHealth != null)
         {
-            enemyHealth.deal_damage(damageAmount);
+            //enemyHealth.deal_damage(damageAmount);
         }
     }
 }

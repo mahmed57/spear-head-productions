@@ -25,8 +25,7 @@ public class PlayerMovements : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        animator.SetBool("isHeavyAttack", false);
-        animator.SetBool("isLightAttack", false);
+
         animator.SetBool("isWalking", false);
 
         if (characterVisuals == null)
@@ -34,10 +33,10 @@ public class PlayerMovements : MonoBehaviour
             characterVisuals = animator.transform;
         }
 
-        // Initialize the wall detection reference
+        
         wallDetection = GetComponent<WallDetection>();
 
-        // Initialize the PlayerAttack reference
+        
         playerAttack = GetComponent<PlayerAttack>();
     }
 
@@ -49,7 +48,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void input()
     {
-        // Capture movement input even if attacking, but prevent movement while attacking
+        
         direction = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -95,7 +94,7 @@ public class PlayerMovements : MonoBehaviour
                 }
             }
 
-            // Disable dash if any wall detection is true
+            
             if (!IsTouchingWall())
             {
                 if (gamepad.buttonSouth.wasPressedThisFrame)
@@ -113,15 +112,8 @@ public class PlayerMovements : MonoBehaviour
 
     private void move()
     {
-        // Freeze movement while attacking
-        if (playerAttack.isAttacking)
-        {
-            // Stop walking animation
-            animator.SetBool("isWalking", false);
-            return;
-        }
-
-        // Prevent movement if touching walls
+    
+        
         if ((wallDetection.isTouchingWallRight && direction.x > 0) || 
             (wallDetection.isTouchingWallLeft && direction.x < 0))
         {
@@ -134,7 +126,7 @@ public class PlayerMovements : MonoBehaviour
             direction.y = 0;
         }
 
-        // Handle movement
+        
         if (direction != Vector2.zero)
         {
             animator.SetBool("isWalking", true);
@@ -154,13 +146,24 @@ public class PlayerMovements : MonoBehaviour
         }
 
         Vector3 movement = new Vector3(direction.x, direction.y, 0);
-        transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
+        
+        if (playerAttack.is_attacking)
+        {
+        
+            animator.SetBool("isWalking", false);
+            return;
+        
+        }
+        else
+        {
+            transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
+        }
     }
 
     private void Dash()
     {
-        // Prevent dash if the player is attacking
-        if (playerAttack.isAttacking) return;
+        animator.SetTrigger("roll");
+        if (playerAttack.is_attacking) return;
 
         Vector2 target_pos = Vector2.zero;
 

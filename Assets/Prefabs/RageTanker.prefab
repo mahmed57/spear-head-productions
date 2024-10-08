@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2579035911574257929}
   - component: {fileID: 1367248280752324110}
   - component: {fileID: -4846731059976911675}
-  - component: {fileID: -5866316693327691201}
   - component: {fileID: -2760911228048759678}
   - component: {fileID: 1261762929853108457}
-  m_Layer: 0
+  - component: {fileID: -6140401819475875505}
+  m_Layer: 6
   m_Name: RageTanker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,9 +101,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10000
+  m_LinearDrag: 1000
+  m_AngularDrag: 1000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -130,8 +130,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   detectionRange: 50
---- !u!61 &-5866316693327691201
-BoxCollider2D:
+  separationDistance: 10
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  detectionRadius: 6.32
+  pushBackDuration: 1
+--- !u!114 &-2760911228048759678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904279906149629936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073447c488e9bd44fb67e3a699892050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  present_health: 50
+  max_health: 50
+  pushForce: 2
+--- !u!114 &1261762929853108457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904279906149629936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c9678a93f2ced46ada79cfe89bf4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallDetectionDistance: 4
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  isTouchingWallLeft: 0
+  isTouchingWallRight: 0
+  isTouchingWallBottom: 0
+  isTouchingWallTop: 0
+  rb: {fileID: 0}
+--- !u!58 &-6140401819475875505
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -159,54 +201,9 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
-    newSize: {x: 10, y: 10}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 10}
-  m_EdgeRadius: 0
---- !u!114 &-2760911228048759678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904279906149629936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073447c488e9bd44fb67e3a699892050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  present_health: 50
-  max_health: 50
---- !u!114 &1261762929853108457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904279906149629936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c9678a93f2ced46ada79cfe89bf4c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallDetectionDistance: 4
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  isTouchingWallLeft: 0
-  isTouchingWallRight: 0
-  isTouchingWallBottom: 0
-  isTouchingWallTop: 0
-  rb: {fileID: 0}
+  m_Radius: 2.94

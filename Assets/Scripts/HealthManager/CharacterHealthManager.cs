@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class CharacterHealthManager : MonoBehaviour
    public float present_health;
    public float max_health;
 
-   public void deal_damage(float damage)
+   public virtual void deal_damage(float damage, Vector2 attackPosition)
    {
         present_health -= damage;
 

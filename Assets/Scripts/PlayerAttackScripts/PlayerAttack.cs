@@ -1,45 +1,68 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Collider2D swordCollider; // Assign the sword's Collider2D in the Inspector
-    public float heavyAttackDamage = 20f;
-    public float lightAttackDamage = 10f;
-    public float heavyAttackDuration = 0.5f; // Duration for heavy attack collider
-    public float lightAttackDuration = 0.3f; // Duration for light attack collider
-    public float heavyAttackCooldown = 1.0f; // Cooldown time for heavy attacks
-    public float lightAttackCooldown = 0.5f; // Cooldown time for light attacks
+    private float time_between_attack;
+    public float start_time_btw_attack;
 
-    public bool isAttacking = false;
-    private bool isAttackOnCooldown = false;
-    private Animator animator;
+    public Transform attackpos;
+    public float attackRange;
 
-    void Start()
-    {
-        animator = GetComponent<Animator>();
+    public LayerMask whatIsEnemeies;
+    public float light_attack_damage;
 
-        if (swordCollider != null)
-            swordCollider.enabled = false;
-    }
+    public float heavy_attack_damage;
+
+    public Animator player_anim;
+
+    public bool is_attacking = false;
+
 
     void Update()
     {
-        // Check for heavy attack input
-        if (!isAttackOnCooldown && IsHeavyAttackInput())
+        if(time_between_attack <= 0)
         {
-            StartCoroutine(PerformAttack(heavyAttackDamage, heavyAttackDuration, heavyAttackCooldown, isHeavyAttack: true));
-        }
-        // Check for light attack input
-        else if (!isAttackOnCooldown && IsLightAttackInput())
-        {
-            StartCoroutine(PerformAttack(lightAttackDamage, lightAttackDuration, lightAttackCooldown, isHeavyAttack: false));
-        }
+            if(is_light_attack()){
+                is_attacking=true;
+                player_anim.SetTrigger("lightAttack");
+                attack_enemy(light_attack_damage);
+
+            }
+            else if(is_heavy_attack())
+            {
+                is_attacking = true;
+                player_anim.SetTrigger("heavyAttack");
+                attack_enemy(heavy_attack_damage);
+            }
+            else
+            {
+                is_attacking = false;
+            }
+            
+        } 
+        else{
+                time_between_attack -= Time.deltaTime;
+        }       
     }
 
-    private bool IsHeavyAttackInput()
-    {
+    bool is_light_attack(){
+        bool input_condition = Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J);
+        Gamepad gamepad = Gamepad.current;
+        
+        if (gamepad != null)
+        {
+            input_condition = input_condition || gamepad.buttonWest.wasPressedThisFrame;
+        }
+        
+        return input_condition;
+    }
+
+    bool is_heavy_attack(){
+        
         bool input_condition = Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.K);
         Gamepad gamepad = Gamepad.current;
 
@@ -51,63 +74,23 @@ public class PlayerAttack : MonoBehaviour
         return input_condition;
     }
 
-    private bool IsLightAttackInput()
+    void attack_enemy(float damage)
     {
-        bool input_condition = Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J);
-        Gamepad gamepad = Gamepad.current;
+            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position, attackRange, whatIsEnemeies);
+            
+            time_between_attack = start_time_btw_attack;
+            for(int i = 0; i < enemiesToDamage.Length; i++){
+                        
+                enemiesToDamage[i].GetComponent<EnemyHealthManager>().deal_damage(damage, transform.position);
+                        
+            }   
 
-        if (gamepad != null)
-        {
-            input_condition = input_condition || gamepad.buttonWest.wasPressedThisFrame;
-        }
-
-        return input_condition;
     }
 
-    private IEnumerator PerformAttack(float damageAmount, float attackDuration, float attackCooldown, bool isHeavyAttack)
+
+    void OnDrawGizmosSelected()
     {
-        isAttacking = true;
-        isAttackOnCooldown = true;
-
-        // Set the appropriate Animator boolean
-        if (isHeavyAttack)
-        {
-            animator.SetBool("isHeavyAttack", true);
-        }
-        else
-        {
-            animator.SetBool("isLightAttack", true);
-        }
-
-        // Enable the sword's collider
-        swordCollider.enabled = true;
-
-        // Set the damage amount in the SwordAttack script
-        SwordAttack swordAttack = swordCollider.GetComponent<SwordAttack>();
-        if (swordAttack != null)
-        {
-            swordAttack.damageAmount = damageAmount;
-        }
-
-        // Wait for the attack duration (to complete the attack animation)
-        yield return new WaitForSeconds(attackDuration);
-
-        // Disable the sword's collider
-        swordCollider.enabled = false;
-        isAttacking = false;
-
-        // Reset Animator booleans
-        if (isHeavyAttack)
-        {
-            animator.SetBool("isHeavyAttack", false);
-        }
-        else
-        {
-            animator.SetBool("isLightAttack", false);
-        }
-
-        // Wait for the cooldown of the attack type
-        yield return new WaitForSeconds(attackCooldown);
-        isAttackOnCooldown = false;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackpos.position, attackRange);
     }
 }
