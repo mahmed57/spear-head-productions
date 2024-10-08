@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/HealthManager/MainPlayerHealthManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/HealthManager/MainPlayerHealthManager.cs" Line="51" Column="2" />
+      <File FileName="Assets/Scripts/GameOverScreen.cs" Line="83" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="spear-head-productions" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Enemy" expanded="True" />
+                <Node name="HealthManager" expanded="True">
+                  <Node name="MainPlayerHealthManager.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ead07090-7bc2-4089-a4c8-d1a799fefc72" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
