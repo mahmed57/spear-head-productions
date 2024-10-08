@@ -128,9 +128,9 @@ Animator:
   m_GameObject: {fileID: 306736061870350038}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7c2d663b975cebe4ab155ff836d68c00, type: 2}
+  m_Controller: {fileID: 9100000, guid: bee8b532efcd5154181629ee98fdc8db, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  detectionRange: 50
+  detectionRange: 35
   separationDistance: 4
   attackRange: 3
   enemyLayer:
@@ -163,6 +163,7 @@ MonoBehaviour:
     m_Bits: 128
   wallDetectionDistance: 6
   detectionRadius: 6
+  characterVisuals: {fileID: 0}
   pushBackDuration: 0.3
 --- !u!114 &6974400923284267722
 MonoBehaviour:

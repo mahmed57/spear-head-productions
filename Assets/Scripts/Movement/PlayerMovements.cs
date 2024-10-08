@@ -16,10 +16,8 @@ public class PlayerMovements : MonoBehaviour
     private Animator animator;
     public Transform characterVisuals;
 
-    // Reference to the wall detection script
     private WallDetection wallDetection;
-
-    // Reference to the PlayerAttack script
+   
     private PlayerAttack playerAttack;
 
     void Start()

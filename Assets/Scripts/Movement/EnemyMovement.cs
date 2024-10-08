@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -5,101 +6,134 @@ public class EnemyMovement : MonoBehaviour
     [Header("Movement Settings")]
     public float speed = 2f;
     public float detectionRange = 5f;
-    public float separationDistance = 1.5f; // Minimum distance between enemies to prevent overlap
+    public float separationDistance = 1.5f;
     public float attackRange = 1.5f;
 
     [Header("Layer Masks")]
-    public LayerMask enemyLayer; // Layer for enemies
-    public LayerMask wallLayer;  // Layer for walls
+    public LayerMask enemyLayer;
+    public LayerMask wallLayer;
 
     [Header("Wall Detection Settings")]
     public float wallDetectionDistance = 0.5f;
 
     [Header("Detection Radii")]
-    public float detectionRadius = 0.5f; // Radius to detect other enemies
+    public float detectionRadius = 0.5f;
 
     private Transform playerTransform;
-    private Rigidbody2D rb;
     private Vector2 movement;
 
-    // Wall detection booleans
     private bool isTouchingWallLeft;
     private bool isTouchingWallRight;
     private bool isTouchingWallBottom;
     private bool isTouchingWallTop;
 
-    // Pushback variables
-    private bool isPushedBack = false;  // To track if enemy is being pushed back
-    public float pushBackDuration = 0.2f;  
+    private Animator animator;
+    private bool facingRight = false;
+    public Transform characterVisuals;
+
+    private bool isPushedBack = false;
+    public float pushBackDuration = 0.2f;
     private float pushBackTimer = 0f;
+    private Vector2 pushBackDirection;
+    private float pushBackSpeed;
 
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
-        {
             playerTransform = player.transform;
-        }
 
-        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+
+        if (characterVisuals == null)
+        {
+            Transform visuals = transform.Find("Visuals");
+            if (visuals != null)
+                characterVisuals = visuals;
+            else
+                characterVisuals = transform;
+        }
     }
 
     void Update()
     {
+        DetectWalls();
+
         if (isPushedBack)
-            return;  
-
-        DetectWalls();  
-
-        if (playerTransform == null)
-            return;  
-
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-
-        if (distanceToPlayer <= detectionRange && distanceToPlayer > attackRange)
         {
-            Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
-
-            
-            if ((isTouchingWallRight && directionToPlayer.x > 0) ||
-                (isTouchingWallLeft && directionToPlayer.x < 0))
-            {
-                directionToPlayer.x = 0;
-            }
-
-            if ((isTouchingWallTop && directionToPlayer.y > 0) ||
-                (isTouchingWallBottom && directionToPlayer.y < 0))
-            {
-                directionToPlayer.y = 0;
-            }
-
-            
-            Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, detectionRadius, enemyLayer);
-
-            if (nearbyEnemies.Length > 0)
-            {
-               
-                foreach (Collider2D enemyCollider in nearbyEnemies)
-                {
-                    if (enemyCollider.gameObject != gameObject)  
-                    {
-                        Vector2 directionToEnemy = (enemyCollider.transform.position - transform.position).normalized;
-                        float distanceToEnemy = Vector2.Distance(transform.position, enemyCollider.transform.position);
-
-                        if (distanceToEnemy < separationDistance)
-                        {
-                           
-                            directionToPlayer -= directionToEnemy * (separationDistance - distanceToEnemy);
-                        }
-                    }
-                }
-            }
-
-            movement = directionToPlayer.normalized;
+            pushBackTimer -= Time.deltaTime;
+            if (pushBackTimer <= 0)
+                isPushedBack = false;
         }
         else
         {
-            movement = Vector2.zero;
+            if (playerTransform == null)
+                return;
+
+            float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+
+            if (distanceToPlayer <= detectionRange && distanceToPlayer > attackRange)
+            {
+                if (animator != null)
+                    animator.SetBool("isRunning", true);
+
+                Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
+
+                if ((isTouchingWallRight && directionToPlayer.x > 0) ||
+                    (isTouchingWallLeft && directionToPlayer.x < 0))
+                {
+                    directionToPlayer.x = 0;
+                }
+
+                if ((isTouchingWallTop && directionToPlayer.y > 0) ||
+                    (isTouchingWallBottom && directionToPlayer.y < 0))
+                {
+                    directionToPlayer.y = 0;
+                }
+
+                Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, detectionRadius, enemyLayer);
+
+                if (nearbyEnemies.Length > 0)
+                {
+                    foreach (Collider2D enemyCollider in nearbyEnemies)
+                    {
+                        if (enemyCollider.gameObject != gameObject)
+                        {
+                            Vector2 directionToEnemy = (transform.position - enemyCollider.transform.position).normalized;
+                            float distanceToEnemy = Vector2.Distance(transform.position, enemyCollider.transform.position);
+
+                            if (distanceToEnemy < separationDistance)
+                            {
+                                directionToPlayer += directionToEnemy * (separationDistance - distanceToEnemy);
+                            }
+                        }
+                    }
+                }
+
+                movement = directionToPlayer.normalized;
+
+                
+                if (movement.x > 0 && !facingRight)
+                {
+                    Flip();
+                }
+                else if (movement.x < 0 && facingRight)
+                {
+                    Flip();
+                }
+            }
+            else
+            {
+                movement = Vector2.zero;
+
+                if (animator != null)
+                    animator.SetBool("isRunning", false);
+
+                if(distanceToPlayer < attackRange)
+                {
+                    animator.SetTrigger("attack");
+                }
+            }
         }
     }
 
@@ -107,29 +141,31 @@ public class EnemyMovement : MonoBehaviour
     {
         if (isPushedBack)
         {
-            pushBackTimer -= Time.fixedDeltaTime;
-            if (pushBackTimer <= 0)
-            {
-                isPushedBack = false; 
-            }
+            if (animator != null)
+                animator.SetBool("isRunning", false);
+
+            MoveCharacter(pushBackDirection * pushBackSpeed);
         }
         else
         {
-            MoveCharacter(movement);
+            MoveCharacter(movement * speed);
         }
     }
 
+    void MoveCharacter(Vector2 velocity)
+    {
+        transform.Translate(velocity * Time.fixedDeltaTime);
+    }
 
     public void ApplyPushBack(Vector2 pushDirection, float pushForce)
     {
         isPushedBack = true;
         pushBackTimer = pushBackDuration;
-        rb.velocity = pushDirection * pushForce;  
-    }
+        pushBackDirection = pushDirection.normalized;
+        pushBackSpeed = pushForce;
 
-    void MoveCharacter(Vector2 direction)
-    {
-        rb.velocity = direction * speed;
+        if (animator != null)
+            animator.SetBool("isRunning", false);
     }
 
     void DetectWalls()
@@ -140,14 +176,22 @@ public class EnemyMovement : MonoBehaviour
         isTouchingWallBottom = Physics2D.Raycast(transform.position, Vector2.down, wallDetectionDistance, wallLayer);
     }
 
-  
+    private void Flip()
+    {
+        facingRight = !facingRight;
+
+        Vector3 scale = characterVisuals.localScale;
+        scale.x *= -1;
+        characterVisuals.localScale = scale;
+        
+    }
+
     void OnDrawGizmosSelected()
     {
- 
+      
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
-    
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallDetectionDistance);
         Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallDetectionDistance);
