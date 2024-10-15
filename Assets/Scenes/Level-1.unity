@@ -1098,6 +1098,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5564706745523407322, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: healthBarFill
+      value: 
+      objectReference: {fileID: 780793037}
+    - target: {fileID: 5564706745523407322, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 1916956110}
     - target: {fileID: 7482486407021336528, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
