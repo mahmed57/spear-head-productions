@@ -15,10 +15,10 @@ public class PlayerMovements : MonoBehaviour
 
     private Animator animator;
     public Transform characterVisuals;
-
-    private WallDetection wallDetection;
    
     private PlayerAttack playerAttack;
+
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -30,17 +30,19 @@ public class PlayerMovements : MonoBehaviour
         {
             characterVisuals = animator.transform;
         }
-
-        
-        wallDetection = GetComponent<WallDetection>();
-
-        
+         
         playerAttack = GetComponent<PlayerAttack>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         input();
+        
+    }
+
+    void FixedUpdate()
+    {
         move();
     }
 
@@ -93,16 +95,15 @@ public class PlayerMovements : MonoBehaviour
             }
 
             
-            if (!IsTouchingWall())
+ 
+            if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                if (gamepad.buttonSouth.wasPressedThisFrame)
-                {
-                    Dash();
-                }
+                Dash();
             }
+            
         }
 
-        if (!IsTouchingWall() && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Dash();
         }
@@ -110,20 +111,6 @@ public class PlayerMovements : MonoBehaviour
 
     private void move()
     {
-    
-        
-        if ((wallDetection.isTouchingWallRight && direction.x > 0) || 
-            (wallDetection.isTouchingWallLeft && direction.x < 0))
-        {
-            direction.x = 0;
-        }
-
-        if ((wallDetection.isTouchingWallTop && direction.y > 0) || 
-            (wallDetection.isTouchingWallBottom && direction.y < 0))
-        {
-            direction.y = 0;
-        }
-
         
         if (direction != Vector2.zero)
         {
@@ -143,7 +130,7 @@ public class PlayerMovements : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        Vector3 movement = new Vector3(direction.x, direction.y, 0);
+        Vector2 movement = new Vector2(direction.x, direction.y);
         
         if (playerAttack.is_attacking)
         {
@@ -154,7 +141,8 @@ public class PlayerMovements : MonoBehaviour
         }
         else
         {
-            transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
+            Vector2 position = (Vector2)rb.position + movement.normalized * speed * Time.deltaTime;
+            rb.MovePosition(position);
         }
     }
 
@@ -184,12 +172,6 @@ public class PlayerMovements : MonoBehaviour
 
         Vector3 dashMovement = new Vector3(target_pos.x, target_pos.y, 0);
         transform.Translate(dashMovement * dash_range, Space.World);
-    }
-
-    private bool IsTouchingWall()
-    {
-        return wallDetection.isTouchingWallRight || wallDetection.isTouchingWallLeft || 
-               wallDetection.isTouchingWallTop || wallDetection.isTouchingWallBottom;
     }
 
     private void Flip()

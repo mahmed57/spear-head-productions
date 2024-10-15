@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8617105132745031491}
   - component: {fileID: 653348013532988897}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightKnee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3557869573990891923}
   - component: {fileID: 5736816645052679742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6847508628620756916}
   - component: {fileID: 611518581096724948}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7871125734738360645}
   - component: {fileID: 5640278825438323342}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3473007584002544532}
   - component: {fileID: 7742216075136693783}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5343648513670567070}
   - component: {fileID: 2515812629177737973}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6253449022926895445}
   - component: {fileID: 752085894045142827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7631515953097756753}
   - component: {fileID: 4304621464325290268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 921633378381162649}
   - component: {fileID: 2045545165104168704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftKnee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4901200145856667375}
   - component: {fileID: 4765923364140336054}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6873351982440870169}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,7 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3867407654745809528}
   - component: {fileID: 7725949010570033524}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: mainBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,7 +965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3178295657956449392}
   - component: {fileID: 5891599894336633674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2604378824422783769}
   - component: {fileID: 6087047446777776397}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: belt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1806446256163681330}
   - component: {fileID: 2460380931713271190}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 5585845198699897067}
   - component: {fileID: 3115490269440685862}
   - component: {fileID: 8585154180459091764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1347,7 +1347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751819985083209995}
   - component: {fileID: 5525660128405665863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bottomBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1431,7 +1431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4595892077148449895}
   - component: {fileID: 6058663700099256957}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1518,11 +1518,10 @@ GameObject:
   - component: {fileID: 6348914702745960550}
   - component: {fileID: 6401668636009065823}
   - component: {fileID: 8938180526942325378}
-  - component: {fileID: 5538985587735305306}
-  - component: {fileID: 4469463586476541483}
   - component: {fileID: 2300154246909235186}
   - component: {fileID: 4929042821435766765}
-  m_Layer: 0
+  - component: {fileID: 5564706745523407322}
+  m_Layer: 6
   m_Name: Knight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1619,13 +1618,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9211244561316864684}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100000
-  m_LinearDrag: 100
-  m_AngularDrag: 100
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1637,41 +1636,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!114 &5538985587735305306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9211244561316864684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82e3d189bfbc31c4e932c46918b4fed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 10
---- !u!114 &4469463586476541483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9211244561316864684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c9678a93f2ced46ada79cfe89bf4c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallDetectionDistance: 4
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  isTouchingWallLeft: 0
-  isTouchingWallRight: 0
-  isTouchingWallBottom: 0
-  isTouchingWallTop: 0
-  rb: {fileID: 0}
+  m_Constraints: 4
 --- !u!58 &2300154246909235186
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1729,3 +1694,19 @@ MonoBehaviour:
   heavy_attack_damage: 10
   player_anim: {fileID: 6401668636009065823}
   is_attacking: 0
+--- !u!114 &5564706745523407322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211244561316864684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61e7eb8bd93a4b19911db917f949d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarFill: {fileID: 0}
+  currentHealth: 100
+  maxHealth: 100
+  gameOverScreen: {fileID: 0}
