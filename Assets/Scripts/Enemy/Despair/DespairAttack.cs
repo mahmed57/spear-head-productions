@@ -10,16 +10,14 @@ public class DespairAttack : MonoBehaviour
     private float nextAttackTime = 0f;
 
     private Transform player;
-    private MainPlayerHealthManager playerHealth;
+    private PlayerHealthManager playerHealth;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerHealth = player.GetComponent<MainPlayerHealthManager>();
+        playerHealth = player.GetComponent<PlayerHealthManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -36,6 +34,6 @@ public class DespairAttack : MonoBehaviour
     void Attack()
     {
         Debug.Log("Enemy attacks!");
-        playerHealth.damage(damage);
+        playerHealth.deal_damage(damage);
     }
 }

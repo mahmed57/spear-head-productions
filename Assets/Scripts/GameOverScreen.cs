@@ -53,9 +53,6 @@ public class GameOverScreen : MonoBehaviour
         }
 
 
-        ResetEnemies();
-
-
         SceneManager.LoadScene("Level-1", LoadSceneMode.Single);
 
 
@@ -68,16 +65,6 @@ public class GameOverScreen : MonoBehaviour
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
-
-    private void ResetEnemies()
-    {
-        DespairHealthManager[] enemies = FindObjectsOfType<DespairHealthManager>();
-        foreach (DespairHealthManager enemy in enemies)
-        {
-            Destroy(enemy.gameObject);
-        }
-
-    }
 
 
 }
