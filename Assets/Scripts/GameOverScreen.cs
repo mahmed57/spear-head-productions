@@ -8,9 +8,7 @@ using UnityEditor.Build.Content;
 public class GameOverScreen : MonoBehaviour
 {
     private PlayerMovements playerMovements;
-    private MainPlayerHealthManager playerHealth;
-    private WallDetection wallDetection;
-
+    private PlayerHealthManager playerHealth;
 
     private void Start()
     {
@@ -19,8 +17,7 @@ public class GameOverScreen : MonoBehaviour
         if (player != null)
         {
             playerMovements = player.GetComponent<PlayerMovements>();
-            playerHealth = player.GetComponent<MainPlayerHealthManager>();
-            wallDetection = player.GetComponent<WallDetection>();
+            playerHealth = player.GetComponent<PlayerHealthManager>();
         }
 
 
@@ -32,29 +29,7 @@ public class GameOverScreen : MonoBehaviour
     }
     public void RestartButton()
     {
-        if (playerHealth != null)
-        {
-            playerHealth.currentHealth = playerHealth.maxHealth;
-            playerHealth.healthBarFill.fillAmount = playerHealth.currentHealth / playerHealth.maxHealth;
-        }
-
-        if (playerMovements != null)
-        {
-            playerMovements.transform.position = new Vector3(0, 0, 0);
-        }
-
-
-        if (wallDetection != null)
-        {
-            wallDetection.isTouchingWallLeft = false;
-            wallDetection.isTouchingWallRight = false;
-            wallDetection.isTouchingWallBottom = false;
-            wallDetection.isTouchingWallTop = false;
-        }
-
-
         SceneManager.LoadScene("Level-1", LoadSceneMode.Single);
-
 
         Time.timeScale = 1f;
     }
@@ -64,7 +39,6 @@ public class GameOverScreen : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
-
 
 
 }
