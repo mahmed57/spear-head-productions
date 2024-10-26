@@ -7,19 +7,48 @@ public class ProceduralLevelGenerator : MonoBehaviour
 {
     [System.Serializable]
     public class EnemyType
-    {
-        public string name;
-        public GameObject enemyPrefab;
+    {   
+        public string name = "element";
+        public string prefab_name;
         public int minEnemiesPerRoom;
         public int maxEnemiesPerRoom;
+
+        public EnemyType(string prefab_name, int minEnemiesPerRoom, int maxEnemiesPerRoom)
+        {
+            this.prefab_name = prefab_name;
+            this.minEnemiesPerRoom = minEnemiesPerRoom;
+            this.maxEnemiesPerRoom = maxEnemiesPerRoom;
+        }
+    }
+
+    [System.Serializable]
+    public class Room_Enemy_Settings
+    {
+        public List<EnemyType> enemyTypes;
+        public int minRoomSize;
+        public int maxRoomSize;
+
+        public Room_Enemy_Settings()
+        {
+            this.minRoomSize = 8;
+            
+            this.maxRoomSize = 15;
+
+            this.enemyTypes = new List<EnemyType>
+            {
+                new EnemyType("Misery", 3, 3),
+                new EnemyType("RageTanker", 3, 3)
+            };
+        }
+
     }
 
     [Header("Spawner Object")]
     public GameObject spawner;
 
-    [Header("Enemy Settings")]
-    public List<EnemyType> enemyTypes;
-
+    [Header("Room and Enemy Settings")]
+    public List<Room_Enemy_Settings> room_enemy_settings;
+ 
     [Header("Tilemap and Tiles")]
     public Tilemap floorTilemap;
     public Tilemap wallTilemap;   
@@ -28,10 +57,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
     public TileBase wallRightTile;
     public TileBase wallTopBottomTile;
 
+
     [Header("Dungeon Generation Parameters")]
-    public int roomCount = 10;
-    public int minRoomSize = 4;
-    public int maxRoomSize = 8;
+    private int roomCount = 10;
     public int mapWidth = 50;
     public int mapHeight = 50;
 
@@ -44,7 +72,8 @@ public class ProceduralLevelGenerator : MonoBehaviour
     private HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
 
     void Start()
-    {
+    {   
+        roomCount = room_enemy_settings.Count;
         rooms = new List<Room>();
         GenerateRooms();
         CalculateDungeonOffset();
@@ -57,15 +86,16 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void GenerateRooms()
     {
-        int maxAttempts = roomCount * 5;
+        int maxAttempts = roomCount * 20;
         int attempts = 0;
+        int index = 0;
 
         while (rooms.Count < roomCount && attempts < maxAttempts)
         {
             attempts++;
 
-            int width = Random.Range(minRoomSize, maxRoomSize + 1);
-            int height = Random.Range(minRoomSize, maxRoomSize + 1);
+            int width = Random.Range(room_enemy_settings[index].minRoomSize, room_enemy_settings[index].maxRoomSize + 1);
+            int height = Random.Range(room_enemy_settings[index].minRoomSize, room_enemy_settings[index].maxRoomSize + 1);
             int x = Random.Range(0, mapWidth - width);
             int y = Random.Range(0, mapHeight - height);
 
@@ -85,7 +115,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
             {
                 Room newRoom = new Room(newRect);
                 rooms.Add(newRoom);
+                index++;
             }
+            
         }
     }
 
@@ -274,6 +306,8 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void InstantiateRoomGameObjects()
     {
+        int index = 0;
+
         foreach (Room room in rooms)
         {
             Grid grid = floorTilemap.layoutGrid;
@@ -299,7 +333,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
             roomController.room = room;
             roomController.floorTilemap = floorTilemap;
             roomController.spawner = spawner;
-            roomController.enemyTypes = enemyTypes;
+            roomController.enemyTypes = room_enemy_settings[index].enemyTypes;
+
+            index++;
         }
     }
 

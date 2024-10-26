@@ -6,6 +6,6 @@ public class AssetSpawner : MonoBehaviour
 {
    public void spawn_assets()
    {
-
+        
    }
 }

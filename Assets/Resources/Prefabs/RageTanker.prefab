@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1367248280752324110}
   - component: {fileID: -4846731059976911675}
   - component: {fileID: -2760911228048759678}
-  - component: {fileID: 1261762929853108457}
   - component: {fileID: -6140401819475875505}
   m_Layer: 6
   m_Name: RageTanker
@@ -140,6 +139,7 @@ MonoBehaviour:
     m_Bits: 128
   wallDetectionDistance: 5
   detectionRadius: 6.32
+  characterVisuals: {fileID: 0}
   pushBackDuration: 1
 --- !u!114 &-2760911228048759678
 MonoBehaviour:
@@ -156,27 +156,6 @@ MonoBehaviour:
   present_health: 50
   max_health: 50
   pushForce: 2
---- !u!114 &1261762929853108457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904279906149629936}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c9678a93f2ced46ada79cfe89bf4c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallDetectionDistance: 4
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  isTouchingWallLeft: 0
-  isTouchingWallRight: 0
-  isTouchingWallBottom: 0
-  isTouchingWallTop: 0
-  rb: {fileID: 0}
 --- !u!58 &-6140401819475875505
 CircleCollider2D:
   m_ObjectHideFlags: 0
