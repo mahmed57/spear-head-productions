@@ -14,6 +14,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
         public int maxEnemiesPerRoom;
     }
 
+    [Header("Spawner Object")]
+    public GameObject spawner;
+
     [Header("Enemy Settings")]
     public List<EnemyType> enemyTypes;
 
@@ -295,6 +298,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
             RoomController roomController = roomGO.GetComponent<RoomController>();
             roomController.room = room;
             roomController.floorTilemap = floorTilemap;
+            roomController.spawner = spawner;
             roomController.enemyTypes = enemyTypes;
         }
     }
