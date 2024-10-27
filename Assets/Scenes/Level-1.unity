@@ -2096,9 +2096,14 @@ MonoBehaviour:
   floorTilemap: {fileID: 1117985175}
   wallTilemap: {fileID: 1024244436}
   floorTile: {fileID: 11400000, guid: 2e61ed5348533ae4c9ec0a1ee1cbb491, type: 2}
-  wallLeftTile: {fileID: 11400000, guid: 4fdc750eb5358b9428efc9c1eece0afb, type: 2}
-  wallRightTile: {fileID: 11400000, guid: e5f80e8e3824dfa4b8fba9ca09225862, type: 2}
-  wallTopBottomTile: {fileID: 11400000, guid: 5659b567533a89248b832e76ee4155bc, type: 2}
+  wallLeftTile: {fileID: 11400000, guid: e5f80e8e3824dfa4b8fba9ca09225862, type: 2}
+  wallRightTile: {fileID: 11400000, guid: 4fdc750eb5358b9428efc9c1eece0afb, type: 2}
+  wallTopTile: {fileID: 11400000, guid: 5659b567533a89248b832e76ee4155bc, type: 2}
+  wallBottomTile: {fileID: 11400000, guid: 6829f3dc3c26a4d82ba1f2658f12ac06, type: 2}
+  wallCornerTopLeftTile: {fileID: 11400000, guid: 4047afae2c9a04e94aa439638084eeca, type: 2}
+  wallCornerTopRightTile: {fileID: 11400000, guid: 339a48b3a2c5a48b3a2e57fc48979568, type: 2}
+  wallCornerBottomLeftTile: {fileID: 11400000, guid: d152d4f1917d549498475f3dabf55bb9, type: 2}
+  wallCornerBottomRightTile: {fileID: 11400000, guid: a7b4bd4eddbe2467b874846eee5c11b0, type: 2}
   mapWidth: 120
   mapHeight: 110
   roomPrefab: {fileID: 2908291702883658222, guid: 4dea4fc50abb54f2f802e72440b7c1e4, type: 3}

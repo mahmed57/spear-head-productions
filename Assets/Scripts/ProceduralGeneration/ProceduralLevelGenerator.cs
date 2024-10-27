@@ -2,12 +2,11 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
-
 public class ProceduralLevelGenerator : MonoBehaviour
 {
     [System.Serializable]
     public class EnemyType
-    {   
+    {
         public string name = "element";
         public string prefab_name;
         public int minEnemiesPerRoom;
@@ -31,7 +30,6 @@ public class ProceduralLevelGenerator : MonoBehaviour
         public Room_Enemy_Settings()
         {
             this.minRoomSize = 8;
-            
             this.maxRoomSize = 15;
 
             this.enemyTypes = new List<EnemyType>
@@ -40,7 +38,6 @@ public class ProceduralLevelGenerator : MonoBehaviour
                 new EnemyType("RageTanker", 3, 3)
             };
         }
-
     }
 
     [Header("Spawner Object")]
@@ -48,15 +45,21 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     [Header("Room and Enemy Settings")]
     public List<Room_Enemy_Settings> room_enemy_settings;
- 
+
     [Header("Tilemap and Tiles")]
     public Tilemap floorTilemap;
-    public Tilemap wallTilemap;   
+    public Tilemap wallTilemap;
     public TileBase floorTile;
     public TileBase wallLeftTile;
     public TileBase wallRightTile;
-    public TileBase wallTopBottomTile;
+    public TileBase wallTopTile;
+    public TileBase wallBottomTile; // Added wallBottomTile
 
+    // Corner tiles
+    public TileBase wallCornerTopLeftTile;
+    public TileBase wallCornerTopRightTile;
+    public TileBase wallCornerBottomLeftTile;
+    public TileBase wallCornerBottomRightTile;
 
     [Header("Dungeon Generation Parameters")]
     private int roomCount = 10;
@@ -72,7 +75,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
     private HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
 
     void Start()
-    {   
+    {
         roomCount = room_enemy_settings.Count;
         rooms = new List<Room>();
         GenerateRooms();
@@ -81,6 +84,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
         GenerateCorridors();
         DrawFloors();
         DrawWalls();
+        PlaceRoomCorners();
         InstantiateRoomGameObjects();
     }
 
@@ -117,7 +121,6 @@ public class ProceduralLevelGenerator : MonoBehaviour
                 rooms.Add(newRoom);
                 index++;
             }
-            
         }
     }
 
@@ -127,7 +130,6 @@ public class ProceduralLevelGenerator : MonoBehaviour
         dungeonOffset = new Vector3Int(-firstRoomCenter.x, -firstRoomCenter.y, 0);
     }
 
-
     void ApplyDungeonOffset()
     {
         foreach (Room room in rooms)
@@ -136,7 +138,6 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
- 
     void GenerateCorridors()
     {
         List<Vector2Int> roomCenters = new List<Vector2Int>();
@@ -195,10 +196,8 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void DrawWalls()
     {
- 
         foreach (Vector3Int floorPos in floorPositions)
         {
- 
             TryPlaceWall(floorPos + Vector3Int.up);
             TryPlaceWall(floorPos + Vector3Int.down);
             TryPlaceWall(floorPos + Vector3Int.left);
@@ -215,15 +214,41 @@ public class ProceduralLevelGenerator : MonoBehaviour
             bool hasFloorUp = floorPositions.Contains(pos + Vector3Int.up);
             bool hasFloorDown = floorPositions.Contains(pos + Vector3Int.down);
 
-            if (hasFloorUp || hasFloorDown)
+            if (hasFloorUp)
             {
-                wallTilemap.SetTile(pos, wallTopBottomTile);
+                wallTilemap.SetTile(pos, wallBottomTile); // Use wallBottomTile
             }
-            else if (hasFloorLeft || hasFloorRight)
+            else if (hasFloorDown)
             {
-                TileBase wallTile = hasFloorLeft ? wallLeftTile : wallRightTile;
-                wallTilemap.SetTile(pos, wallTile);
+                wallTilemap.SetTile(pos, wallTopTile); // Use wallTopTile
             }
+            else if (hasFloorLeft)
+            {
+                wallTilemap.SetTile(pos, wallRightTile);
+            }
+            else if (hasFloorRight)
+            {
+                wallTilemap.SetTile(pos, wallLeftTile);
+            }
+        }
+    }
+
+    // Function to place corner tiles
+    void PlaceRoomCorners()
+    {
+        foreach (Room room in rooms)
+        {
+            // Calculate corner positions
+            Vector3Int topLeft = new Vector3Int(room.bounds.xMin - 1, room.bounds.yMax, 0);
+            Vector3Int topRight = new Vector3Int(room.bounds.xMax, room.bounds.yMax, 0);
+            Vector3Int bottomLeft = new Vector3Int(room.bounds.xMin - 1, room.bounds.yMin - 1, 0);
+            Vector3Int bottomRight = new Vector3Int(room.bounds.xMax, room.bounds.yMin - 1, 0);
+
+            // Place corner tiles
+            wallTilemap.SetTile(topLeft, wallCornerTopLeftTile);
+            wallTilemap.SetTile(topRight, wallCornerTopRightTile);
+            wallTilemap.SetTile(bottomLeft, wallCornerBottomLeftTile);
+            wallTilemap.SetTile(bottomRight, wallCornerBottomRightTile);
         }
     }
 
@@ -254,7 +279,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
                 }
                 else
                 {
-                    direction = Vector2Int.right; 
+                    direction = Vector2Int.right;
                 }
             }
             else
@@ -262,11 +287,10 @@ public class ProceduralLevelGenerator : MonoBehaviour
                 direction = position - path[i - 1];
             }
 
-
             Vector2Int perpendicular = new Vector2Int(-direction.y, direction.x);
             if (perpendicular == Vector2Int.zero)
             {
-                perpendicular = Vector2Int.right; 
+                perpendicular = Vector2Int.right;
             }
 
             Vector2Int adjacentPosition = position + perpendicular;
@@ -327,7 +351,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             BoxCollider2D collider = roomGO.GetComponent<BoxCollider2D>();
             collider.size = new Vector2(roomWorldSize.x, roomWorldSize.y);
-            collider.offset = Vector2.zero; 
+            collider.offset = Vector2.zero;
 
             RoomController roomController = roomGO.GetComponent<RoomController>();
             roomController.room = room;
@@ -338,7 +362,6 @@ public class ProceduralLevelGenerator : MonoBehaviour
             index++;
         }
     }
-
 
     class Edge
     {
@@ -353,7 +376,6 @@ public class ProceduralLevelGenerator : MonoBehaviour
             this.distance = distance;
         }
     }
-
 
     class DisjointSet
     {
