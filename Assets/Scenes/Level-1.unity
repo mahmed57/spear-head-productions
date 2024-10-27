@@ -245,11 +245,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307895931}
   m_CullTransparentMesh: 1
---- !u!1 &520449336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9211244561316864684, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-  m_PrefabInstance: {fileID: 1174267413}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &710426190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,31 +1104,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2300154246909235186, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-      propertyPath: m_Radius
-      value: 1.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300154246909235186, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300154246909235186, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929042821435766765, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-      propertyPath: attackRange
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5564706745523407322, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5564706745523407322, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+    - target: {fileID: 5860919249563091029, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: healthBarFill
       value: 
       objectReference: {fileID: 780793037}
-    - target: {fileID: 5564706745523407322, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+    - target: {fileID: 5860919249563091029, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1916956110}
@@ -1181,15 +1156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5564706745523407322, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-    - {fileID: 8585154180459091764, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9211244561316864684, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1935739529}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
 --- !u!1 &1190748599
 GameObject:
@@ -1765,22 +1735,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7482486407021336528, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
   m_PrefabInstance: {fileID: 1174267413}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1935739529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520449336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fed3837caf8b44c88237a4ab48564f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  present_health: 100
-  max_health: 100
-  healthBarFill: {fileID: 780793037}
-  gameOverScreen: {fileID: 1916956110}
 --- !u!1 &1950537492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,8 +1929,8 @@ MonoBehaviour:
   spawner: {fileID: 1190748599}
   room_enemy_settings:
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -1986,8 +1940,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -1997,8 +1951,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2008,8 +1962,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2019,8 +1973,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2030,8 +1984,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2041,8 +1995,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2052,8 +2006,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2063,8 +2017,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2074,8 +2028,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2085,8 +2039,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2096,8 +2050,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2107,8 +2061,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2118,8 +2072,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
@@ -2129,8 +2083,8 @@ MonoBehaviour:
     minRoomSize: 8
     maxRoomSize: 15
   - enemyTypes:
-    - name: Misery
-      prefab_name: Misery
+    - name: Despair
+      prefab_name: Despair
       minEnemiesPerRoom: 3
       maxEnemiesPerRoom: 3
     - name: RageTanker
