@@ -1019,14 +1019,14 @@ GameObject:
   - component: {fileID: 5655521587719051241}
   - component: {fileID: 2163507300152738339}
   - component: {fileID: 1393657582718233324}
-  - component: {fileID: 2903279372917574277}
   - component: {fileID: 6852851403961134367}
   - component: {fileID: 8910430251566253216}
   - component: {fileID: 4203239832379400475}
   - component: {fileID: 2307487550414402135}
+  - component: {fileID: -459119328879587646}
   m_Layer: 6
   m_Name: RageTanker
-  m_TagString: Untagged
+  m_TagString: RageTanker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,7 +1040,7 @@ Transform:
   m_GameObject: {fileID: 7449446764330099834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: -0.13, z: -0.018382233}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2758, y: 1.2758, z: 1.2758}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1075,7 +1075,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3172bf9e3c8749e428a66b89a66664fd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1115,36 +1115,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.9254236, y: -0.026594877}
-  m_Size: {x: 1.3864918, y: 3.6913724}
+  m_Offset: {x: -2.5492811, y: 0.39448428}
+  m_Size: {x: 3.4314396, y: 4.9700003}
   m_Direction: 0
---- !u!50 &2903279372917574277
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449446764330099834}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!114 &6852851403961134367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,7 +1125,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7449446764330099834}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a16ea635fa1fb41258205ab4ad9e759b, type: 3}
   m_Name: 
@@ -1161,6 +1134,8 @@ MonoBehaviour:
   detectionRange: 35
   separationDistance: 4
   attackRange: 3
+  flipThresholdDistance: 0.5
+  flipCooldown: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1193,14 +1168,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7449446764330099834}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5376697fa71d435e99e1a75e4230392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1.5
+  attackRange: 2
   damage: 5
-  attackCooldown: 2
+  attackCooldown: 1
 --- !u!210 &2307487550414402135
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -1213,6 +1188,33 @@ SortingGroup:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!50 &-459119328879587646
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449446764330099834}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &7642771758401828734
 GameObject:
   m_ObjectHideFlags: 0

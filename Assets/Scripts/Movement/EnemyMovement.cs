@@ -8,6 +8,11 @@ public class EnemyMovement : MonoBehaviour
     public float detectionRange = 5f;
     public float separationDistance = 1.5f;
     public float attackRange = 1.5f;
+    public float flipThresholdDistance = 0.5f; // New threshold distance
+
+    [Header("Flip Settings")]
+    public float flipCooldown = 1f; // Cooldown time between flips
+    private float lastFlipTime = 0f; // Tracks the last flip time
 
     [Header("Layer Masks")]
     public LayerMask enemyLayer;
@@ -29,6 +34,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Animator animator;
     private bool facingRight = false;
+
     public Transform characterVisuals;
 
     private bool isPushedBack = false;
@@ -45,14 +51,23 @@ public class EnemyMovement : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
 
+        if(gameObject.tag == "RageTanker")
+        {
+           facingRight = true;
+
+           Debug.Log("Executing.....");
+        }
+
         if (characterVisuals == null)
         {
             Transform visuals = transform.Find("Visuals");
             if (visuals != null)
                 characterVisuals = visuals;
             else
-                characterVisuals = transform;
+                characterVisuals = animator.transform;
         }
+
+
     }
 
     void Update()
@@ -112,14 +127,18 @@ public class EnemyMovement : MonoBehaviour
 
                 movement = directionToPlayer.normalized;
 
-                
-                if (movement.x > 0 && !facingRight)
+                // Only flip if the distance to the player is greater than the threshold distance
+                if (distanceToPlayer > flipThresholdDistance && Time.time - lastFlipTime >= flipCooldown)
                 {
-                    Flip();
-                }
-                else if (movement.x < 0 && facingRight)
-                {
-                    Flip();
+                    if (movement.x > 0 && !facingRight)
+                    {
+                        
+                        Flip();
+                    }
+                    else if (movement.x < 0 && facingRight)
+                    {
+                        Flip();
+                    }
                 }
             }
             else
@@ -129,7 +148,7 @@ public class EnemyMovement : MonoBehaviour
                 if (animator != null)
                     animator.SetBool("isRunning", false);
 
-                if(distanceToPlayer < attackRange)
+                if (distanceToPlayer < attackRange)
                 {
                     animator.SetTrigger("attack");
                 }
@@ -179,16 +198,18 @@ public class EnemyMovement : MonoBehaviour
     private void Flip()
     {
         facingRight = !facingRight;
+        lastFlipTime = Time.time; // Update the last flip time
+
 
         Vector3 scale = characterVisuals.localScale;
         scale.x *= -1;
         characterVisuals.localScale = scale;
         
+
     }
 
     void OnDrawGizmosSelected()
     {
-      
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 

@@ -132,7 +132,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: bee8b532efcd5154181629ee98fdc8db, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -156,6 +156,7 @@ MonoBehaviour:
   detectionRange: 35
   separationDistance: 4
   attackRange: 3
+  flipThresholdDistance: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -205,8 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5376697fa71d435e99e1a75e4230392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1.5
-  damage: 5
+  attackRange: 2
+  damage: 3
   attackCooldown: 2
 --- !u!1 &599426604470154986
 GameObject:

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spawner
+  - RageTanker
   layers:
   - Default
   - TransparentFX

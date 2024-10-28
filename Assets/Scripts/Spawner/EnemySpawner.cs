@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Debug.Log(roomCenter);
 
         foreach (ProceduralLevelGenerator.EnemyType enemy in enemyTypes)
         {
@@ -46,7 +45,6 @@ public class EnemySpawner : MonoBehaviour
 
                     if(!usedPositions.Contains(spawnTilePosition) && ((Vector3.Distance(spawnWorldPosition, roomCenter) - spawnRadius) < 5))
                     {
-                        Debug.Log(Vector3.Distance(spawnWorldPosition, roomCenter));
                         break;
                     }
 
