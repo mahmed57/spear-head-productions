@@ -5,17 +5,19 @@ using UnityEngine.Tilemaps;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public float spawnRadius = 50f;
 
-    public void SpawnEnemies(List<ProceduralLevelGenerator.EnemyType> enemyTypes, Room room, Tilemap floorTilemap)
-    {   
-        if (enemyTypes.Count == 0)
+    public void SpawnEnemies(List<ProceduralLevelGenerator.EnemyType> enemyTypes, Room room, Tilemap floorTilemap, Vector3 roomCenter)
+    {
+        if (enemyTypes.Count == 0 || roomCenter == null)
         {
             return;
         }
 
-        foreach(ProceduralLevelGenerator.EnemyType enemy in enemyTypes)
-        {
+        Debug.Log(roomCenter);
 
+        foreach (ProceduralLevelGenerator.EnemyType enemy in enemyTypes)
+        {
             int enemyCount = Random.Range(enemy.minEnemiesPerRoom, enemy.maxEnemiesPerRoom + 1);
 
             List<Vector3Int> roomFloorPositions = new List<Vector3Int>();
@@ -35,25 +37,28 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < enemyCount; i++)
             {
                 Vector3Int spawnTilePosition;
-                int attempts = 0;
 
-                do
+                while (true)
                 {
                     spawnTilePosition = roomFloorPositions[Random.Range(0, roomFloorPositions.Count)];
-                    attempts++;
-                }
-                while (usedPositions.Contains(spawnTilePosition) && attempts < 10);
 
-                if (attempts >= 10)
-                    continue;
+                    Vector3 spawnWorldPosition = floorTilemap.CellToWorld(spawnTilePosition) + new Vector3(0.5f, 0.5f, 0);
+
+                    if(!usedPositions.Contains(spawnTilePosition) && ((Vector3.Distance(spawnWorldPosition, roomCenter) - spawnRadius) < 5))
+                    {
+                        Debug.Log(Vector3.Distance(spawnWorldPosition, roomCenter));
+                        break;
+                    }
+
+                }
 
                 usedPositions.Add(spawnTilePosition);
 
                 Vector3 spawnPosition = floorTilemap.CellToWorld(spawnTilePosition) + new Vector3(0.5f, 0.5f, 0);
-
                 Instantiate(Resources.Load<GameObject>("Prefabs/" + enemy.prefab_name), spawnPosition, Quaternion.identity);
             }
+
         }
+        
     }
 }
-
