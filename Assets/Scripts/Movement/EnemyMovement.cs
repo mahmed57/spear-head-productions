@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 2f;
     public float detectionRange = 5f;
     public float separationDistance = 1.5f;
-    public float attackRange = 1.5f;
+    private float attackRange = 1.5f;
     public float flipThresholdDistance = 0.5f; // New threshold distance
 
     [Header("Flip Settings")]
@@ -67,6 +67,7 @@ public class EnemyMovement : MonoBehaviour
                 characterVisuals = animator.transform;
         }
 
+        attackRange = GetComponent<DespairAttack>().attackRange;
 
     }
 
@@ -150,7 +151,7 @@ public class EnemyMovement : MonoBehaviour
 
                 if (distanceToPlayer < attackRange)
                 {
-                    animator.SetTrigger("attack");
+                    
                 }
             }
         }
