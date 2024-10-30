@@ -156,7 +156,6 @@ MonoBehaviour:
   speed: 3
   detectionRange: 35
   separationDistance: 4
-  attackRange: 3
   flipThresholdDistance: 1
   flipCooldown: 1
   enemyLayer:
@@ -210,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5376697fa71d435e99e1a75e4230392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 2
+  attackRange: 3
   damage: 3
   attackCooldown: 2
 --- !u!1 &599426604470154986
