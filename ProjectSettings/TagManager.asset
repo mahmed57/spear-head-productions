@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Spawner
   - RageTanker
+  - GameManager
+  - Room
   layers:
   - Default
   - TransparentFX

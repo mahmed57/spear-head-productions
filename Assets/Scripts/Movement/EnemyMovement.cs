@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class EnemyMovement : MonoBehaviour
             if (visuals != null)
                 characterVisuals = visuals;
             else
-                characterVisuals = animator.transform;
+                characterVisuals = transform;
         }
 
         attackRange = GetComponent<DespairAttack>().attackRange;
@@ -189,7 +190,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     void DetectWalls()
-    {
+    {   
         isTouchingWallLeft = Physics2D.Raycast(transform.position, Vector2.left, wallDetectionDistance, wallLayer);
         isTouchingWallRight = Physics2D.Raycast(transform.position, Vector2.right, wallDetectionDistance, wallLayer);
         isTouchingWallTop = Physics2D.Raycast(transform.position, Vector2.up, wallDetectionDistance, wallLayer);
@@ -198,6 +199,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void Flip()
     {
+        if(isTouchingWallBottom || isTouchingWallLeft || isTouchingWallRight || isTouchingWallTop || 
+        (Vector2.Distance(transform.position, playerTransform.position) <= attackRange))
+        {
+            return;
+        }
         facingRight = !facingRight;
         lastFlipTime = Time.time; // Update the last flip time
 
@@ -213,7 +219,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
-
+  
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallDetectionDistance);
         Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallDetectionDistance);

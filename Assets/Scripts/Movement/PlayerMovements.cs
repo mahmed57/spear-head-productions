@@ -26,6 +26,7 @@ public class PlayerMovements : MonoBehaviour
 
         animator.SetBool("isWalking", false);
 
+
         if (characterVisuals == null)
         {
             characterVisuals = animator.transform;
@@ -94,8 +95,6 @@ public class PlayerMovements : MonoBehaviour
                 }
             }
 
-            
- 
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 Dash();

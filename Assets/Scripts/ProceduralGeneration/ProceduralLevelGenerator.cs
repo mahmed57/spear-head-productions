@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using TMPro;
+
 
 public class ProceduralLevelGenerator : MonoBehaviour
 {
@@ -40,6 +42,10 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
+    public Vector3 left_most_room = new Vector3(0, 0, 0);
+
+    public GameObject player;
+
     [Header("Spawner Object")]
     public GameObject spawner;
 
@@ -53,7 +59,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
     public TileBase wallLeftTile;
     public TileBase wallRightTile;
     public TileBase wallTopTile;
-    public TileBase wallBottomTile; // Added wallBottomTile
+    public TileBase wallBottomTile;
 
     // Corner tiles
     public TileBase wallCornerTopLeftTile;
@@ -61,21 +67,28 @@ public class ProceduralLevelGenerator : MonoBehaviour
     public TileBase wallCornerBottomLeftTile;
     public TileBase wallCornerBottomRightTile;
 
+    [Header("Barrier Prefab")]
+    public GameObject barrierPrefab; // Added barrierPrefab
+
     [Header("Dungeon Generation Parameters")]
     private int roomCount = 10;
     public int mapWidth = 50;
     public int mapHeight = 50;
 
+    public int minDistanceBetweenRooms = 2;
+
     [Header("Room Prefab")]
     public GameObject roomPrefab;
 
-    private List<Room> rooms;
+    public List<Room> rooms;
     private Vector3Int dungeonOffset;
 
     private HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
 
+    private bool is_active_player = false;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         roomCount = room_enemy_settings.Count;
         rooms = new List<Room>();
         GenerateRooms();
@@ -85,7 +98,22 @@ public class ProceduralLevelGenerator : MonoBehaviour
         DrawFloors();
         DrawWalls();
         PlaceRoomCorners();
+        IdentifyRoomDoors(); 
+        PlaceBarriers();
         InstantiateRoomGameObjects();
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatistics>().start_pos = left_most_room;
+        
+    }
+
+    void Update()
+    {
+        if(!is_active_player)
+        {
+            is_active_player = true;
+            player.transform.position =left_most_room;
+            player.SetActive(true);
+            
+        }
     }
 
     void GenerateRooms()
@@ -100,15 +128,33 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             int width = Random.Range(room_enemy_settings[index].minRoomSize, room_enemy_settings[index].maxRoomSize + 1);
             int height = Random.Range(room_enemy_settings[index].minRoomSize, room_enemy_settings[index].maxRoomSize + 1);
-            int x = Random.Range(0, mapWidth - width);
-            int y = Random.Range(0, mapHeight - height);
+
+            int xMin = minDistanceBetweenRooms;
+            int xMax = mapWidth - width - minDistanceBetweenRooms;
+            int yMin = minDistanceBetweenRooms;
+            int yMax = mapHeight - height - minDistanceBetweenRooms;
+
+            if (xMax < xMin || yMax < yMin)
+            {
+                continue;
+            }
+
+            int x = Random.Range(xMin, xMax + 1);
+            int y = Random.Range(yMin, yMax + 1);
 
             RectInt newRect = new RectInt(x, y, width, height);
 
             bool overlaps = false;
             foreach (Room room in rooms)
             {
-                if (newRect.Overlaps(room.bounds))
+                RectInt expandedRoomRect = new RectInt(
+                    room.bounds.x - minDistanceBetweenRooms,
+                    room.bounds.y - minDistanceBetweenRooms,
+                    room.bounds.width + 2 * minDistanceBetweenRooms,
+                    room.bounds.height + 2 * minDistanceBetweenRooms
+                );
+
+                if (expandedRoomRect.Overlaps(newRect))
                 {
                     overlaps = true;
                     break;
@@ -216,11 +262,11 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             if (hasFloorUp)
             {
-                wallTilemap.SetTile(pos, wallBottomTile); // Use wallBottomTile
+                wallTilemap.SetTile(pos, wallBottomTile);
             }
             else if (hasFloorDown)
             {
-                wallTilemap.SetTile(pos, wallTopTile); // Use wallTopTile
+                wallTilemap.SetTile(pos, wallTopTile);
             }
             else if (hasFloorLeft)
             {
@@ -233,18 +279,15 @@ public class ProceduralLevelGenerator : MonoBehaviour
         }
     }
 
-    // Function to place corner tiles
     void PlaceRoomCorners()
     {
         foreach (Room room in rooms)
         {
-            // Calculate corner positions
             Vector3Int topLeft = new Vector3Int(room.bounds.xMin - 1, room.bounds.yMax, 0);
             Vector3Int topRight = new Vector3Int(room.bounds.xMax, room.bounds.yMax, 0);
             Vector3Int bottomLeft = new Vector3Int(room.bounds.xMin - 1, room.bounds.yMin - 1, 0);
             Vector3Int bottomRight = new Vector3Int(room.bounds.xMax, room.bounds.yMin - 1, 0);
 
-            // Place corner tiles
             wallTilemap.SetTile(topLeft, wallCornerTopLeftTile);
             wallTilemap.SetTile(topRight, wallCornerTopRightTile);
             wallTilemap.SetTile(bottomLeft, wallCornerBottomLeftTile);
@@ -331,7 +374,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
     void InstantiateRoomGameObjects()
     {
         int index = 0;
-
+        float min_room_x = float.MaxValue;
         foreach (Room room in rooms)
         {
             Grid grid = floorTilemap.layoutGrid;
@@ -348,6 +391,19 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             GameObject roomGO = Instantiate(roomPrefab, roomCenterPosition, Quaternion.identity);
             roomGO.name = "Room_" + roomCenterPosition;
+            roomGO.tag = "Room";
+
+            Debug.Log(roomCenterPosition);
+
+            if(roomCenterPosition.x < min_room_x)
+            {
+                Debug.Log("Leftx");
+                left_most_room = roomCenterPosition;
+                min_room_x = roomCenterPosition.x;
+                Debug.Log(min_room_x);
+                Debug.Log("Left");
+                Debug.Log(left_most_room);
+            }
 
             BoxCollider2D collider = roomGO.GetComponent<BoxCollider2D>();
             collider.size = new Vector2(roomWorldSize.x, roomWorldSize.y);
@@ -359,7 +415,61 @@ public class ProceduralLevelGenerator : MonoBehaviour
             roomController.spawner = spawner;
             roomController.enemyTypes = room_enemy_settings[index].enemyTypes;
 
+            roomController.barriers = room.barriers;
+
             index++;
+        }
+    }
+
+    // Function to identify door positions
+    void IdentifyRoomDoors()
+    {
+        foreach (Room room in rooms)
+        {
+            // Horizontal edges
+            for (int x = room.bounds.xMin; x < room.bounds.xMax; x++)
+            {
+                Vector3Int topPosition = new Vector3Int(x, room.bounds.yMax, 0);
+                Vector3Int bottomPosition = new Vector3Int(x, room.bounds.yMin - 1, 0);
+
+                CheckDoorway(room, topPosition);
+                CheckDoorway(room, bottomPosition);
+            }
+
+            // Vertical edges
+            for (int y = room.bounds.yMin; y < room.bounds.yMax; y++)
+            {
+                Vector3Int leftPosition = new Vector3Int(room.bounds.xMin - 1, y, 0);
+                Vector3Int rightPosition = new Vector3Int(room.bounds.xMax, y, 0);
+
+                CheckDoorway(room, leftPosition);
+                CheckDoorway(room, rightPosition);
+            }
+        }
+    }
+
+    void CheckDoorway(Room room, Vector3Int position)
+    {
+        if (floorPositions.Contains(position) && !room.floorTiles.Contains(position))
+        {
+            room.doorPositions.Add(position);
+        }
+    }
+
+    // Function to place barriers at door positions
+    void PlaceBarriers()
+    {
+        foreach (Room room in rooms)
+        {
+            foreach (Vector3Int doorPosition in room.doorPositions)
+            {
+                Vector3 worldPosition = floorTilemap.CellToWorld(doorPosition) + floorTilemap.cellSize / 2f;
+                GameObject barrier = Instantiate(barrierPrefab, worldPosition, Quaternion.identity);
+                room.barriers.Add(barrier);
+
+                // Initially enable the barrier
+                barrier.SetActive(true);
+            }
         }
     }
 
@@ -409,4 +519,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
             }
         }
     }
+
+    
+
 }

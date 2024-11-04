@@ -14,9 +14,14 @@ public class RoomController : MonoBehaviour
 
     public Vector3 roomCenter;
 
-    private bool hasSpawnedEnemies = false;
+    public bool hasSpawnedEnemies = false;
+
+    public List<GameObject> enemies = new List<GameObject>();
 
     public GameObject spawner;
+
+    public List<GameObject> barriers; 
+
 
     void Start()
     {
@@ -25,7 +30,7 @@ public class RoomController : MonoBehaviour
         roomCollider = GetComponent<BoxCollider2D>();
 
         roomCenter = roomCollider.bounds.center;
-        
+  
 
         if (renderer != null)
             renderer.enabled = false;
@@ -39,9 +44,10 @@ public class RoomController : MonoBehaviour
 
             spawner.GetComponent<AssetSpawner>().spawn_assets();
 
-            spawner.GetComponent<EnemySpawner>().SpawnEnemies(enemyTypes, room, floorTilemap, roomCenter);
+            enemies = spawner.GetComponent<EnemySpawner>().SpawnEnemies(enemyTypes, room, floorTilemap, roomCenter);
             
             hasSpawnedEnemies = true;
         }
     }
+
 }

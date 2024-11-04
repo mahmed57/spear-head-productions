@@ -7,13 +7,14 @@ public class EnemySpawner : MonoBehaviour
 {
     public float spawnRadius = 50f;
 
-    public void SpawnEnemies(List<ProceduralLevelGenerator.EnemyType> enemyTypes, Room room, Tilemap floorTilemap, Vector3 roomCenter)
+    public List<GameObject> enemies = new List<GameObject>();
+
+    public List<GameObject> SpawnEnemies(List<ProceduralLevelGenerator.EnemyType> enemyTypes, Room room, Tilemap floorTilemap, Vector3 roomCenter)
     {
         if (enemyTypes.Count == 0 || roomCenter == null)
         {
-            return;
-        }
-
+            return enemies;
+        }   
 
         foreach (ProceduralLevelGenerator.EnemyType enemy in enemyTypes)
         {
@@ -28,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
             if (roomFloorPositions.Count == 0)
             {
                 Debug.LogWarning("No valid floor positions found in room for spawning enemies.");
-                return;
+                return enemies;
             }
 
             HashSet<Vector3Int> usedPositions = new HashSet<Vector3Int>();
@@ -53,10 +54,12 @@ public class EnemySpawner : MonoBehaviour
                 usedPositions.Add(spawnTilePosition);
 
                 Vector3 spawnPosition = floorTilemap.CellToWorld(spawnTilePosition) + new Vector3(0.5f, 0.5f, 0);
-                Instantiate(Resources.Load<GameObject>("Prefabs/" + enemy.prefab_name), spawnPosition, Quaternion.identity);
+                enemies.Add(Instantiate(Resources.Load<GameObject>("Prefabs/" + enemy.prefab_name), spawnPosition, Quaternion.identity));
             }
 
         }
+
+        return enemies;
         
     }
 }

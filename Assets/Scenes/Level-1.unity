@@ -919,9 +919,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1040409239}
+  - component: {fileID: 1040409240}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -942,6 +943,21 @@ Transform:
   - {fileID: 1190748600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1040409240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040409238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc1d29c538dda34ebc5f4f5f4a31f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number_of_enemies_killed: 0
+  crystal_count: 0
+  start_pos: {x: 0, y: 0, z: 0}
 --- !u!1 &1117985172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1120,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2300154246909235186, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5860919249563091029, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: healthBarFill
       value: 
@@ -1112,6 +1132,22 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1916956110}
+    - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: speed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: dash_range
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: dashDuration
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7482486407021336528, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1156,10 +1192,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 9211244561316864684, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9211244561316864684, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1935739529}
   m_SourcePrefab: {fileID: 100100000, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
 --- !u!1 &1190748599
 GameObject:
@@ -1219,6 +1262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRadius: 5
+  enemies: []
 --- !u!1 &1436980113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1673,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1795521002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9211244561316864684, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+  m_PrefabInstance: {fileID: 1174267413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1916956110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1785,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7482486407021336528, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
   m_PrefabInstance: {fileID: 1174267413}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1935739529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795521002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804b7415202deae4fb8a7931c2d692c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1950537492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5cc51678d354e509855b54f4b29302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  left_most_room: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
   spawner: {fileID: 1190748599}
   room_enemy_settings:
   - enemyTypes:
@@ -1938,7 +2001,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 15
+    minRoomSize: 10
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -1949,7 +2012,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 15
+    minRoomSize: 10
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -1960,7 +2023,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 15
+    minRoomSize: 10
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -1971,7 +2034,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 15
+    minRoomSize: 10
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -1982,7 +2045,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 15
+    minRoomSize: 10
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -1993,7 +2056,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 15
+    minRoomSize: 10
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -2105,8 +2168,10 @@ MonoBehaviour:
   wallCornerTopRightTile: {fileID: 11400000, guid: 339a48b3a2c5a48b3a2e57fc48979568, type: 2}
   wallCornerBottomLeftTile: {fileID: 11400000, guid: d152d4f1917d549498475f3dabf55bb9, type: 2}
   wallCornerBottomRightTile: {fileID: 11400000, guid: a7b4bd4eddbe2467b874846eee5c11b0, type: 2}
-  mapWidth: 120
-  mapHeight: 110
+  barrierPrefab: {fileID: 1290741914753120108, guid: 9a8db39e47c9cc9458b3fbdde7452c18, type: 3}
+  mapWidth: 400
+  mapHeight: 20
+  minDistanceBetweenRooms: 1
   roomPrefab: {fileID: 2908291702883658222, guid: 4dea4fc50abb54f2f802e72440b7c1e4, type: 3}
 --- !u!1 &2115468742
 GameObject:
