@@ -1134,7 +1134,7 @@ PrefabInstance:
       objectReference: {fileID: 1916956110}
     - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: speed
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: dashSpeed
@@ -1999,8 +1999,8 @@ MonoBehaviour:
       maxEnemiesPerRoom: 1
     - name: RageTanker
       prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
+      minEnemiesPerRoom: 0
+      maxEnemiesPerRoom: 0
     minRoomSize: 10
     maxRoomSize: 15
   - enemyTypes:

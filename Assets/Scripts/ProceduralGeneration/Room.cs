@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class Room
 {
     public RectInt bounds;
+    public Vector3 room_center_position;
+    public Vector3 room_world_size;
     public List<Vector3Int> floorTiles;
     public bool hasSpawnedEnemies = false;
     public List<Vector3Int> doorPositions = new List<Vector3Int>();

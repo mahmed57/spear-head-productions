@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using TMPro;
-
+using System.Linq;
 
 public class ProceduralLevelGenerator : MonoBehaviour
 {
@@ -375,7 +375,8 @@ public class ProceduralLevelGenerator : MonoBehaviour
     {
         int index = 0;
         float min_room_x = float.MaxValue;
-        foreach (Room room in rooms)
+        
+        foreach(Room room in rooms)
         {
             Grid grid = floorTilemap.layoutGrid;
 
@@ -387,26 +388,36 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             Vector3 roomWorldSize = new Vector3(room.bounds.width * cellSize.x, room.bounds.height * cellSize.y, 0);
 
-            Vector3 roomCenterPosition = roomWorldPosition + new Vector3(roomWorldSize.x / 2f, roomWorldSize.y / 2f, 0);
+            Vector3 room_center_position = roomWorldPosition + new Vector3(roomWorldSize.x / 2f, roomWorldSize.y / 2f, 0);
 
-            GameObject roomGO = Instantiate(roomPrefab, roomCenterPosition, Quaternion.identity);
-            roomGO.name = "Room_" + roomCenterPosition;
+            room.room_center_position = room_center_position;
+
+            room.room_world_size = roomWorldSize;
+        
+        }
+
+        rooms = rooms.OrderBy(r => r.room_center_position.x).ToList();
+
+        foreach (Room room in rooms)
+        {
+
+            GameObject roomGO = Instantiate(roomPrefab, room.room_center_position, Quaternion.identity);
+            roomGO.name = "Room_" + room.room_center_position;
             roomGO.tag = "Room";
+            
 
-            Debug.Log(roomCenterPosition);
-
-            if(roomCenterPosition.x < min_room_x)
+            if(room.room_center_position.x < min_room_x)
             {
                 Debug.Log("Leftx");
-                left_most_room = roomCenterPosition;
-                min_room_x = roomCenterPosition.x;
+                left_most_room =room.room_center_position;
+                min_room_x = room.room_center_position.x;
                 Debug.Log(min_room_x);
                 Debug.Log("Left");
                 Debug.Log(left_most_room);
             }
 
             BoxCollider2D collider = roomGO.GetComponent<BoxCollider2D>();
-            collider.size = new Vector2(roomWorldSize.x, roomWorldSize.y);
+            collider.size = new Vector2(room.room_world_size.x, room.room_world_size.y);
             collider.offset = Vector2.zero;
 
             RoomController roomController = roomGO.GetComponent<RoomController>();
@@ -419,7 +430,11 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             index++;
         }
+
+        
     }
+
+
 
     // Function to identify door positions
     void IdentifyRoomDoors()
