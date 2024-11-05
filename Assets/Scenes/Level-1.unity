@@ -1125,6 +1125,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5860919249563091029, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: max_health
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860919249563091029, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: healthBarFill
       value: 
       objectReference: {fileID: 780793037}
@@ -1132,9 +1136,13 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1916956110}
+    - target: {fileID: 5860919249563091029, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      propertyPath: present_health
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: speed
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: dashSpeed
@@ -1146,7 +1154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6348914702745960550, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: dashDuration
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7482486407021336528, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2051,83 +2059,27 @@ MonoBehaviour:
       maxEnemiesPerRoom: 1
     - name: RageTanker
       prefab_name: RageTanker
-      minEnemiesPerRoom: 1
-      maxEnemiesPerRoom: 1
+      minEnemiesPerRoom: 0
+      maxEnemiesPerRoom: 0
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 0
+      maxEnemiesPerRoom: 0
     minRoomSize: 15
     maxRoomSize: 15
     room_design_number: 4
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    minRoomSize: 15
-    maxRoomSize: 15
-    room_design_number: 2
-  - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    minRoomSize: 15
-    maxRoomSize: 15
-    room_design_number: 3
-  - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    minRoomSize: 15
-    maxRoomSize: 15
-    room_design_number: 1
-  - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    minRoomSize: 15
-    maxRoomSize: 15
-    room_design_number: 2
-  - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    minRoomSize: 15
-    maxRoomSize: 15
-    room_design_number: 3
-  - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 1
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
       minEnemiesPerRoom: 3
-      maxEnemiesPerRoom: 2
+      maxEnemiesPerRoom: 3
+    - name: RageTanker
+      prefab_name: RageTanker
+      minEnemiesPerRoom: 0
+      maxEnemiesPerRoom: 0
     minRoomSize: 15
     maxRoomSize: 15
-    room_design_number: 4
+    room_design_number: 2
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
@@ -2143,8 +2095,8 @@ MonoBehaviour:
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
     - name: RageTanker
       prefab_name: RageTanker
       minEnemiesPerRoom: 3
@@ -2155,72 +2107,144 @@ MonoBehaviour:
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 2
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
     - name: RageTanker
       prefab_name: RageTanker
+      minEnemiesPerRoom: 0
+      maxEnemiesPerRoom: 0
+    - name: Misery
+      prefab_name: Misery
       minEnemiesPerRoom: 1
       maxEnemiesPerRoom: 1
     minRoomSize: 15
     maxRoomSize: 15
     room_design_number: 2
   - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 2
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 1
       maxEnemiesPerRoom: 1
     - name: RageTanker
       prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    minRoomSize: 15
-    maxRoomSize: 15
-    room_design_number: 4
-  - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    minRoomSize: 15
-    maxRoomSize: 15
-    room_design_number: 1
-  - enemyTypes:
-    - name: Despair
-      prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
-    - name: RageTanker
-      prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
     minRoomSize: 15
     maxRoomSize: 15
     room_design_number: 3
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
+    minRoomSize: 15
+    maxRoomSize: 15
+    room_design_number: 4
+  - enemyTypes:
     - name: RageTanker
       prefab_name: RageTanker
-      minEnemiesPerRoom: 2
-      maxEnemiesPerRoom: 1
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
+    minRoomSize: 15
+    maxRoomSize: 15
+    room_design_number: 3
+  - enemyTypes:
+    - name: Despair
+      prefab_name: Despair
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
+    - name: RageTanker
+      prefab_name: RageTanker
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 3
+      maxEnemiesPerRoom: 3
+    minRoomSize: 15
+    maxRoomSize: 15
+    room_design_number: 1
+  - enemyTypes:
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
+    - name: RageTanker
+      prefab_name: RageTanker
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
     minRoomSize: 15
     maxRoomSize: 15
     room_design_number: 2
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
-      minEnemiesPerRoom: 1
-      maxEnemiesPerRoom: 1
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
     - name: RageTanker
       prefab_name: RageTanker
-      minEnemiesPerRoom: 3
-      maxEnemiesPerRoom: 3
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
+    minRoomSize: 15
+    maxRoomSize: 15
+    room_design_number: 4
+  - enemyTypes:
+    - name: Despair
+      prefab_name: Despair
+      minEnemiesPerRoom: 10
+      maxEnemiesPerRoom: 10
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
+    minRoomSize: 15
+    maxRoomSize: 15
+    room_design_number: 1
+  - enemyTypes:
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 10
+      maxEnemiesPerRoom: 10
+    minRoomSize: 15
+    maxRoomSize: 15
+    room_design_number: 3
+  - enemyTypes:
+    - name: Despair
+      prefab_name: Despair
+      minEnemiesPerRoom: 10
+      maxEnemiesPerRoom: 10
+    - name: RageTanker
+      prefab_name: RageTanker
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
+    minRoomSize: 15
+    maxRoomSize: 15
+    room_design_number: 2
+  - enemyTypes:
+    - name: Despair
+      prefab_name: Despair
+      minEnemiesPerRoom: 10
+      maxEnemiesPerRoom: 10
+    - name: RageTanker
+      prefab_name: RageTanker
+      minEnemiesPerRoom: 5
+      maxEnemiesPerRoom: 5
+    - name: Misery
+      prefab_name: Misery
+      minEnemiesPerRoom: 10
+      maxEnemiesPerRoom: 10
     minRoomSize: 15
     maxRoomSize: 15
     room_design_number: 3

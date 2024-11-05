@@ -39,7 +39,8 @@ public class ProceduralLevelGenerator : MonoBehaviour
             this.enemyTypes = new List<EnemyType>
             {
                 new EnemyType("Despair", 3, 3),
-                new EnemyType("RageTanker", 3, 3)
+                new EnemyType("RageTanker", 3, 3),
+                new EnemyType("Misery" , 3 , 3),
             };
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,23 +14,26 @@ public class PlayerMovements : MonoBehaviour
 
     private Animator animator;
     public Transform characterVisuals;
-   
+
     private PlayerAttack playerAttack;
 
     private Rigidbody2D rb;
 
+    // New variables for smooth dash
+    public float dashSpeed = 10f;
+    public float dashDuration = 0.2f;
+    private bool isDashing = false;
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-
         animator.SetBool("isWalking", false);
-
 
         if (characterVisuals == null)
         {
             characterVisuals = animator.transform;
         }
-         
+
         playerAttack = GetComponent<PlayerAttack>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -39,7 +41,6 @@ public class PlayerMovements : MonoBehaviour
     void Update()
     {
         input();
-        
     }
 
     void FixedUpdate()
@@ -49,7 +50,8 @@ public class PlayerMovements : MonoBehaviour
 
     private void input()
     {
-        
+        if (isDashing) return; // Prevent input during dash
+
         direction = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -99,7 +101,6 @@ public class PlayerMovements : MonoBehaviour
             {
                 Dash();
             }
-            
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -110,7 +111,12 @@ public class PlayerMovements : MonoBehaviour
 
     private void move()
     {
-        
+        if (isDashing)
+        {
+            animator.SetBool("isWalking", false);
+            return;
+        }
+
         if (direction != Vector2.zero)
         {
             animator.SetBool("isWalking", true);
@@ -129,48 +135,58 @@ public class PlayerMovements : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        Vector2 movement = new Vector2(direction.x, direction.y);
-        
         if (playerAttack.is_attacking)
         {
-        
             animator.SetBool("isWalking", false);
             return;
-        
         }
         else
         {
-            Vector2 position = (Vector2)rb.position + movement.normalized * speed * Time.deltaTime;
-            rb.MovePosition(position);
+            Vector2 movement = direction.normalized * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + movement);
         }
     }
 
     private void Dash()
     {
-        animator.SetTrigger("roll");
-        if (playerAttack.is_attacking) return;
+        if (!isDashing && !playerAttack.is_attacking)
+        {
+            animator.SetTrigger("roll");
+            StartCoroutine(DashCoroutine());
+        }
+    }
 
-        Vector2 target_pos = Vector2.zero;
+    private IEnumerator DashCoroutine()
+    {
+        isDashing = true;
+        float elapsedTime = 0f;
 
-        if (FacingDir == Facing.UP)
+        Vector2 dashDirection = Vector2.zero;
+
+        switch (FacingDir)
         {
-            target_pos += Vector2.up;
-        }
-        else if (FacingDir == Facing.DOWN)
-        {
-            target_pos += Vector2.down;
-        }
-        else if (FacingDir == Facing.RIGHT)
-        {
-            target_pos += Vector2.right;
-        }
-        else if (FacingDir == Facing.LEFT)
-        {
-            target_pos += Vector2.left;
+            case Facing.UP:
+                dashDirection = Vector2.up;
+                break;
+            case Facing.DOWN:
+                dashDirection = Vector2.down;
+                break;
+            case Facing.RIGHT:
+                dashDirection = Vector2.right;
+                break;
+            case Facing.LEFT:
+                dashDirection = Vector2.left;
+                break;
         }
 
-        Vector3 dashMovement = new Vector3(target_pos.x, target_pos.y, 0);
-        transform.Translate(dashMovement * dash_range, Space.World);
+        while (elapsedTime < dashDuration)
+        {
+            rb.MovePosition(rb.position + dashDirection * dashSpeed * Time.fixedDeltaTime);
+            elapsedTime += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        isDashing = false;
     }
 
     private void Flip()

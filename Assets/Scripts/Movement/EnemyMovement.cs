@@ -52,11 +52,10 @@ public class EnemyMovement : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
 
-        if(gameObject.tag == "RageTanker")
+        if(gameObject.tag == "RageTanker" || gameObject.tag=="Misery")
         {
            facingRight = true;
 
-           Debug.Log("Executing.....");
         }
 
         if (characterVisuals == null)
@@ -68,8 +67,15 @@ public class EnemyMovement : MonoBehaviour
                 characterVisuals = transform;
         }
 
-        attackRange = GetComponent<DespairAttack>().attackRange;
+        if(gameObject.tag == "Misery")
+        {
+            attackRange = GetComponent<MiseryAttack>().attackRange;
+        }
+        else
+        {
 
+            attackRange = GetComponent<DespairAttack>().attackRange;
+        }
     }
 
     void Update()

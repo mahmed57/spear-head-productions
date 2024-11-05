@@ -41,4 +41,11 @@ public class DespairAttack : MonoBehaviour
         Debug.Log("Enemy attacks!");
         playerHealth.deal_damage(damage);
     }
+
+       void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+  
+   }
 }

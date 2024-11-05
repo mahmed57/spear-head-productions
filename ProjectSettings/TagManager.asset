@@ -8,6 +8,8 @@ TagManager:
   - RageTanker
   - GameManager
   - Room
+  - Misery
+  - Despair
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Enemies
   - Walls
-  - 
+  - projectile
   - 
   - 
   - 
