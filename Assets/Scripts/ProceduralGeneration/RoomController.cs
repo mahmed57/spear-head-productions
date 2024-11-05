@@ -22,6 +22,7 @@ public class RoomController : MonoBehaviour
 
     public List<GameObject> barriers; 
 
+    public int room_design;
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class RoomController : MonoBehaviour
         if (!hasSpawnedEnemies && other.CompareTag("Player"))
         {   
 
-            spawner.GetComponent<AssetSpawner>().spawn_assets(roomCenter, roomCollider.size);
+            spawner.GetComponent<AssetSpawner>().spawn_assets(roomCenter, roomCollider.size, room_design);
 
             enemies = spawner.GetComponent<EnemySpawner>().SpawnEnemies(enemyTypes, room, floorTilemap, roomCenter);
             

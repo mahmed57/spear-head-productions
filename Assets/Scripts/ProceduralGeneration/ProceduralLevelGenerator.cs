@@ -13,6 +13,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
         public string prefab_name;
         public int minEnemiesPerRoom;
         public int maxEnemiesPerRoom;
+        
 
         public EnemyType(string prefab_name, int minEnemiesPerRoom, int maxEnemiesPerRoom)
         {
@@ -29,11 +30,12 @@ public class ProceduralLevelGenerator : MonoBehaviour
         public int minRoomSize;
         public int maxRoomSize;
 
+        public int room_design_number;
         public Room_Enemy_Settings()
         {
             this.minRoomSize = 8;
             this.maxRoomSize = 15;
-
+            this.room_design_number = 1;
             this.enemyTypes = new List<EnemyType>
             {
                 new EnemyType("Despair", 3, 3),
@@ -86,6 +88,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
     private HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
 
     private bool is_active_player = false;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -408,12 +411,9 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
             if(room.room_center_position.x < min_room_x)
             {
-                Debug.Log("Leftx");
+  
                 left_most_room =room.room_center_position;
-                min_room_x = room.room_center_position.x;
-                Debug.Log(min_room_x);
-                Debug.Log("Left");
-                Debug.Log(left_most_room);
+                min_room_x = room.room_center_position.x;       
             }
 
             BoxCollider2D collider = roomGO.GetComponent<BoxCollider2D>();
@@ -425,7 +425,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
             roomController.floorTilemap = floorTilemap;
             roomController.spawner = spawner;
             roomController.enemyTypes = room_enemy_settings[index].enemyTypes;
-
+            roomController.room_design = room_enemy_settings[index].room_design_number;
             roomController.barriers = room.barriers;
 
             index++;

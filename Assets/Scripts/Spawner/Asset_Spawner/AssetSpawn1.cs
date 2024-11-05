@@ -10,18 +10,11 @@ public class AssetSpawn1 : MonoBehaviour
         GameObject candle1 = Resources.Load<GameObject>("Prefabs/LevelAssets/candle1");
         GameObject candle2 = Resources.Load<GameObject>("Prefabs/LevelAssets/candle2");
         GameObject candle3 = Resources.Load<GameObject>("Prefabs/LevelAssets/candle_3");
-        GameObject graveStone = Resources.Load<GameObject>("Prefabs/LevelAssets/grave_stone");
+     
         GameObject skull = Resources.Load<GameObject>("Prefabs/LevelAssets/skull");
         GameObject spikeTrap = Resources.Load<GameObject>("Prefabs/LevelAssets/spike_trap");
-        GameObject statue = Resources.Load<GameObject>("Prefabs/LevelAssets/statue");
-        GameObject statueKnight = Resources.Load<GameObject>("Prefabs/LevelAssets/statue_knight");
 
-        // Place the spike trap in the center
         Instantiate(spikeTrap, new Vector3(roomCenter.x, roomCenter.y, 0), Quaternion.identity);
-
-        // Position statues in the center left and right sides
-        //Instantiate(statueKnight, new Vector3(roomCenter.x - halfWidth * 0.6f, roomCenter.y, 0), Quaternion.identity);
-        //Instantiate(statueKnight, new Vector3(roomCenter.x + halfWidth * 0.6f, roomCenter.y, 0), Quaternion.identity);
 
         // Position skulls at the four corners
         Instantiate(skull, new Vector3(roomCenter.x - scale_x(24.9f), roomCenter.y +  scale_y(25.8f), 0), Quaternion.Euler(0, 180, 0));
@@ -38,7 +31,6 @@ public class AssetSpawn1 : MonoBehaviour
         Instantiate(candle3, new Vector3(roomCenter.x + scale_x(8.7f), roomCenter.y +  scale_y(1.9f), 0), Quaternion.identity);
         
         Instantiate(candle1, new Vector3(roomCenter.x + scale_x(7.53f), roomCenter.y +  scale_y(0.44f), 0), Quaternion.identity);
-        
         
         // Position other candles in the upper corners of the room
         Instantiate(candle3, new Vector3(roomCenter.x - scale_x(9.7f), roomCenter.y +  scale_y(30.5f), 0), Quaternion.identity);
