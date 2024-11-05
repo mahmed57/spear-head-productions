@@ -42,7 +42,7 @@ public class RoomController : MonoBehaviour
         if (!hasSpawnedEnemies && other.CompareTag("Player"))
         {   
 
-            spawner.GetComponent<AssetSpawner>().spawn_assets();
+            spawner.GetComponent<AssetSpawner>().spawn_assets(roomCenter, roomCollider.size);
 
             enemies = spawner.GetComponent<EnemySpawner>().SpawnEnemies(enemyTypes, room, floorTilemap, roomCenter);
             

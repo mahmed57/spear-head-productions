@@ -1215,6 +1215,7 @@ GameObject:
   - component: {fileID: 1190748600}
   - component: {fileID: 1190748602}
   - component: {fileID: 1190748601}
+  - component: {fileID: 1190748603}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Spawner
@@ -1263,6 +1264,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRadius: 5
   enemies: []
+--- !u!114 &1190748603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190748599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f366ac1c9b2f4164295355b6ad0a9b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1436980113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,7 +2014,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 0
       maxEnemiesPerRoom: 0
-    minRoomSize: 10
+    minRoomSize: 15
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -2012,7 +2025,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 10
+    minRoomSize: 15
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -2023,7 +2036,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 10
+    minRoomSize: 15
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -2034,7 +2047,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 10
+    minRoomSize: 15
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -2045,7 +2058,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 10
+    minRoomSize: 15
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
@@ -2056,7 +2069,7 @@ MonoBehaviour:
       prefab_name: RageTanker
       minEnemiesPerRoom: 2
       maxEnemiesPerRoom: 1
-    minRoomSize: 10
+    minRoomSize: 15
     maxRoomSize: 15
   - enemyTypes:
     - name: Despair
