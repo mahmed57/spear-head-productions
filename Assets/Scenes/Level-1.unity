@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1190748599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72005eb794b59524ba5f2455012f73fb, type: 3}
+  m_Script: {fileID: 11500000, guid: cd61aa8257b4feb4e88772ba2ce01d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1436980113
@@ -2051,11 +2051,11 @@ MonoBehaviour:
       maxEnemiesPerRoom: 1
     - name: RageTanker
       prefab_name: RageTanker
-      minEnemiesPerRoom: 0
-      maxEnemiesPerRoom: 0
+      minEnemiesPerRoom: 1
+      maxEnemiesPerRoom: 1
     minRoomSize: 15
     maxRoomSize: 15
-    room_design_number: 1
+    room_design_number: 4
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
@@ -2091,7 +2091,7 @@ MonoBehaviour:
       maxEnemiesPerRoom: 1
     minRoomSize: 15
     maxRoomSize: 15
-    room_design_number: 4
+    room_design_number: 1
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
@@ -2127,7 +2127,7 @@ MonoBehaviour:
       maxEnemiesPerRoom: 2
     minRoomSize: 15
     maxRoomSize: 15
-    room_design_number: 1
+    room_design_number: 4
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
@@ -2151,7 +2151,7 @@ MonoBehaviour:
       maxEnemiesPerRoom: 3
     minRoomSize: 15
     maxRoomSize: 15
-    room_design_number: 4
+    room_design_number: 1
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
@@ -2175,7 +2175,7 @@ MonoBehaviour:
       maxEnemiesPerRoom: 1
     minRoomSize: 15
     maxRoomSize: 15
-    room_design_number: 1
+    room_design_number: 4
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
@@ -2187,7 +2187,7 @@ MonoBehaviour:
       maxEnemiesPerRoom: 1
     minRoomSize: 15
     maxRoomSize: 15
-    room_design_number: 4
+    room_design_number: 1
   - enemyTypes:
     - name: Despair
       prefab_name: Despair
