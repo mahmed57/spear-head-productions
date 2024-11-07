@@ -8,7 +8,12 @@ public class EnemyHealthManager:CharacterHealthManager
      private EnemyMovement enemyMovement;
      public Slider health_bar_slider;
 
-    public GameObject health_bar;
+     public GameObject health_bar;
+
+     public GameObject damage_particle_system;
+
+    private float next_particle_time;
+    public float particle_effect_cooldown = 1f;
 
     void Start()
     {
@@ -17,12 +22,33 @@ public class EnemyHealthManager:CharacterHealthManager
         
     }
 
+    void Update()
+    {
+        if(damage_particle_system != null)
+        {
+              if(damage_particle_system.activeSelf)
+            {
+                if(Time.time > next_particle_time)
+                {
+                    damage_particle_system.SetActive(false);
+                }
+            }
+        }
+    }
+
     public override void deal_damage(float damage, Vector2 attackPosition)
     {
         health_bar.SetActive(true);
 
         base.deal_damage(damage, attackPosition);
 
+       if(damage_particle_system != null)
+       {
+           next_particle_time = Time.time + particle_effect_cooldown;
+        
+           damage_particle_system.SetActive(true);
+       }
+        
         Vector2 pushDirection = (transform.position - new Vector3(attackPosition.x, attackPosition.y, transform.position.z)).normalized;
 
         enemyMovement.ApplyPushBack(pushDirection, pushForce);
