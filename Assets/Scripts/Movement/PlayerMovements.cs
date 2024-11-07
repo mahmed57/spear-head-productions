@@ -24,6 +24,10 @@ public class PlayerMovements : MonoBehaviour
     public float dashDuration = 0.2f;
     private bool isDashing = false;
 
+    public AudioClip Roll;
+
+    private AudioSource audioSource;
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -36,6 +40,13 @@ public class PlayerMovements : MonoBehaviour
 
         playerAttack = GetComponent<PlayerAttack>();
         rb = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource is missing on Player!");
+        }
     }
 
     void Update()
@@ -152,6 +163,9 @@ public class PlayerMovements : MonoBehaviour
         if (!isDashing && !playerAttack.is_attacking)
         {
             animator.SetTrigger("roll");
+
+            PlayerRollSound();
+
             StartCoroutine(DashCoroutine());
         }
     }
@@ -196,5 +210,19 @@ public class PlayerMovements : MonoBehaviour
         Vector3 rotation = characterVisuals.eulerAngles;
         rotation.y += 180;
         characterVisuals.eulerAngles = rotation;
+    }
+
+
+    private void PlayerRollSound()
+    {
+        if(audioSource != null && Roll != null)
+        {
+            audioSource.PlayOneShot(Roll);
+            Debug.Log("Playing roll sound");
+        }
+        else
+        {
+            Debug.LogWarning("Roll sound or AudioSource is missing!");
+        }
     }
 }
