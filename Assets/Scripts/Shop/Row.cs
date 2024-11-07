@@ -7,21 +7,25 @@ public class Row : MonoBehaviour
 
     public List<GameObject> powerups;
 
-    void onEnable()
+    public void enable_random_powerup()
     {
 
         int randomIndex = Random.Range(0, powerups.Count);
 
         powerups[randomIndex].SetActive(true);
 
-    }
-    
+        disable_all_other_powerups(randomIndex);
 
-    void onDisable()
+    }
+
+    public void disable_all_other_powerups(int index)
     {   
-        foreach(GameObject powerup in powerups)
+        for(int i = 0; i < powerups.Count; i++)
         {
-             powerup.SetActive(false);
+             if(i != index)
+             {
+                powerups[i].SetActive(false);
+             }
         } 
     }
 }
