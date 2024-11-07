@@ -28,7 +28,7 @@ public class PlayerStatistics : MonoBehaviour
                 
                 if(room_controller.enemies.Count == 0)
                 {
-                    crystal_count += 4;
+                    crystal_count += 2;
                 }
 
                 break;

@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using TMPro;
 using System.Linq;
+using UnityEngine.Rendering.Universal;
 
 public class ProceduralLevelGenerator : MonoBehaviour
 {
@@ -474,19 +475,75 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     // Function to place barriers at door positions
     void PlaceBarriers()
-    {
+    {   
+
+
         foreach (Room room in rooms)
         {
+            Dictionary<Vector3Int, bool> doorPositionMap = new Dictionary<Vector3Int, bool>();
+
+            foreach (Vector3Int position in room.doorPositions)
+            {
+                doorPositionMap[position] = true;
+            }
+
             foreach (Vector3Int doorPosition in room.doorPositions)
             {
-                Vector3 worldPosition = floorTilemap.CellToWorld(doorPosition) + floorTilemap.cellSize / 2f;
-                GameObject barrier = Instantiate(barrierPrefab, worldPosition, Quaternion.identity);
-                room.barriers.Add(barrier);
+                
+                if(doorPositionMap[doorPosition])
+                {
+                    Vector3Int closest_door = find_closest_door(doorPosition, room.doorPositions);
+                    
+                    doorPositionMap[doorPosition] = false;
 
-                // Initially enable the barrier
-                barrier.SetActive(true);
+                    doorPositionMap[closest_door] = false;
+
+                    if(doorPosition.y > closest_door.y)
+                    {
+                        closest_door = doorPosition;
+                    }
+
+                    Vector3 worldPosition = floorTilemap.CellToWorld(closest_door) + floorTilemap.cellSize / 2f;
+
+                    GameObject barrier = Instantiate(barrierPrefab, worldPosition, Quaternion.Euler(0, 0, 90));
+                
+                    room.barriers.Add(barrier);
+
+                    barrier.SetActive(true);
+
+                }
             }
         }
+
+
+    }
+
+    public Vector3Int find_closest_door(Vector3Int door_position, List<Vector3Int> door_positions)
+    {
+            Vector3Int closest_door = new Vector3Int(0, 0, 0);
+
+            float closest_distance = float.MaxValue;
+
+            foreach(Vector3Int door in door_positions)
+            {
+                if(door == door_position)
+                {
+                    continue;
+                }
+                else
+                {
+                    float d = Vector3Int.Distance(door_position, door);
+
+                    if(d < closest_distance)
+                    {
+                        closest_distance = d;
+                        closest_door = door;
+
+                    }
+                }
+            }
+
+            return closest_door;
     }
 
     class Edge

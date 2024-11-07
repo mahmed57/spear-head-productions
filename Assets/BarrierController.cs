@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class BarrierController : MonoBehaviour
 {
     public Transform player;          
-    public float barrierRange = 2.0f; 
+    public float barrierRange = 3.0f; 
     private bool barrierDeactivated = false;
 
     private GameObject game_manager_obj;
@@ -21,18 +21,7 @@ public class BarrierController : MonoBehaviour
             player = player_obj.transform;
         }
 
-        if(player == null)
-        {
-            Debug.Log("Problem with assigning player transform");
-        }
-
         game_manager_obj = GameObject.FindGameObjectWithTag("GameManager");
-        
-        if(game_manager_obj == null)
-        {
-            Debug.Log("Problem with reading game_manager_obj.GetComponentInChildren<PlayerStatistics>()");
-        }
-
 
     }
 
@@ -40,7 +29,9 @@ public class BarrierController : MonoBehaviour
     {
         float distance = Vector3.Distance(player.position, transform.position);
 
-        if (!barrierDeactivated)
+        Debug.Log(game_manager_obj.GetComponentInChildren<PlayerStatistics>().crystal_count);
+
+        if (!barrierDeactivated && (player.position.x < transform.position.x))
         {
             
             if (distance <= barrierRange)
@@ -61,8 +52,12 @@ public class BarrierController : MonoBehaviour
                     if (game_manager_obj.GetComponentInChildren<PlayerStatistics>().crystal_count > 0)
                     {
                         
-                        Transform barrierChild = transform.GetChild(0);
-                        barrierChild.gameObject.SetActive(false);
+                        Transform barrierChild1 = transform.GetChild(0);
+                        Transform barrierChild2 = transform.GetChild(1);
+
+                        barrierChild1.gameObject.SetActive(false);
+                        barrierChild2.gameObject.SetActive(false);
+
                         barrierDeactivated = true;
 
                         Debug.Log ("barrier deactivated");
@@ -76,13 +71,19 @@ public class BarrierController : MonoBehaviour
             float xDistance = player.position.x - transform.position.x;
             if (xDistance > 3.2f)
             {
-                game_manager_obj.GetComponentInChildren<PlayerStatistics>().crystal_count -= 1;
+                if(barrierDeactivated)
+                {
                 
-                Transform barrierChild = transform.GetChild(0);
-                
-                barrierChild.gameObject.SetActive(true);
+                    Transform barrierChild1 = transform.GetChild(0);
+                    Transform barrierChild2 = transform.GetChild(1);
 
-                barrierDeactivated = false;
+                    barrierChild1.gameObject.SetActive(true);
+                    barrierChild2.gameObject.SetActive(true);
+
+                    //game_manager_obj.GetComponentInChildren<PlayerStatistics>().crystal_count -= 1;
+
+                    barrierDeactivated = false;
+                }
             }
         }
     }

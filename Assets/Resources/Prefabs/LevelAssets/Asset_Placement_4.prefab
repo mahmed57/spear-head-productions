@@ -2132,6 +2132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596046723819143691}
+  - component: {fileID: 6730217229975124502}
   m_Layer: 0
   m_Name: spike_traps
   m_TagString: Untagged
@@ -2165,6 +2166,18 @@ Transform:
   - {fileID: 1006595611491426621}
   m_Father: {fileID: 1959298677619906450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &6730217229975124502
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7504692344893393631}
+  m_Enabled: 1
+  m_SortingLayerID: 1328507709
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &7796412064936790428
 GameObject:
   m_ObjectHideFlags: 0

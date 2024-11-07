@@ -42,6 +42,7 @@ public class RoomController : MonoBehaviour
     {
         if (!hasSpawnedEnemies && other.CompareTag("Player"))
         {   
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatistics>().crystal_count = 0;
 
             spawner.GetComponent<AssetSpawner>().spawn_assets(roomCenter, roomCollider.size, room_design);
 
