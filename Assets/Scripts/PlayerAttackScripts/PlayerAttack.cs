@@ -21,48 +21,64 @@ public class PlayerAttack : MonoBehaviour
 
     public bool is_attacking = false;
 
+    public AudioClip Light_attack;
+    public AudioClip Heavy_attack;
 
+    private AudioSource audioSource;
+
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+
+    }
     void Update()
     {
-        if(time_between_attack <= 0)
+        if (time_between_attack <= 0)
         {
-            if(is_light_attack()){
-                is_attacking=true;
+            if (is_light_attack())
+            {
+                is_attacking = true;
                 player_anim.SetTrigger("lightAttack");
+                PlayerAttackSound(Light_attack);
                 attack_enemy(light_attack_damage);
 
             }
-            else if(is_heavy_attack())
+            else if (is_heavy_attack())
             {
                 is_attacking = true;
                 player_anim.SetTrigger("heavyAttack");
+                PlayerAttackSound(Heavy_attack);
                 attack_enemy(heavy_attack_damage);
             }
             else
             {
                 is_attacking = false;
             }
-            
-        } 
-        else{
-                time_between_attack -= Time.deltaTime;
-        }       
+
+        }
+        else
+        {
+            time_between_attack -= Time.deltaTime;
+        }
     }
 
-    bool is_light_attack(){
+    bool is_light_attack()
+    {
         bool input_condition = Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J);
         Gamepad gamepad = Gamepad.current;
-        
+
         if (gamepad != null)
         {
             input_condition = input_condition || gamepad.buttonWest.wasPressedThisFrame;
         }
-        
+
         return input_condition;
     }
 
-    bool is_heavy_attack(){
-        
+    bool is_heavy_attack()
+    {
+
         bool input_condition = Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.K);
         Gamepad gamepad = Gamepad.current;
 
@@ -76,14 +92,15 @@ public class PlayerAttack : MonoBehaviour
 
     void attack_enemy(float damage)
     {
-            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position, attackRange, whatIsEnemeies);
-            
-            time_between_attack = start_time_btw_attack;
-            for(int i = 0; i < enemiesToDamage.Length; i++){
-                        
-                enemiesToDamage[i].GetComponent<EnemyHealthManager>().deal_damage(damage, transform.position);
-                        
-            }   
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position, attackRange, whatIsEnemeies);
+
+        time_between_attack = start_time_btw_attack;
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+
+            enemiesToDamage[i].GetComponent<EnemyHealthManager>().deal_damage(damage, transform.position);
+
+        }
 
     }
 
@@ -91,5 +108,24 @@ public class PlayerAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackpos.position, attackRange);
+    }
+
+
+    private void PlayerAttackSound(AudioClip clip)
+    {
+        if(audioSource == null)
+        {
+            Debug.LogWarning("AudioSource is missing!");
+            return;
+        }
+
+        if(clip == null)
+        {
+            Debug.LogWarning("Attempted to play a null AudioClip");
+            return;
+        }
+
+        Debug.Log($"Playing sound: {clip.name}");
+        audioSource.PlayOneShot(clip);
     }
 }
