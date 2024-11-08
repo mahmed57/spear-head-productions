@@ -1925,7 +1925,31 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -1969,25 +1993,25 @@ Tilemap:
       e33: 5.45e-43
   - m_RefCount: 0
     m_Data:
-      e00: 5.3e-44
+      e00: 7.0684684e+28
       e01: 0
-      e02: -2.0328811e-19
-      e03: -2.0328811e-19
-      e10: 0
+      e02: 3.7500038
+      e03: 3.7500038
+      e10: 2.7900757e+20
       e11: 0
-      e12: 5.42e-43
-      e13: 5.42e-43
-      e20: 1.1210697e+27
-      e21: 9.930333e-36
-      e22: 1.0985206e-28
-      e23: -2.037899
-      e30: 4.5904e-41
-      e31: 5.47e-43
-      e32: 5.44e-43
-      e33: 5.45e-43
+      e12: 4.32e-43
+      e13: 4.32e-43
+      e20: -0.37467146
+      e21: -2.0275936e-14
+      e22: -1.2561926e-28
+      e23: 1.701143e+29
+      e30: 4.5905e-41
+      e31: 4.34e-43
+      e32: 4.32e-43
+      e33: 4.34e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 3.6302e-41, g: 3.6302e-41, b: 3.6302e-41, a: 3.6302e-41}
+    m_Data: {r: 4.1344e-41, g: 4.1344e-41, b: 4.1344e-41, a: 4.1344e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2278,22 +2302,22 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 5.825809e+23
+      e00: 5.3e-44
       e01: 0
-      e02: -2.0328811e-19
-      e03: -2.0328811e-19
-      e10: 3e-45
+      e02: 3.7500038
+      e03: 3.7500038
+      e10: 0
       e11: 0
-      e12: 5.42e-43
-      e13: 5.42e-43
-      e20: 1.1210697e+27
-      e21: 9.860113e-36
-      e22: 6.673198e-29
-      e23: -2.0391579
-      e30: 4.5904e-41
-      e31: 5.47e-43
-      e32: 5.44e-43
-      e33: 5.45e-43
+      e12: 4.32e-43
+      e13: 4.32e-43
+      e20: -0.37467146
+      e21: -2.0276017e-14
+      e22: -1.1532969e-27
+      e23: 1.7008377e+29
+      e30: 4.5905e-41
+      e31: 4.34e-43
+      e32: 4.32e-43
+      e33: 4.34e-43
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 3.6095e-41, g: 3.6095e-41, b: 3.6095e-41, a: 3.6095e-41}
@@ -3181,7 +3205,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 0}
+  m_BackGroundColor: {r: 0.015686275, g: 0.027450982, b: 0.015686275, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4706,15 +4730,17 @@ MonoBehaviour:
     room_design_number: 3
   floorTilemap: {fileID: 1117985175}
   wallTilemap: {fileID: 1024244436}
-  floorTile: {fileID: 11400000, guid: 2e61ed5348533ae4c9ec0a1ee1cbb491, type: 2}
-  wallLeftTile: {fileID: 11400000, guid: e5f80e8e3824dfa4b8fba9ca09225862, type: 2}
-  wallRightTile: {fileID: 11400000, guid: 4fdc750eb5358b9428efc9c1eece0afb, type: 2}
-  wallTopTile: {fileID: 11400000, guid: 5659b567533a89248b832e76ee4155bc, type: 2}
-  wallBottomTile: {fileID: 11400000, guid: 6829f3dc3c26a4d82ba1f2658f12ac06, type: 2}
-  wallCornerTopLeftTile: {fileID: 11400000, guid: 4047afae2c9a04e94aa439638084eeca, type: 2}
-  wallCornerTopRightTile: {fileID: 11400000, guid: 339a48b3a2c5a48b3a2e57fc48979568, type: 2}
-  wallCornerBottomLeftTile: {fileID: 11400000, guid: d152d4f1917d549498475f3dabf55bb9, type: 2}
-  wallCornerBottomRightTile: {fileID: 11400000, guid: a7b4bd4eddbe2467b874846eee5c11b0, type: 2}
+  floorTile: {fileID: 11400000, guid: 29022b57a6163424396a4067a268e84f, type: 2}
+  wallLeftTile: {fileID: 11400000, guid: 37e5a8b12a7816b4d9de0f94bb7672fd, type: 2}
+  wallRightTile: {fileID: 11400000, guid: 4a336268b23303840b0128c7cb4667bd, type: 2}
+  wallTopTile: {fileID: 11400000, guid: ba1dafee1286c7e499b9088bea97f0b7, type: 2}
+  wallBottomTile: {fileID: 11400000, guid: 4cb86a4d4bbcaa44185f7999116ae9cc, type: 2}
+  wallCornerTopLeftTile: {fileID: 11400000, guid: 37e5a8b12a7816b4d9de0f94bb7672fd, type: 2}
+  wallCornerTopRightTile: {fileID: 11400000, guid: 4a336268b23303840b0128c7cb4667bd, type: 2}
+  wallCornerBottomLeftTile: {fileID: 11400000, guid: 20ffadddfe609e4409f2dc7a4c6e16da, type: 2}
+  wallCornerBottomRightTile: {fileID: 11400000, guid: 174dfb71506e82e4dab4ebbfe5ab7572, type: 2}
+  corridorBottomRightTile: {fileID: 11400000, guid: 1dc24d12a8dbfcf418e0752d29f0eadf, type: 2}
+  corridorBottomLeftTile: {fileID: 11400000, guid: b1b3b989bcfd73143aa68902fba56cf0, type: 2}
   barrierPrefab: {fileID: 1290741914753120108, guid: 9a8db39e47c9cc9458b3fbdde7452c18, type: 3}
   mapWidth: 350
   mapHeight: 20

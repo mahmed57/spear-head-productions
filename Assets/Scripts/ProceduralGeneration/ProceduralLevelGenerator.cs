@@ -71,6 +71,10 @@ public class ProceduralLevelGenerator : MonoBehaviour
     public TileBase wallCornerBottomLeftTile;
     public TileBase wallCornerBottomRightTile;
 
+    public TileBase corridorBottomRightTile;
+
+    public TileBase corridorBottomLeftTile;
+
     [Header("Barrier Prefab")]
     public GameObject barrierPrefab; // Added barrierPrefab
 
@@ -501,9 +505,21 @@ public class ProceduralLevelGenerator : MonoBehaviour
                     if(doorPosition.y > closest_door.y)
                     {
                         closest_door = doorPosition;
+
                     }
 
                     Vector3 worldPosition = floorTilemap.CellToWorld(closest_door) + floorTilemap.cellSize / 2f;
+
+                    if(Mathf.Abs(room.bounds.xMin - closest_door.x) < 5)
+                    {
+                        
+                        wallTilemap.SetTile(closest_door - new Vector3Int(0, 2, 0), corridorBottomLeftTile);
+                    }
+                    else
+                    {
+                        
+                        wallTilemap.SetTile(closest_door - new Vector3Int(0, 2, 0), corridorBottomRightTile);
+                    }
 
                     GameObject barrier = Instantiate(barrierPrefab, worldPosition, Quaternion.Euler(0, 0, 90));
                 
