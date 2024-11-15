@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\volumemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\volumemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\movement\\playermovements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movement\\playermovements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\coincounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\coincounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VolumeManager.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\VolumeManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\VolumeManager.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\VolumeManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\VolumeManager.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwCAAAABFAAAAAAAAAA==",
+              "Title": "CoinCounter.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\CoinCounter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CoinCounter.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\CoinCounter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CoinCounter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T02:11:13.013Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerMovements.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAgwC0AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T06:01:39.149Z",
+              "WhenOpened": "2024-11-15T07:03:12.933Z",
               "EditorCaption": ""
             }
           ]
