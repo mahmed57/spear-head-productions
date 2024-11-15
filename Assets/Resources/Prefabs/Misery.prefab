@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073447c488e9bd44fb67e3a699892050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  present_health: 50
-  max_health: 50
+  present_health: 5
+  max_health: 5
   pushForce: 5
   health_bar_slider: {fileID: 3560400120413941724}
   health_bar: {fileID: 7225991300228109898}
