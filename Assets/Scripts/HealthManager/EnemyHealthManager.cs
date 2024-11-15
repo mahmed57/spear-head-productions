@@ -60,6 +60,9 @@ public class EnemyHealthManager:CharacterHealthManager
     protected override void handle_death()
     {
         GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatistics>().increment_enemy_counter(gameObject);
+
+        CoinCounter.instance.AddCoin(1);
+
         base.handle_death();
     }
 
