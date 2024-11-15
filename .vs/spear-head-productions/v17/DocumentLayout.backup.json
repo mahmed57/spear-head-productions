@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\healthmanager\\enemyhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\shop\\coincounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shop\\coincounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\CoinCounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CoinCounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\healthmanager\\enemyhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthmanager\\enemyhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\enemy\\despair\\despairattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\enemy\\despair\\despairattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\despair\\despairattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\coincounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\coincounter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,24 +30,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CoinCounter.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\CoinCounter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\CoinCounter.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\CoinCounter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Shop\\CoinCounter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T07:57:04.266Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PauseMenu.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PauseMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PauseMenu.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PauseMenu.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PauseMenu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T07:51:20.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "EnemyHealthManager.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
               "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAA9wEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T07:21:43.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T07:21:43.684Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "DespairAttack.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Enemy\\Despair\\DespairAttack.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Despair\\DespairAttack.cs",
@@ -47,8 +79,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Despair\\DespairAttack.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T07:16:16.805Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T07:16:16.805Z"
             },
             {
               "$type": "Document",
@@ -58,7 +89,6 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\CoinCounter.cs",
               "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\CoinCounter.cs",
               "RelativeToolTip": "Assets\\Scripts\\CoinCounter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-15T07:03:12.933Z"
             }
