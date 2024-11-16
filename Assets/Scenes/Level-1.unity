@@ -314,6 +314,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2008850692037658025, guid: b67dfde89a956ac45bb4a20c660d0841, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2985397523553362153, guid: b67dfde89a956ac45bb4a20c660d0841, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -5171,7 +5175,7 @@ MonoBehaviour:
   barrierPrefab: {fileID: 1290741914753120108, guid: 9a8db39e47c9cc9458b3fbdde7452c18, type: 3}
   mapWidth: 350
   mapHeight: 20
-  minDistanceBetweenRooms: 1
+  minDistanceBetweenRooms: 2
   roomPrefab: {fileID: 2908291702883658222, guid: 4dea4fc50abb54f2f802e72440b7c1e4, type: 3}
 --- !u!1 &2084851348
 GameObject:
