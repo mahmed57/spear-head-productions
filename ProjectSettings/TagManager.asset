@@ -59,3 +59,9 @@ TagManager:
   - name: Enemies
     uniqueID: 215007655
     locked: 0
+  - name: shop
+    uniqueID: 1206233507
+    locked: 0
+  - name: shop1
+    uniqueID: 37013603
+    locked: 0

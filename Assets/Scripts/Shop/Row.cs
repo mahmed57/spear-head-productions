@@ -7,12 +7,16 @@ public class Row : MonoBehaviour
 
     public List<GameObject> powerups;
 
+    public string active_object_name;
+
     public void enable_random_powerup()
     {
 
         int randomIndex = Random.Range(0, powerups.Count);
 
         powerups[randomIndex].SetActive(true);
+
+        active_object_name = powerups[randomIndex].name;
 
         disable_all_other_powerups(randomIndex);
 
