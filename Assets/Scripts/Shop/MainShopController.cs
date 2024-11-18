@@ -53,7 +53,7 @@ public class MainShopController : MonoBehaviour
                     foreach(GameObject row in rows)
                     {
                         
-                        row.GetComponent<Row>().enable_random_powerup();
+                        row.GetComponent<RowController>().enable_random_powerup();
                     }
                 }
                 turned_on = true;
