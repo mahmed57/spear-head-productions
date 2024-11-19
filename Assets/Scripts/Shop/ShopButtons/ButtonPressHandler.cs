@@ -30,40 +30,31 @@ public class ButtonPressHandler : MonoBehaviour
         }
 
 
-
     }
 
     public void buy()
     {
-        //Debug.Log(game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][0]);
-        if(!game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Contains(active_object.name))
+        if((active_object != null) && !game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Contains(active_object.name))
         {
             game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Add(active_object.name);
+            //game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][0];
+            
+            active_object.SetActive(false);
 
-            if(!special_powerup)
-            {
-                if(active_object.transform.parent.gameObject.GetComponent<PowerupLevelActivator>().power_up_number < 2)
-                {
-                    active_object.transform.parent.gameObject.GetComponent<PowerupLevelActivator>().power_up_number++;
-                }                
-            }
+            return;
+
         }
+
 
     }
 
     public void reroll()
     {
-        if(game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Contains(active_object.name))
+        if((active_object != null) && game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Contains(active_object.name))
         {
             game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Remove(active_object.name);
 
-            if(!special_powerup)
-            {
-                if(active_object.transform.parent.gameObject.GetComponent<PowerupLevelActivator>().power_up_number > 0)
-                {
-                    active_object.transform.parent.gameObject.GetComponent<PowerupLevelActivator>().power_up_number--;
-                }
-            }
+            active_object.SetActive(false);
 
             //game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][1];
         }

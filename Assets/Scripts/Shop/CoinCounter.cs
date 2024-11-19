@@ -24,4 +24,18 @@ public class CoinCounter : MonoBehaviour
         coinCount += amount;
         coinText.text = coinCount.ToString();
     }
+
+    public bool RemoveCoin(int amount)
+    {
+        if((coinCount - amount) >= 0)
+        {
+            coinCount = coinCount - amount;
+
+            coinText.text = coinCount.ToString();
+            
+            return true;
+        }
+
+        return false;
+    }
 }
