@@ -12,7 +12,14 @@ public class ButtonPressHandler : MonoBehaviour
 
     public GameObject game_manager_shop;
 
+    private GameObject coin_counter;
+
     public bool special_powerup = false;
+
+    void Start()
+    {
+        coin_counter = GameObject.FindGameObjectWithTag("CoinCounter");
+    }
 
     void Update()
     {
@@ -36,10 +43,26 @@ public class ButtonPressHandler : MonoBehaviour
     {
         if((active_object != null) && !game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Contains(active_object.name))
         {
-            game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Add(active_object.name);
-            //game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][0];
             
-            active_object.SetActive(false);
+            game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Add(active_object.name);
+            
+            int price = game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][0];
+
+            if(coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
+            {
+                
+                active_object.transform.GetChild(2).gameObject.SetActive(false);
+
+                active_object.transform.GetChild(5).gameObject.SetActive(false);
+
+                active_object.transform.GetChild(3).gameObject.SetActive(true);
+
+                active_object.transform.GetChild(6).gameObject.SetActive(true);
+
+                active_object.SetActive(false);
+
+
+            }
 
             return;
 
@@ -56,7 +79,24 @@ public class ButtonPressHandler : MonoBehaviour
 
             active_object.SetActive(false);
 
-            //game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][1];
+            int price = game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][1];
+
+            if(coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
+            {
+                
+                active_object.transform.GetChild(2).gameObject.SetActive(true);
+
+                active_object.transform.GetChild(5).gameObject.SetActive(true);
+
+                active_object.transform.GetChild(3).gameObject.SetActive(false);
+
+                active_object.transform.GetChild(6).gameObject.SetActive(false);
+
+                active_object.SetActive(false);
+
+
+            }        
+            
         }
         
     }

@@ -10,6 +10,7 @@ TagManager:
   - Room
   - Misery
   - Despair
+  - CoinCounter
   layers:
   - Default
   - TransparentFX
