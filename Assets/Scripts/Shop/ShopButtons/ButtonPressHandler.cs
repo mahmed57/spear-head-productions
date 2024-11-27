@@ -19,6 +19,8 @@ public class ButtonPressHandler : MonoBehaviour
     void Start()
     {
         coin_counter = GameObject.FindGameObjectWithTag("CoinCounter");
+
+
     }
 
     void Update()
@@ -50,17 +52,9 @@ public class ButtonPressHandler : MonoBehaviour
 
             if(coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
             {
-                
-                active_object.transform.GetChild(2).gameObject.SetActive(false);
-
                 active_object.transform.GetChild(5).gameObject.SetActive(false);
 
-                active_object.transform.GetChild(3).gameObject.SetActive(true);
-
                 active_object.transform.GetChild(6).gameObject.SetActive(true);
-
-                active_object.SetActive(false);
-
 
             }
 
@@ -77,23 +71,14 @@ public class ButtonPressHandler : MonoBehaviour
         {
             game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Remove(active_object.name);
 
-            active_object.SetActive(false);
-
             int price = game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][1];
 
             if(coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
             {
                 
-                active_object.transform.GetChild(2).gameObject.SetActive(true);
-
                 active_object.transform.GetChild(5).gameObject.SetActive(true);
 
-                active_object.transform.GetChild(3).gameObject.SetActive(false);
-
                 active_object.transform.GetChild(6).gameObject.SetActive(false);
-
-                active_object.SetActive(false);
-
 
             }        
             
