@@ -5,9 +5,8 @@ using UnityEngine;
 public class PowerupManager : MonoBehaviour
 {
     private PlayerAttack player_attack;
-
     private PlayerMovements player_movements;
-
+    private PlayerHealthManager player_health;
     private float default_heavy_damage;
     private float default_light_damage;
     private float default_attack_range;
@@ -18,6 +17,8 @@ public class PowerupManager : MonoBehaviour
     {
         player_attack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         player_movements = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovements>();
+        player_health = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthManager>();
+
         default_heavy_damage = player_attack.heavy_attack_damage;
         default_light_damage = player_attack.light_attack_damage;
         default_attack_range = player_attack.attackRange;
@@ -122,7 +123,7 @@ public class PowerupManager : MonoBehaviour
     }
     public void apply_soulshard()
     {
-
+        player_health.max_health += 25;
     }
 
     /*** Remove Functions ***/
@@ -216,7 +217,7 @@ public class PowerupManager : MonoBehaviour
     }
     public void remove_soulshard()
     {
-
+        player_health.max_health -= 25;
     }
 
 }

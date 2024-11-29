@@ -177,21 +177,25 @@ public class PlayerMovements : MonoBehaviour
 
         Vector2 dashDirection = Vector2.zero;
 
-        switch (FacingDir)
+        if(direction.y > 0)
         {
-            case Facing.UP:
-                dashDirection = Vector2.up;
-                break;
-            case Facing.DOWN:
-                dashDirection = Vector2.down;
-                break;
-            case Facing.RIGHT:
-                dashDirection = Vector2.right;
-                break;
-            case Facing.LEFT:
-                dashDirection = Vector2.left;
-                break;
+            dashDirection += Vector2.up;
         }
+        
+        if(direction.y < 0)
+        {
+            dashDirection += Vector2.down;
+        }
+
+        if(direction.x > 0)
+        {
+            dashDirection += Vector2.right;
+        }    
+        
+        if(direction.x < 0)
+        { 
+            dashDirection += Vector2.left;
+        }    
 
         while (elapsedTime < dashDuration)
         {

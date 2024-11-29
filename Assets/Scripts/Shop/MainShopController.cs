@@ -51,11 +51,11 @@ public class MainShopController : MonoBehaviour
                 if(essence_ui_game_object.activeSelf)
                 {
                     foreach(GameObject row in rows)
-                    {
-                        
+                    { 
                         row.GetComponent<RowController>().enable_random_powerup();
                     }
                 }
+                
                 turned_on = true;
             }
         }

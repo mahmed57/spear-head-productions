@@ -11,7 +11,7 @@ public class RowController : MonoBehaviour
     {
 
         int randomIndex = Random.Range(0, powerups.Count);
-
+        
         powerups[randomIndex].SetActive(true);
 
         disable_all_other_powerups(randomIndex);
