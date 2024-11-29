@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealthManager : CharacterHealthManager
 {
     public Image healthBarFill;
-    public GameObject gameOverScreen;
+    public TextMeshProUGUI healthText; 
 
+    public GameObject gameOverScreen;
     public GameObject health_particle_effect;
 
     private float next_particle_time;
@@ -19,6 +18,11 @@ public class PlayerHealthManager : CharacterHealthManager
     void Update()
     {
         healthBarFill.fillAmount = present_health / max_health;
+
+        if (healthText != null)
+        {
+            healthText.text = Mathf.RoundToInt(present_health) + " / " + Mathf.RoundToInt(max_health);
+        }
 
         if (health_particle_effect.activeSelf)
         {
@@ -80,5 +84,10 @@ public class PlayerHealthManager : CharacterHealthManager
         Debug.Log("Player health: " + present_health);
 
         healthBarFill.fillAmount = present_health / max_health;
+
+        if (healthText != null)
+        {
+            healthText.text = Mathf.RoundToInt(present_health) + " / " + Mathf.RoundToInt(max_health);
+        }
     }
 }
