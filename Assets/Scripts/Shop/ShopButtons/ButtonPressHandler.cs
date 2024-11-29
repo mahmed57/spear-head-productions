@@ -16,6 +16,8 @@ public class ButtonPressHandler : MonoBehaviour
 
     public bool special_powerup = false;
 
+    public GameObject power_up_object;
+
     void Start()
     {
         coin_counter = GameObject.FindGameObjectWithTag("CoinCounter");
@@ -52,9 +54,12 @@ public class ButtonPressHandler : MonoBehaviour
 
             if(coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
             {
+                power_up_object.GetComponent<PowerupManager>().apply_powerup(active_object.name);
+                
                 active_object.transform.GetChild(5).gameObject.SetActive(false);
 
                 active_object.transform.GetChild(6).gameObject.SetActive(true);
+                
 
             }
 
@@ -75,6 +80,7 @@ public class ButtonPressHandler : MonoBehaviour
 
             if(coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
             {
+                power_up_object.GetComponent<PowerupManager>().remove_powerup(active_object.name);
                 
                 active_object.transform.GetChild(5).gameObject.SetActive(true);
 
