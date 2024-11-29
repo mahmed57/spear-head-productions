@@ -24,7 +24,7 @@ public class PauseGame : MonoBehaviour
     void Update()
     {
         bool input_condition_shop = Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.JoystickButton4);
-        bool input_condition_pause_menu = Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.JoystickButton5);
+        bool input_condition_pause_menu = Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton5);
         if(!pause_menu.activeSelf && !shop.activeSelf)
         {
             pause_game = false;
@@ -58,7 +58,7 @@ public class PauseGame : MonoBehaviour
             }
 
             bool input_condition_shop_1 = Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.JoystickButton4);
-            bool input_condition_pause_menu_1 = Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.JoystickButton5);
+            bool input_condition_pause_menu_1 = Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton5);
             
             if ((input_condition_shop_1 && shop.activeSelf) || (input_condition_pause_menu_1 && pause_menu.activeSelf))
             {

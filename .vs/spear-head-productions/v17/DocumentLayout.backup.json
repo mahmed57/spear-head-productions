@@ -3,11 +3,31 @@
   "WorkspaceRootPath": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\shop\\mainshopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shop\\mainshopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\uiscreens\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiscreens\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\healthmanager\\enemyhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\pausegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pausegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\barriercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\barriercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\proceduralgeneration\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\proceduralgeneration\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\uiscreens\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiscreens\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\healthmanager\\enemyhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthmanager\\enemyhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -35,19 +55,80 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainShopController.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\MainShopController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\MainShopController.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\MainShopController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Shop\\MainShopController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T03:37:36.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BarrierController.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\BarrierController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BarrierController.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\BarrierController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BarrierController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAIBJwC0AAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T03:35:04.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Room.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\ProceduralGeneration\\Room.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ProceduralGeneration\\Room.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\ProceduralGeneration\\Room.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ProceduralGeneration\\Room.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T03:34:35.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PauseGame.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PauseGame.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PauseGame.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PauseGame.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PauseGame.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowCIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T03:34:04.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\MainMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\MainMenu.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\MainMenu.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIScreens\\MainMenu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T03:33:43.388Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PauseMenu.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\PauseMenu.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\PauseMenu.cs",
               "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\PauseMenu.cs",
               "RelativeToolTip": "Assets\\Scripts\\UIScreens\\PauseMenu.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAYwHYAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwCQAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-29T03:20:57.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "EnemyHealthManager.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
@@ -55,12 +136,11 @@
               "RelativeToolTip": "Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAwwGQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T22:14:34.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-28T22:14:34.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "PlayerHealthManager.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\PlayerHealthManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager\\PlayerHealthManager.cs",
@@ -72,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "ButtonPressHandler.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\ShopButtons\\ButtonPressHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\ShopButtons\\ButtonPressHandler.cs",
@@ -84,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "CoinCounter.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\CoinCounter.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\CoinCounter.cs",
