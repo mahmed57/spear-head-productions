@@ -5,12 +5,15 @@ public class EnemyHealthManager : CharacterHealthManager
 {
     public float pushForce = 5f;
     private EnemyMovement enemyMovement;
+
     public Slider health_bar_slider;
     public GameObject health_bar;
     public GameObject damage_particle_system;
 
-    public AudioSource persistentAudioSource; 
-    public AudioClip hurtSoundClip; 
+    public GameObject damageNumberPrefab; 
+
+    public AudioSource persistentAudioSource;
+    public AudioClip hurtSoundClip;
 
     private float next_particle_time;
     public float particle_effect_cooldown = 1f;
@@ -37,14 +40,11 @@ public class EnemyHealthManager : CharacterHealthManager
 
     void Update()
     {
-        if (damage_particle_system != null)
+        if (damage_particle_system != null && damage_particle_system.activeSelf)
         {
-            if (damage_particle_system.activeSelf)
+            if (Time.time > next_particle_time)
             {
-                if (Time.time > next_particle_time)
-                {
-                    damage_particle_system.SetActive(false);
-                }
+                damage_particle_system.SetActive(false);
             }
         }
     }
@@ -63,19 +63,31 @@ public class EnemyHealthManager : CharacterHealthManager
             }
             else
             {
-                //Debug.LogWarning("Persistent AudioSource is not active or enabled. Using fallback method.");
                 PlaySoundWithFallback(transform.position, hurtSoundClip);
             }
-        }
-        else
-        {
-            Debug.LogWarning("Persistent AudioSource or Hurt Sound Clip is not assigned!");
         }
 
         if (damage_particle_system != null)
         {
             next_particle_time = Time.time + particle_effect_cooldown;
             damage_particle_system.SetActive(true);
+        }
+
+        if (damageNumberPrefab != null)
+        {
+            Vector3 damagePosition = transform.position + Vector3.up * 1.5f;
+
+            GameObject damageNumber = Instantiate(damageNumberPrefab, damagePosition, Quaternion.identity, transform.parent);
+            DamageNumber damageScript = damageNumber.GetComponent<DamageNumber>();
+
+            if (damageScript != null)
+            {
+                damageScript.SetDamage(damage); 
+            }
+            else
+            {
+                Debug.LogWarning("DamageNumber script is not attached to the prefab!");
+            }
         }
 
         Vector2 pushDirection = (transform.position - new Vector3(attackPosition.x, attackPosition.y, transform.position.z)).normalized;
@@ -99,7 +111,11 @@ public class EnemyHealthManager : CharacterHealthManager
         AudioSource tempAudioSource = tempAudio.AddComponent<AudioSource>();
         tempAudioSource.clip = clip;
 
-        tempAudioSource.outputAudioMixerGroup = persistentAudioSource.outputAudioMixerGroup;
+        if (persistentAudioSource != null)
+        {
+            tempAudioSource.outputAudioMixerGroup = persistentAudioSource.outputAudioMixerGroup;
+        }
+
         tempAudioSource.Play();
         Destroy(tempAudio, clip.length);
     }

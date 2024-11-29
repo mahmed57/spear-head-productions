@@ -6417,6 +6417,9 @@ MonoBehaviour:
   health_bar_slider: {fileID: 8286604534519527640}
   health_bar: {fileID: 3859441494274837927}
   damage_particle_system: {fileID: 853825380283973199}
+  damageNumberPrefab: {fileID: 2766823097381249615, guid: b1d86c3717c62634c8811a57c0a5942c, type: 3}
+  persistentAudioSource: {fileID: 0}
+  hurtSoundClip: {fileID: 0}
   particle_effect_cooldown: 1
 --- !u!114 &4203239832379400475
 MonoBehaviour:
