@@ -18,6 +18,7 @@ public class PauseGame : MonoBehaviour
     {
         shop.SetActive(false);
         pause_menu.SetActive(false);
+        Time.timeScale = 1.2f;
     }
 
 
@@ -69,7 +70,7 @@ public class PauseGame : MonoBehaviour
                 
                 pause_game = false;
 
-                Time.timeScale = 1;
+                Time.timeScale = 1.2f;
             }
 
         }

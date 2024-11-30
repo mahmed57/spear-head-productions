@@ -51,6 +51,11 @@ public class PlayerMovements : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale == 0f)
+        {
+            return;
+        }
+
         input();
     }
 
@@ -199,7 +204,7 @@ public class PlayerMovements : MonoBehaviour
 
         while (elapsedTime < dashDuration)
         {
-            rb.MovePosition(rb.position + dashDirection * dashSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + dashDirection.normalized * dashSpeed * Time.fixedDeltaTime);
             elapsedTime += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }

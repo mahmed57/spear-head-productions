@@ -34,6 +34,11 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
+        if(Time.timeScale == 0f)
+        {
+            return;
+        }
+
         if (time_between_attack <= 0)
         {
             if (is_light_attack())
