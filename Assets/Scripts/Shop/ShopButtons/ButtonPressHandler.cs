@@ -79,4 +79,19 @@ public class ButtonPressHandler : MonoBehaviour
             }
         }
     }
+
+    public void i()
+    {
+        if(active_object.transform.GetChild(1).gameObject.activeSelf)
+        {
+            active_object.transform.GetChild(0).gameObject.SetActive(true);
+            active_object.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+        {
+            active_object.transform.GetChild(0).gameObject.SetActive(false);
+            active_object.transform.GetChild(1).gameObject.SetActive(true);
+
+        }
+    }
 }
