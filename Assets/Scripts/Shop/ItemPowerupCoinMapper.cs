@@ -32,6 +32,10 @@ public class ItemPowerupCoinMapper : MonoBehaviour
         PowerupDictionary.Add("magicblade", new List<int> {7,15});
         PowerupDictionary.Add("tw", new List<int> {5,15});
         PowerupDictionary.Add("qs_comp", new List<int> {5,15});
+        PowerupDictionary.Add("rol", new List<int> {15,15});
+        PowerupDictionary.Add("ams", new List<int> {8,15});
+        PowerupDictionary.Add("soulshard", new List<int> {12,15});
+
 
     }
 
