@@ -9,7 +9,8 @@ public class ButtonPressHandler : MonoBehaviour
     public GameObject game_manager_shop;
     private GameObject coin_counter;
     public AudioSource spendSound;
-    public bool special_powerup = false;
+
+    public bool is_special_powerup = false;
 
     public GameObject power_up_object;
 
@@ -38,12 +39,16 @@ public class ButtonPressHandler : MonoBehaviour
         if ((active_object != null) && !game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Contains(active_object.name))
         {
             game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Add(active_object.name);
-            int price = game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][0];
+            int price = game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupItemDictionary[active_object.name][0];
 
             if (coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
             {
                 power_up_object.GetComponent<PowerupManager>().apply_powerup(active_object.name);
                 
+                if(is_special_powerup)
+                {
+                    active_object.GetComponent<ActivatePowerUpEffect>().activate_powerup_effect();
+                }
 
                 if (spendSound != null)
                 {
@@ -63,11 +68,16 @@ public class ButtonPressHandler : MonoBehaviour
         if ((active_object != null) && game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Contains(active_object.name))
         {
             game_manager_shop.GetComponent<PlayerBag>().collectedPowerups.Remove(active_object.name);
-            int price = game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupDictionary[active_object.name][1];
+            int price = game_manager_shop.GetComponent<ItemPowerupCoinMapper>().PowerupItemDictionary[active_object.name][1];
 
             if (coin_counter.GetComponent<CoinCounter>().RemoveCoin(price))
             {
                 power_up_object.GetComponent<PowerupManager>().remove_powerup(active_object.name);
+
+                if(is_special_powerup)
+                {
+                    active_object.GetComponent<ActivatePowerUpEffect>().deactivate_powerup_effect();
+                }
 
                 if (spendSound != null)
                 {
