@@ -33,6 +33,11 @@ public class PlayerMovements : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         animator.SetBool("isWalking", false);
 
+        if(gameObject.GetComponent<PlayerAttack>().is_attacking == true)
+        {
+            return;
+        }
+
         if (characterVisuals == null)
         {
             characterVisuals = animator.transform;
