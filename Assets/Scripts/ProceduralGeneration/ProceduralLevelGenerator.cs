@@ -97,6 +97,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
 
     void Start()
     {
+        
         player = GameObject.FindGameObjectWithTag("Player");
         roomCount = room_enemy_settings.Count;
         rooms = new List<Room>();
@@ -122,6 +123,22 @@ public class ProceduralLevelGenerator : MonoBehaviour
             player.transform.position =left_most_room;
             player.SetActive(true);
             
+        }
+    }
+    public void DestroyDontDestroyOnLoadObjects()
+    {
+        
+        GameObject[] rootObjects = FindObjectsOfType<GameObject>();
+
+        
+        foreach (GameObject obj in rootObjects)
+        {
+            
+            if (obj.scene.name == null || obj.scene.name == "DontDestroyOnLoad")
+            {
+                
+                Destroy(obj);
+            }
         }
     }
 

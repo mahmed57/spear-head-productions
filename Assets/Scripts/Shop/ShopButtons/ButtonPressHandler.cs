@@ -90,6 +90,21 @@ public class ButtonPressHandler : MonoBehaviour
         }
     }
 
+    public void rerollAllinRow()
+    {
+        foreach (GameObject game_object in game_objects)
+        {
+            if (game_object.activeSelf)
+            {
+                active_object = game_object;
+                break;
+            }
+
+            game_object.transform.GetChild(1).gameObject.SetActive(false);
+            game_object.transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
     public void i()
     {
         if(active_object.transform.GetChild(1).gameObject.activeSelf)

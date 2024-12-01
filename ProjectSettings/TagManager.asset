@@ -11,6 +11,10 @@ TagManager:
   - Misery
   - Despair
   - CoinCounter
+  - Shop
+  - Boss
+  - BossBody
+  - GameOverScreen
   layers:
   - Default
   - TransparentFX

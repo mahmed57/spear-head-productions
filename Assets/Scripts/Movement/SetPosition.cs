@@ -9,6 +9,11 @@ public class SetPosition : MonoBehaviour
 
     void Update()
     {
+        if(gameObject.scene.name == "Level-2")
+        {
+            Debug.Log("Level-2");
+            return;
+        }
         if(is_start)
         {
             is_start = false;

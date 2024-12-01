@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerHealthManager : CharacterHealthManager
 {
@@ -56,7 +57,7 @@ public class PlayerHealthManager : CharacterHealthManager
     protected override void handle_death()
     {
         Debug.Log("Player has died!");
-        gameOverScreen.SetActive(true);
+        GameObject.FindGameObjectWithTag("GameOverScreen").transform.GetChild(0).gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
 

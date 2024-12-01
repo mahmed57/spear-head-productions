@@ -6,8 +6,8 @@ public class ButtonSelectionHandler : MonoBehaviour, ISelectHandler, IDeselectHa
     private GameObject targetObject;  
 
     void Start()
-    {
-    
+    {    
+
         if (transform.childCount > 0)
         {
             targetObject = transform.GetChild(0).gameObject;

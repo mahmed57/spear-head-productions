@@ -31,6 +31,11 @@ public class MainShopController : MonoBehaviour
         items_ui_game_object.SetActive(true);
     }
 
+    public void rerollall()
+    {
+        
+    }
+
     void Update()
     {
          if(shop.activeSelf && !turned_on)

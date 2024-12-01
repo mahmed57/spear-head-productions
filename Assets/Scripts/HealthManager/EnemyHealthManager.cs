@@ -3,8 +3,11 @@ using UnityEngine.UI;
 
 public class EnemyHealthManager : CharacterHealthManager
 {
-    public float pushForce = 5f;
+    public float lightpushForce = 5f;
+    public float heavypushforce = 10f;
     private EnemyMovement enemyMovement;
+
+    private BossMovement bossMovement;
 
     public Slider health_bar_slider;
     public GameObject health_bar;
@@ -21,6 +24,7 @@ public class EnemyHealthManager : CharacterHealthManager
     void Start()
     {
         enemyMovement = GetComponent<EnemyMovement>();
+        bossMovement = GetComponent<BossMovement>();
 
         if (persistentAudioSource != null)
         {
@@ -91,7 +95,22 @@ public class EnemyHealthManager : CharacterHealthManager
         }
 
         Vector2 pushDirection = (transform.position - new Vector3(attackPosition.x, attackPosition.y, transform.position.z)).normalized;
-        enemyMovement.ApplyPushBack(pushDirection, pushForce);
+        
+        if(damage < 9f)
+        {
+            if(enemyMovement != null)
+                enemyMovement.ApplyPushBack(pushDirection, lightpushForce);
+            if(bossMovement != null)
+                bossMovement.ApplyPushBack(pushDirection, lightpushForce);
+        }
+
+        else
+        {
+            if(enemyMovement != null)
+                enemyMovement.ApplyPushBack(pushDirection, heavypushforce);
+            if(bossMovement != null)
+                bossMovement.ApplyPushBack(pushDirection, heavypushforce);
+        }
 
         health_bar_slider.value = present_health / max_health;
     }

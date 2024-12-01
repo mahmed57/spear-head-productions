@@ -26,7 +26,7 @@ public class ArrowProjectile : MonoBehaviour
                     
             }
 
-            if ((collision.tag != "Despair") && (collision.tag != "RageTanker") && (collision.tag != "Misery") && (collision.tag != "Room"))
+            if ((collision.tag != "Despair") && (collision.tag != "RageTanker") && (collision.tag != "Misery") && (collision.tag != "Room") && (collision.tag != "Boss"))
             {
                 Debug.Log(collision.tag);
                 

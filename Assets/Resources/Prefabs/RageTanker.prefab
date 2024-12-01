@@ -6568,7 +6568,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.88, y: 4.9700003}
+  m_Size: {x: 3.28, y: 5.02}
   m_Direction: 0
 --- !u!114 &6852851403961134367
 MonoBehaviour:
@@ -6611,7 +6611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   present_health: 15
   max_health: 15
-  pushForce: 5
+  lightpushForce: 5
+  heavypushforce: 10
   health_bar_slider: {fileID: 8286604534519527640}
   health_bar: {fileID: 3859441494274837927}
   damage_particle_system: {fileID: 853825380283973199}

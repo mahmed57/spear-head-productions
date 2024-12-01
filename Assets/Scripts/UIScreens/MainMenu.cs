@@ -39,6 +39,8 @@ public class MainMenu : MonoBehaviour
 
         options_menu.SetActive(false);
         credit_menu.SetActive(false);
+
+        DestroyDontDestroyOnLoadObjects();
     }
 
     private void Update()
@@ -235,5 +237,22 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Quitting");
         Application.Quit();
+    }
+
+    public void DestroyDontDestroyOnLoadObjects()
+    {
+        
+        GameObject[] rootObjects = FindObjectsOfType<GameObject>();
+
+        
+        foreach (GameObject obj in rootObjects)
+        {
+            
+            if (obj.scene.name == null || obj.scene.name == "DontDestroyOnLoad")
+            {
+                
+                Destroy(obj);
+            }
+        }
     }
 }

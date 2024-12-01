@@ -2,13 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class EnemyMovement : MonoBehaviour
+public class BossMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float speed = 2f;
     public float detectionRange = 5f;
     public float separationDistance = 1.5f;
-    private float attackRange = 1.5f;
+    public float attackRange = 1.3f;
     public float flipThresholdDistance = 0.5f; // New threshold distance
 
     [Header("Flip Settings")]
@@ -52,12 +52,6 @@ public class EnemyMovement : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
 
-        if(gameObject.tag == "RageTanker" || gameObject.tag=="Misery")
-        {
-           facingRight = true;
-
-        }
-
         if (characterVisuals == null)
         {
             Transform visuals = transform.Find("Visuals");
@@ -67,20 +61,10 @@ public class EnemyMovement : MonoBehaviour
                 characterVisuals = transform;
         }
 
-        if(gameObject.tag == "Misery")
-        {
-            attackRange = GetComponent<MiseryAttack>().attackRange;
-        }
-        else
-        {
-
-            attackRange = GetComponent<DespairAttack>().attackRange;
-        }
     }
 
     void Update()
     {
-        DetectWalls();
 
         if (isPushedBack)
         {
@@ -98,7 +82,7 @@ public class EnemyMovement : MonoBehaviour
             if (distanceToPlayer <= detectionRange && distanceToPlayer > attackRange)
             {
                 if (animator != null)
-                    animator.SetBool("isRunning", true);
+                    animator.SetBool("isWalking", true);
 
                 Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
 
@@ -154,7 +138,7 @@ public class EnemyMovement : MonoBehaviour
                 movement = Vector2.zero;
 
                 if (animator != null)
-                    animator.SetBool("isRunning", false);
+                    animator.SetBool("isWalking", false);
 
                 if (distanceToPlayer < attackRange)
                 {
@@ -169,7 +153,7 @@ public class EnemyMovement : MonoBehaviour
         if (isPushedBack)
         {
             if (animator != null)
-                animator.SetBool("isRunning", false);
+                animator.SetBool("isWalking", false);
 
             MoveCharacter(pushBackDirection * pushBackSpeed);
         }
@@ -192,29 +176,12 @@ public class EnemyMovement : MonoBehaviour
         pushBackSpeed = pushForce;
 
         if (animator != null)
-            animator.SetBool("isRunning", false);
-
-        // float future_time = Time.time + 2f;
-
-        // while(Time.time < future_time)
-        // {
-        //     gameObject.GetComponent<Rigidbody2D>().constraints =  RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-        // }
-        // gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-    }
-
-    void DetectWalls()
-    {   
-        isTouchingWallLeft = Physics2D.Raycast(transform.position, Vector2.left, wallDetectionDistance, wallLayer);
-        isTouchingWallRight = Physics2D.Raycast(transform.position, Vector2.right, wallDetectionDistance, wallLayer);
-        isTouchingWallTop = Physics2D.Raycast(transform.position, Vector2.up, wallDetectionDistance, wallLayer);
-        isTouchingWallBottom = Physics2D.Raycast(transform.position, Vector2.down, wallDetectionDistance, wallLayer);
+            animator.SetBool("isWalking", false);
     }
 
     private void Flip()
     {
-        if(isTouchingWallBottom || isTouchingWallLeft || isTouchingWallRight || isTouchingWallTop || 
-        (Vector2.Distance(transform.position, playerTransform.position) <= attackRange))
+        if(Vector2.Distance(transform.position, playerTransform.position) <= attackRange)
         {
             return;
         }
@@ -226,7 +193,13 @@ public class EnemyMovement : MonoBehaviour
         scale.x *= -1;
         characterVisuals.localScale = scale;
         
+    }
 
+    public bool is_in_range()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+
+        return (distanceToPlayer <= attackRange);
     }
 
     void OnDrawGizmosSelected()

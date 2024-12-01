@@ -46,7 +46,9 @@ public class PlayerAttack : MonoBehaviour
                 is_attacking = true;
                 player_anim.SetTrigger("lightAttack");
                 PlayerAttackSound(Light_attack);
-                attack_enemy(light_attack_damage);
+                LightAttack();
+
+                
 
             }
             else if (is_heavy_attack())
@@ -54,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
                 is_attacking = true;
                 player_anim.SetTrigger("heavyAttack");
                 PlayerAttackSound(Heavy_attack);
-                attack_enemy(heavy_attack_damage);
+                
             }
             else
             {
@@ -97,14 +99,22 @@ public class PlayerAttack : MonoBehaviour
 
     void attack_enemy(float damage)
     {
-        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position, attackRange, whatIsEnemeies);
+        Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackpos.position,new Vector2(attackRange, attackRange-1f), whatIsEnemeies);
 
         time_between_attack = start_time_btw_attack;
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
 
-            enemiesToDamage[i].GetComponent<EnemyHealthManager>().deal_damage(damage, transform.position);
+            if((enemiesToDamage[i].tag == "Despair") || (enemiesToDamage[i].tag == "Misery") ||
+            (enemiesToDamage[i].tag == "RageTanker"))
+            {
+                enemiesToDamage[i].GetComponent<EnemyHealthManager>().deal_damage(damage, transform.position);
+            }
 
+            if(enemiesToDamage[i].tag == "Boss")
+            {
+                enemiesToDamage[i].GetComponent<BossHealthManager>().deal_damage(damage, transform.position);
+            }
         }
 
     }
@@ -112,7 +122,12 @@ public class PlayerAttack : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackpos.position, attackRange);
+        Vector2 boxSize = new Vector2(attackRange, attackRange - 1f);
+        Matrix4x4 defaultMatrix = Gizmos.matrix;
+        Gizmos.matrix = Matrix4x4.TRS(attackpos.position, Quaternion.Euler(0, 0, 0), Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, boxSize);
+        Gizmos.matrix = defaultMatrix;    
+    
     }
 
 
@@ -133,4 +148,16 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log($"Playing sound: {clip.name}");
         audioSource.PlayOneShot(clip);
     }
+
+    public void HeavyAttack()
+    {
+        attack_enemy(heavy_attack_damage);
+    }
+
+    public void LightAttack()
+    {
+        attack_enemy(light_attack_damage);
+    }
+    
+    
 }
