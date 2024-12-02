@@ -19,7 +19,8 @@ public class BossProjectileController : MonoBehaviour
 
     void Update()
     {
-        if((gameObject.GetComponent<BossAttack>().currentPhase == 1) || gameObject.GetComponent<BossMovement>().is_in_range())
+        if((gameObject.GetComponent<BossAttack>().currentPhase == 1) || 
+        gameObject.GetComponent<BossMovement>().is_in_range())
         {
             return;
         }

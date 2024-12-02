@@ -9,7 +9,7 @@ public class BossAttack : MonoBehaviour
     public float projectileAttackRange = 10f;
     public float wipeAttackRange = 3f;
 
-
+    public GameObject wipe_ring;
     public float swordDamage = 10f;
     public float projectileDamage = 8f;
 
@@ -24,7 +24,6 @@ public class BossAttack : MonoBehaviour
 
     public int currentPhase = 1;
     public float phaseHealth = 100f;
-
 
     void Start()
     {
@@ -71,28 +70,28 @@ public class BossAttack : MonoBehaviour
                 if (distanceToPlayer <= wipeAttackRange)
                 {
                     
-                    int randomAttack = Random.Range(0, 3); 
+                     
+                    int randomAttack = Random.Range(0, 5);
                     if (randomAttack == 0)
                     {
-                
+                         animator.SetTrigger("attack3");
                     }
+
                     else
                     {
-                        animator.SetTrigger("attack3");
-                    }
-                    nextAttackTime = Time.time + attackCooldown;
-                }
-                else if(distanceToPlayer <= swordAttackRange)
-                {
-                    animator.SetTrigger("attack1");
-                }
-                else
-                {
                     
-                    ProjectileAttack();
-                    nextAttackTime = Time.time + attackCooldown;
-                }
+                        if(distanceToPlayer <= swordAttackRange)
+                        {
+                            animator.SetTrigger("attack1");
+                        }
+
+                    }
+
+                     nextAttackTime = Time.time + attackCooldown;
+               
+
             }
+        }
         }
 
 
@@ -128,4 +127,11 @@ public class BossAttack : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, projectileAttackRange);
     }
+
+    public void enable_ring()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/" + "Ring"), wipe_ring.transform.position, Quaternion.identity);
+    }
+
+
 }

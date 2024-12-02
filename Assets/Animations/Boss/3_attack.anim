@@ -7180,8 +7180,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 3.0166667
-    functionName: WipeAttack
+  - time: 3.3333333
+    functionName: enable_ring
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
