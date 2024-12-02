@@ -42,10 +42,10 @@ public class ExpandingRingAttack : MonoBehaviour
             PlayerHealthManager playerHealth = collision.GetComponent<PlayerHealthManager>();
             
             if (playerHealth != null)
-            {
-                playerHealth.deal_damage(damageAmount);
+            {               
+                playerHealth.deal_damage(playerHealth.present_health/2);
             }
-            
+
             Destroy(gameObject);
 
         }
