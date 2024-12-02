@@ -18,6 +18,8 @@ public class BossHealthManager : CharacterHealthManager
     private float next_particle_time;
     public float particle_effect_cooldown = 1f;
 
+    public GameObject victoryScreen;
+
     void Start()
     {
         bossMovement = GetComponent<BossMovement>();
@@ -80,8 +82,20 @@ public class BossHealthManager : CharacterHealthManager
 
     protected override void handle_death()
     {
-        if(GetComponent<BossAttack>().currentPhase == 3)
+        Debug.Log("Boss is dead. Triggering Victory Screen...");
+
+        if (GetComponent<BossAttack>().currentPhase == 3)
         {
+            if (victoryScreen != null) 
+            {
+                Debug.Log("Activating Victory Screen...");
+                victoryScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Debug.LogError("Victory Screen is not assigned!");
+            }
             Destroy(gameObject);
         }
         else if(GetComponent<BossAttack>().currentPhase == 2)
