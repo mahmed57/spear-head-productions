@@ -19,14 +19,15 @@ public class PlayerMovements : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // New variables for smooth dash
     public float dashSpeed = 10f;
     public float dashDuration = 0.2f;
     private bool isDashing = false;
 
     public AudioClip Roll;
+    public AudioClip Walk;
 
     private AudioSource audioSource;
+    private bool isPlayingWalkSound = false;
 
     void Start()
     {
@@ -150,15 +151,19 @@ public class PlayerMovements : MonoBehaviour
             {
                 Flip();
             }
+
+            PlayWalkingSound();
         }
         else
         {
             animator.SetBool("isWalking", false);
+            StopWalkingSound();
         }
 
         if (playerAttack.is_attacking)
         {
             animator.SetBool("isWalking", false);
+            StopWalkingSound();
             return;
         }
         else
@@ -237,6 +242,27 @@ public class PlayerMovements : MonoBehaviour
         else
         {
             Debug.LogWarning("Roll sound or AudioSource is missing!");
+        }
+    }
+
+    private void PlayWalkingSound()
+    {
+        if (!isPlayingWalkSound && audioSource != null && Walk != null)
+        {
+            audioSource.loop = true; 
+            audioSource.clip = Walk;
+            audioSource.Play();
+            isPlayingWalkSound = true;
+        }
+    }
+
+    private void StopWalkingSound()
+    {
+        if (isPlayingWalkSound && audioSource != null)
+        {
+            audioSource.loop = false; 
+            audioSource.Stop();
+            isPlayingWalkSound = false;
         }
     }
 }
