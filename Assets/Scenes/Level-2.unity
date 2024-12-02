@@ -7923,6 +7923,18 @@ PrefabInstance:
       propertyPath: projectileAttackRange
       value: 44.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1899461258442930667, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984459817705407723, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984459817705407723, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2465884689202462450, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.94
@@ -7963,16 +7975,185 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2594736635679722427, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2594736635679722427, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687223394196798805, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687223394196798805, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408629505415660399, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408629505415660399, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505289260391926420, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492842230437339993, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492842230437339993, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4715053562926370870, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
       propertyPath: damage_particle_system
       value: 
       objectReference: {fileID: 1667693816}
+    - target: {fileID: 4968560231029872440, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968560231029872440, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217034101937413434, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217034101937413434, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234933267119346865, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750178436641518662, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750178436641518662, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871655398915520174, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201264360565344851, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201264360565344851, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207412063028909756, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207412063028909756, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6425235259526101152, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.44
+      objectReference: {fileID: 0}
     - target: {fileID: 6679978372582187178, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 6928588517043203950, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928588517043203950, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062653468212309345, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062653468212309345, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215432251729072248, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215432251729072248, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255638515106237140, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255638515106237140, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412049895215594104, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412049895215594104, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566534117683753143, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566534117683753143, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602212388228550689, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602212388228550689, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525620876467905596, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525620876467905596, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798807540526617791, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798807540526617791, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: timeBetweenProjectiles
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996532503106659066, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043113944010526422, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6260424391413733522, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2465884689202462450, guid: b818298b158d5404d98871d63fb0e67b, type: 3}
       insertIndex: -1
