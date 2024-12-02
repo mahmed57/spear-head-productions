@@ -17,16 +17,13 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2894983310686066967}
-    m_Position: {x: 430, y: 10, z: 0}
+    m_Position: {x: 570, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4298466368452291602}
     m_Position: {x: 170, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8590353747584080138}
     m_Position: {x: 360, y: -80, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 4241652999126295959}
-    m_Position: {x: 395, y: -15, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -285312300596166047}
@@ -355,32 +352,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: ee7a757afc2296b4e9b6a2ae6bf20ad5, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &4241652999126295959
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: magicBlade
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c89371295f69f6c4b8a40cea79481e25, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
