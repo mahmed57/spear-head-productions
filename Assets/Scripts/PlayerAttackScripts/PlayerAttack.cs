@@ -39,35 +39,24 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
 
-        if (time_between_attack <= 0)
+        if(is_attacking)
         {
-            if (is_light_attack())
-            {
-                is_attacking = true;
-                player_anim.SetTrigger("lightAttack");
-                PlayerAttackSound(Light_attack);
-                LightAttack();
-
-                
-
-            }
-            else if (is_heavy_attack())
-            {
-                is_attacking = true;
-                player_anim.SetTrigger("heavyAttack");
-                PlayerAttackSound(Heavy_attack);
-                
-            }
-            else
-            {
-                is_attacking = false;
-            }
-
+            return;
         }
-        else
+
+
+        if (is_light_attack())
         {
-            time_between_attack -= Time.deltaTime;
+            player_anim.SetTrigger("lightAttack");
+            PlayerAttackSound(Light_attack);
         }
+        if (is_heavy_attack())
+        {
+            player_anim.SetTrigger("heavyAttack");
+            PlayerAttackSound(Heavy_attack);
+        }
+        
+
     }
 
     bool is_light_attack()
@@ -159,5 +148,15 @@ public class PlayerAttack : MonoBehaviour
         attack_enemy(light_attack_damage);
     }
     
+    public void set_attack_true()
+    {
+        is_attacking = true;
+    }
+
+    public void set_attack_false()
+    {
+        is_attacking = false;
+    }
+
     
 }
