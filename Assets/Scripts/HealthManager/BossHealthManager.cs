@@ -40,6 +40,13 @@ public class BossHealthManager : CharacterHealthManager
         }
     }
 
+    public override void deal_damage(float damage)
+    {
+        health_bar.SetActive(true);
+        
+        base.deal_damage(damage);
+    }
+
     public override void deal_damage(float damage, Vector2 attackPosition)
     {
         health_bar.SetActive(true);
