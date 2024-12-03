@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\sound\\enemyaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|c:\\users\\mehmo\\documents\\cosc 4358\\spear-head-productions\\assets\\scripts\\shop\\mainshopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shop\\mainshopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\uiscreens\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiscreens\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\enemy\\boss\\bossattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\boss\\bossattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\sound\\bossaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sound\\bossaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\healthmanager\\bosshealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthmanager\\bosshealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\movement\\playermovements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movement\\playermovements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\sound\\enemyaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sound\\enemyaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\playerattackscripts\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerattackscripts\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\movement\\playermovements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movement\\playermovements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\NewBehaviourScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shop\\shopbuttons\\selectbuttononenable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\healthmanager\\bosshealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthmanager\\bosshealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\healthmanager\\playerhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthmanager\\playerhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -45,14 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\pausegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pausegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\shop\\mainshopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shop\\mainshopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\uiscreens\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiscreens\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7E65E650-4AE1-E927-D6B8-B5DBEED7F5A1}|Assembly-CSharp.csproj|C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\assets\\scripts\\barriercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,71 +102,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PlayerMovements.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Movement\\PlayerMovements.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:02:33.301Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerAttack.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T21:58:45.916Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "PlayerAudio.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\PlayerAudio.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\PlayerAudio.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\PlayerAudio.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Sound\\PlayerAudio.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAgwDsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T21:54:58.515Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EnemyAudio.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\EnemyAudio.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\EnemyAudio.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\EnemyAudio.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Sound\\EnemyAudio.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAgwA0AAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T21:27:28.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "NewBehaviourScript.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
+              "Title": "BossAudio.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\BossAudio.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\BossAudio.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\BossAudio.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Sound\\BossAudio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T21:27:03.68Z"
+              "WhenOpened": "2024-12-02T22:28:39.798Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "DespairAudio.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\DespairAudio.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\DespairAudio.cs",
@@ -170,31 +130,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "VictoryScreen.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwAkAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "NewBehaviourScript.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Sound\\NewBehaviourScript.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T20:24:00.407Z"
+              "WhenOpened": "2024-12-02T21:27:03.68Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "SelectButtonOnEnable.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "EnemyAudio.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\EnemyAudio.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\EnemyAudio.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\EnemyAudio.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Sound\\EnemyAudio.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAgwA0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T20:23:15.034Z"
+              "WhenOpened": "2024-12-02T21:27:28.047Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "PauseMenu.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\PauseMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\PauseMenu.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\PauseMenu.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIScreens\\PauseMenu.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAxwCYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T03:20:57.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "GameOverScreen.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\GameOverScreen.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\GameOverScreen.cs",
@@ -206,31 +177,104 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BossHealthManager.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAIBJwGAAAABCAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "SelectButtonOnEnable.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Shop\\ShopButtons\\SelectButtonOnEnable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T19:28:19.913Z"
+              "WhenOpened": "2024-12-02T20:23:15.034Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 0,
               "Title": "MainShopController.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\MainShopController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\MainShopController.cs",
               "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\MainShopController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Shop\\MainShopController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T03:37:36.501Z"
+              "WhenOpened": "2024-11-29T03:37:36.501Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 4,
+              "Title": "BossHealthManager.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HealthManager\\BossHealthManager.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAAAFgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T19:28:19.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerMovements.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Movement\\PlayerMovements.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Movement\\PlayerMovements.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Movement\\PlayerMovements.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Movement\\PlayerMovements.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAIBJwJYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T22:02:33.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayerAttack.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerAttackScripts\\PlayerAttack.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T21:58:45.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "VictoryScreen.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIScreens\\VictoryScreen.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwAkAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T20:24:00.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BossAttack.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Enemy\\Boss\\BossAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Boss\\BossAttack.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Enemy\\Boss\\BossAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\Boss\\BossAttack.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAABBwH4AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T23:36:33.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PlayerAudio.cs",
+              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\PlayerAudio.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Sound\\PlayerAudio.cs",
+              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Sound\\PlayerAudio.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Sound\\PlayerAudio.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAgwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T21:54:58.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "BarrierController.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\BarrierController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BarrierController.cs",
@@ -242,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Room.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\ProceduralGeneration\\Room.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ProceduralGeneration\\Room.cs",
@@ -254,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "PauseGame.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\PauseGame.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PauseGame.cs",
@@ -266,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "MainMenu.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\MainMenu.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\MainMenu.cs",
@@ -278,19 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PauseMenu.cs",
-              "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\PauseMenu.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UIScreens\\PauseMenu.cs",
-              "ToolTip": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\UIScreens\\PauseMenu.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UIScreens\\PauseMenu.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAuwCQAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T03:20:57.376Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "EnemyHealthManager.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager\\EnemyHealthManager.cs",
@@ -302,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "PlayerHealthManager.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\HealthManager\\PlayerHealthManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager\\PlayerHealthManager.cs",
@@ -314,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "DamageNumber.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\DamageNumber.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DamageNumber.cs",
@@ -326,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "ButtonPressHandler.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\ShopButtons\\ButtonPressHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\ShopButtons\\ButtonPressHandler.cs",
@@ -338,7 +370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "CoinCounter.cs",
               "DocumentMoniker": "C:\\Users\\mehmo\\Documents\\COSC 4358\\spear-head-productions\\Assets\\Scripts\\Shop\\CoinCounter.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Shop\\CoinCounter.cs",

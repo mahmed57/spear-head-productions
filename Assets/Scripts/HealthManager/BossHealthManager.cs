@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class BossHealthManager : CharacterHealthManager
 {
-
     public float lightpushForce = 5f;
     public float heavypushforce = 10f;
     private BossMovement bossMovement;
@@ -13,16 +12,21 @@ public class BossHealthManager : CharacterHealthManager
     public GameObject health_bar;
     public GameObject damage_particle_system;
 
-    public GameObject damageNumberPrefab; 
+    public GameObject damageNumberPrefab;
 
     private float next_particle_time;
     public float particle_effect_cooldown = 1f;
 
     public GameObject victoryScreen;
 
+    private BossAudio bossAudio;
+
     void Start()
     {
         bossMovement = GetComponent<BossMovement>();
+
+        bossAudio = GetComponent<BossAudio>();
+        bossAudio?.PlayLaughSound(); 
     }
 
     void Update()
@@ -42,6 +46,8 @@ public class BossHealthManager : CharacterHealthManager
 
         base.deal_damage(damage, attackPosition);
 
+        bossAudio?.PlayHurtSound();
+
         if (damage_particle_system != null)
         {
             next_particle_time = Time.time + particle_effect_cooldown;
@@ -57,7 +63,7 @@ public class BossHealthManager : CharacterHealthManager
 
             if (damageScript != null)
             {
-                damageScript.SetDamage(damage); 
+                damageScript.SetDamage(damage);
             }
             else
             {
@@ -66,12 +72,11 @@ public class BossHealthManager : CharacterHealthManager
         }
 
         Vector2 pushDirection = (transform.position - new Vector3(attackPosition.x, attackPosition.y, transform.position.z)).normalized;
-        
-        if(damage < 9f)
+
+        if (damage < 9f)
         {
             bossMovement.ApplyPushBack(pushDirection, lightpushForce);
         }
-
         else
         {
             bossMovement.ApplyPushBack(pushDirection, heavypushforce);
@@ -86,7 +91,7 @@ public class BossHealthManager : CharacterHealthManager
 
         if (GetComponent<BossAttack>().currentPhase == 3)
         {
-            if (victoryScreen != null) 
+            if (victoryScreen != null)
             {
                 Debug.Log("Activating Victory Screen...");
                 victoryScreen.SetActive(true);
@@ -98,18 +103,17 @@ public class BossHealthManager : CharacterHealthManager
             }
             Destroy(gameObject);
         }
-        else if(GetComponent<BossAttack>().currentPhase == 2)
-        {
-            GetComponent<BossAttack>().currentPhase = 3;
-            max_health = 100;
-            present_health = 100;
-        }
         else
         {
-            GetComponent<BossAttack>().currentPhase = 2;
+            int nextPhase = GetComponent<BossAttack>().currentPhase + 1;
+            GetComponent<BossAttack>().currentPhase = nextPhase;
+
             max_health = 100;
             present_health = 100;
+
+            Debug.Log($"Transitioning to phase {nextPhase}...");
+
+            bossAudio?.PlayLaughSound();
         }
     }
-
 }

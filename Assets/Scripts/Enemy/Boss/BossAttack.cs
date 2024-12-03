@@ -25,12 +25,16 @@ public class BossAttack : MonoBehaviour
     public int currentPhase = 1;
     public float phaseHealth = 100f;
 
+    private BossAudio bossAudio;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealthManager>();
 
         animator = GetComponentInChildren<Animator>();
+
+        bossAudio = GetComponent<BossAudio>();
     }
 
     void Update()
@@ -113,6 +117,7 @@ public class BossAttack : MonoBehaviour
         
         float damage = playerHealth.present_health / 2f;
         playerHealth.deal_damage(damage);
+        bossAudio?.PlayWaveChargeSound();
         Debug.Log("Boss performs Wipe Attack!");
     }
 
@@ -120,7 +125,6 @@ public class BossAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, swordAttackRange);
-
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, wipeAttackRange);
 

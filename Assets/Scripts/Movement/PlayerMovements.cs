@@ -24,10 +24,8 @@ public class PlayerMovements : MonoBehaviour
     private bool isDashing = false;
 
     public AudioClip Roll;
-    public AudioClip Walk;
 
     private AudioSource audioSource;
-    private bool isPlayingWalkSound = false;
 
     void Start()
     {
@@ -151,19 +149,15 @@ public class PlayerMovements : MonoBehaviour
             {
                 Flip();
             }
-
-            PlayWalkingSound();
         }
         else
         {
             animator.SetBool("isWalking", false);
-            StopWalkingSound();
         }
 
         if (playerAttack.is_attacking)
         {
             animator.SetBool("isWalking", false);
-            StopWalkingSound();
             return;
         }
         else
@@ -245,24 +239,4 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
-    private void PlayWalkingSound()
-    {
-        if (!isPlayingWalkSound && audioSource != null && Walk != null)
-        {
-            audioSource.loop = true; 
-            audioSource.clip = Walk;
-            audioSource.Play();
-            isPlayingWalkSound = true;
-        }
-    }
-
-    private void StopWalkingSound()
-    {
-        if (isPlayingWalkSound && audioSource != null)
-        {
-            audioSource.loop = false; 
-            audioSource.Stop();
-            isPlayingWalkSound = false;
-        }
-    }
 }

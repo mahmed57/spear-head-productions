@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MainShopController : MonoBehaviour
 {
-    
+
     public GameObject essence_ui_game_object;
     public GameObject items_ui_game_object;
 
@@ -22,7 +22,7 @@ public class MainShopController : MonoBehaviour
     {
         items_ui_game_object.SetActive(false);
         essence_ui_game_object.SetActive(true);
-        
+
     }
 
     public void set_items_ui_active()
@@ -33,39 +33,39 @@ public class MainShopController : MonoBehaviour
 
     public void rerollall()
     {
-        
+
     }
 
     void Update()
     {
-         if(shop.activeSelf && !turned_on)
-         {
-             essence_ui_game_object.SetActive(true);
-         }
+        if (shop.activeSelf && !turned_on)
+        {
+            essence_ui_game_object.SetActive(true);
+        }
 
-         if(!shop.activeSelf)
-         {
+        if (!shop.activeSelf)
+        {
             essence_ui_game_object.SetActive(false);
             items_ui_game_object.SetActive(false);
-         }
+        }
 
-        if(essence_ui_game_object.activeSelf || items_ui_game_object.activeSelf)
+        if (essence_ui_game_object.activeSelf || items_ui_game_object.activeSelf)
         {
-            if(!turned_on)
+            if (!turned_on)
             {
-                if(essence_ui_game_object.activeSelf)
+                if (essence_ui_game_object.activeSelf)
                 {
-                    foreach(GameObject row in rows)
-                    { 
+                    foreach (GameObject row in rows)
+                    {
                         row.GetComponent<RowController>().enable_random_powerup();
                     }
                 }
-                
+
                 turned_on = true;
             }
         }
 
-        if(!essence_ui_game_object.activeSelf && !items_ui_game_object.activeSelf)
+        if (!essence_ui_game_object.activeSelf && !items_ui_game_object.activeSelf)
         {
             count += 1;
             turned_on = false;

@@ -3,7 +3,12 @@ guid: 54d7e74b4e98eaf4cad3fe29aa3f478c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - essence_ui_game_object: {instanceID: 0}
+  - items_ui_game_object: {instanceID: 0}
+  - shop: {instanceID: 0}
+  - shopOpenSound: {fileID: 8300000, guid: 5c58cdb766af8f543816473230b41d31, type: 3}
+  - shopCloseSound: {fileID: 8300000, guid: ba278f8efaf36f640a88ef20e59c70c9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
