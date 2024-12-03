@@ -127,7 +127,9 @@ public class EnemyHealthManager : CharacterHealthManager
         GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatistics>().increment_enemy_counter(gameObject);
 
         CoinCounter.instance.AddCoin(1);
-
+        
+        Instantiate(Resources.Load<GameObject>("Prefabs/" + "healthpotion"), transform.position, Quaternion.identity);
+        Debug.Log("instatiated.....");
         base.handle_death();
     }
 

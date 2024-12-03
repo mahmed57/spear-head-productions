@@ -61,7 +61,7 @@ public class PlayerHealthManager : CharacterHealthManager
         Time.timeScale = 0f;
     }
 
-    private void heal(float heal_amount)
+    public void heal(float heal_amount)
     {
         if (is_over_heal(heal_amount))
         {
