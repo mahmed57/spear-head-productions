@@ -13,11 +13,14 @@ public class PowerupManager : MonoBehaviour
     private float default_duration;
     private float default_speed;
 
+    private ROLEnemyDamage player_rol;
+
     void Start()
     {
         player_attack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         player_movements = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovements>();
         player_health = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthManager>();
+        player_rol = GameObject.FindGameObjectWithTag("Player").GetComponent<ROLEnemyDamage>();
 
         default_heavy_damage = player_attack.heavy_attack_damage;
         default_light_damage = player_attack.light_attack_damage;
@@ -41,6 +44,9 @@ public class PowerupManager : MonoBehaviour
     {   
         player_attack.light_attack_damage += default_light_damage * 0.03f;
         player_attack.heavy_attack_damage += default_heavy_damage * 0.03f;
+        player_attack.default_li_attack_dam += default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam += default_heavy_damage * 0.03f;
+
     }
 
     /*** Apply Functions **/
@@ -48,11 +54,17 @@ public class PowerupManager : MonoBehaviour
     {
         player_attack.light_attack_damage += default_light_damage * 0.03f;
         player_attack.heavy_attack_damage += default_heavy_damage * 0.03f;
+        player_attack.default_li_attack_dam += default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam += default_heavy_damage * 0.03f;
+
     }
     public void apply_BL3()
     {
         player_attack.light_attack_damage += default_light_damage * 0.03f;
         player_attack.heavy_attack_damage += default_heavy_damage * 0.03f;
+        player_attack.default_li_attack_dam += default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam += default_heavy_damage * 0.03f;
+
     }
     public void apply_eg1()
     {
@@ -105,21 +117,25 @@ public class PowerupManager : MonoBehaviour
     {
         player_movements.speed -= default_speed * 0.05f;
         player_attack.heavy_attack_damage += default_heavy_damage * 0.05f;
-        player_attack.light_attack_damage += default_light_damage * 0.05f;         
+        player_attack.light_attack_damage += default_light_damage * 0.05f;
+        player_attack.default_li_attack_dam += default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam += default_heavy_damage * 0.03f;
         
     }
     public void apply_qs_com()
     {
         player_movements.speed += default_speed * 0.05f;
         player_attack.heavy_attack_damage -= default_heavy_damage * 0.05f;
+        player_attack.light_attack_damage -= default_light_damage * 0.05f;
+
     }
     public void apply_rol()
     {
-        
+        player_rol.rol_enabled = true;
     }
     public void apply_ams()
     {
-        
+        player_attack.amaretsu_enabled = true;
     }
     public void apply_soulshard()
     {
@@ -132,18 +148,26 @@ public class PowerupManager : MonoBehaviour
     {
         player_attack.light_attack_damage -= default_light_damage * 0.03f;
         player_attack.heavy_attack_damage -= default_heavy_damage * 0.03f;
-
+        player_attack.default_li_attack_dam -= default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam -= default_heavy_damage * 0.03f;
+        
     }
     public void remove_BL2()
     {
         player_attack.light_attack_damage -= default_light_damage * 0.03f;
         player_attack.heavy_attack_damage -= default_heavy_damage * 0.03f;
+        player_attack.default_li_attack_dam -= default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam -= default_heavy_damage * 0.03f;
+
     }
     public void remove_BL3()
     {
         player_attack.light_attack_damage -= default_light_damage * 0.03f;
         player_attack.heavy_attack_damage -= default_heavy_damage * 0.03f;
         player_attack.light_attack_damage -= default_light_damage * 0.05f;
+        player_attack.default_li_attack_dam -= default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam -= default_heavy_damage * 0.03f;
+
     }
     public void remove_eg1()
     {
@@ -197,23 +221,29 @@ public class PowerupManager : MonoBehaviour
     {
         player_movements.speed += default_speed * 0.05f;
         player_attack.heavy_attack_damage -= default_heavy_damage * 0.05f;
-        player_attack.light_attack_damage -= default_light_damage * 0.05f;         
+        player_attack.light_attack_damage -= default_light_damage * 0.05f;
+        player_attack.default_li_attack_dam -= default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam -= default_heavy_damage * 0.03f;
+         
     }
     public void remove_qs_com()
     {
         player_movements.speed -= default_speed * 0.05f;
         player_attack.heavy_attack_damage += default_heavy_damage * 0.05f;
-        player_attack.light_attack_damage += default_light_damage * 0.05f;       
+        player_attack.light_attack_damage += default_light_damage * 0.05f;
+        player_attack.default_li_attack_dam += default_light_damage * 0.03f;
+        player_attack.default_hv_attack_dam += default_heavy_damage * 0.03f;
+       
     }
 
     public void remove_rol()
     {
-        
+        player_rol.rol_enabled = false;   
     }
 
     public void remove_ams()
     {
-        
+        player_attack.amaretsu_enabled = false;
     }
     public void remove_soulshard()
     {

@@ -9,13 +9,20 @@ public class PlayerAttack : MonoBehaviour
     private float time_between_attack;
     public float start_time_btw_attack;
 
+    private GameObject sword;
+
     public Transform attackpos;
+
+    public bool amaretsu_enabled = false;
     public float attackRange;
 
     public LayerMask whatIsEnemeies;
     public float light_attack_damage;
 
     public float heavy_attack_damage;
+
+    public float default_hv_attack_dam;
+    public float default_li_attack_dam;
 
     public Animator player_anim;
 
@@ -30,7 +37,9 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
+        default_hv_attack_dam = heavy_attack_damage;
+        default_li_attack_dam = light_attack_damage;
+        sword = transform.Find("Sword")?.gameObject;
     }
     void Update()
     {
@@ -44,6 +53,15 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
 
+        if(light_attack_damage < default_li_attack_dam)
+        {
+            light_attack_damage = default_li_attack_dam;
+        }
+
+        if(heavy_attack_damage < default_hv_attack_dam)
+        {
+            heavy_attack_damage = default_hv_attack_dam;
+        }
 
         if (is_light_attack())
         {
@@ -98,11 +116,20 @@ public class PlayerAttack : MonoBehaviour
             (enemiesToDamage[i].tag == "RageTanker"))
             {
                 enemiesToDamage[i].GetComponent<EnemyHealthManager>().deal_damage(damage, transform.position);
+                if(amaretsu_enabled)
+                {
+                    enemiesToDamage[i].GetComponent<AmaretsuEnemyBurn>().burn();
+                }
             }
 
             if(enemiesToDamage[i].tag == "Boss")
             {
                 enemiesToDamage[i].GetComponent<BossHealthManager>().deal_damage(damage, transform.position);
+                
+                if(amaretsu_enabled)
+                {
+                    enemiesToDamage[i].GetComponent<AmaretsuEnemyBurn>().burn();
+                }
             }
         }
 

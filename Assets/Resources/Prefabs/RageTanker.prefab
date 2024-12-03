@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2303074634035034438
 Transform:
   m_ObjectHideFlags: 0
@@ -11471,6 +11471,7 @@ GameObject:
   - component: {fileID: 4203239832379400475}
   - component: {fileID: 2307487550414402135}
   - component: {fileID: -459119328879587646}
+  - component: {fileID: 2311575145400886539}
   - component: {fileID: 1209176490279801723}
   m_Layer: 6
   m_Name: RageTanker
@@ -11634,6 +11635,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2311575145400886539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449446764330099834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f19327377329a478b2cb9e20211e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  damage: 0.25
+  burn_particle_effect: {fileID: 498491269889897850}
 --- !u!82 &1209176490279801723
 AudioSource:
   m_ObjectHideFlags: 0

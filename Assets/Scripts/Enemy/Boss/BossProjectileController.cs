@@ -4,17 +4,13 @@ using System.Collections;
 
 public class BossProjectileController : MonoBehaviour
 {
-    // List of spawn point GameObjects
     public List<GameObject> spawnPoints;
 
-    // Cooldown period between attacks
     public float attackCooldown = 5f;
     private float attackCooldownTimer = 0f;
 
-    // Time between activating each spawn point
     public float timeBetweenSpawnPointActivation = 0.5f;
 
-    // Flag to check if the boss is currently attacking
     private bool isAttacking = false;
 
     void Update()
@@ -26,10 +22,8 @@ public class BossProjectileController : MonoBehaviour
         }
         attackCooldownTimer -= Time.deltaTime;
 
-        // If cooldown has elapsed and the boss is not already attacking
         if (attackCooldownTimer <= 0f && !isAttacking)
         {
-            // Start the attack sequence
             StartCoroutine(ActivateSpawnPoints());
         }
     }
@@ -38,22 +32,19 @@ public class BossProjectileController : MonoBehaviour
     {
         isAttacking = true;
 
-        // Activate each spawn point with a delay
         foreach (GameObject spawnPoint in spawnPoints)
         {
             spawnPoint.SetActive(true);
 
-            // Wait before activating the next spawn point
             yield return new WaitForSeconds(timeBetweenSpawnPointActivation);
         }
 
-        // Reset the cooldown timer
         attackCooldownTimer = attackCooldown;
 
-        // Wait for all spawn points to finish firing
+
         yield return new WaitForSeconds(CalculateTotalFiringTime());
 
-        // Deactivate all spawn points
+
         foreach (GameObject spawnPoint in spawnPoints)
         {
             spawnPoint.SetActive(false);

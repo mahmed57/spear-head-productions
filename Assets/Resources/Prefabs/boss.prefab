@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1157750897955693645
 Transform:
   m_ObjectHideFlags: 0
@@ -5921,6 +5921,7 @@ GameObject:
   - component: {fileID: 317892840608580799}
   - component: {fileID: 4715053562926370870}
   - component: {fileID: 2594736635679722427}
+  - component: {fileID: 4724788051787911052}
   m_Layer: 6
   m_Name: boss
   m_TagString: Boss
@@ -6105,6 +6106,7 @@ MonoBehaviour:
   swordAttackRange: 6.02
   projectileAttackRange: 26.3
   wipeAttackRange: 4.24
+  wipe_ring: {fileID: 0}
   swordDamage: 10
   projectileDamage: 8
   attackCooldown: 2
@@ -6131,6 +6133,7 @@ MonoBehaviour:
   damage_particle_system: {fileID: 0}
   damageNumberPrefab: {fileID: 2766823097381249615, guid: b1d86c3717c62634c8811a57c0a5942c, type: 3}
   particle_effect_cooldown: 1
+  victoryScreen: {fileID: 0}
 --- !u!114 &2594736635679722427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6161,6 +6164,21 @@ MonoBehaviour:
   - {fileID: 6260424391413733522}
   attackCooldown: 3
   timeBetweenSpawnPointActivation: 0
+--- !u!114 &4724788051787911052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679978372582187178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f19327377329a478b2cb9e20211e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  damage: 1
+  burn_particle_effect: {fileID: 153330314703190998}
 --- !u!1 &6769070672437403576
 GameObject:
   m_ObjectHideFlags: 0
