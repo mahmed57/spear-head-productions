@@ -10,8 +10,9 @@ public class SeekerProjectile : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Misery") || collision.gameObject.CompareTag("Despair") ||
-            collision.gameObject.CompareTag("Rage Tanker"))
+            collision.gameObject.CompareTag("RageTanker"))
         {
+                Debug.Log("Executed Rage Tnker...");
                 collision.gameObject.GetComponent<EnemyHealthManager>().deal_damage(damage);
                 Destroy(gameObject);
         }

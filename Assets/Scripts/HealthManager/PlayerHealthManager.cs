@@ -15,7 +15,7 @@ public class PlayerHealthManager : CharacterHealthManager
     public float particle_effect_cooldown = 1f;
 
     public AudioSource hitSound;
-
+    
     void Update()
     {
         healthBarFill.fillAmount = present_health / max_health;

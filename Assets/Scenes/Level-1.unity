@@ -32849,13 +32849,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade781dda9817b9439a735041fe17866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
+  cooldown: 3
   radius: 9.8
   damage: 2
   whatIsEnemeies:
     serializedVersion: 2
     m_Bits: 64
-  speed: 15
+  speed: 9
 --- !u!1 &1986866879
 GameObject:
   m_ObjectHideFlags: 0
