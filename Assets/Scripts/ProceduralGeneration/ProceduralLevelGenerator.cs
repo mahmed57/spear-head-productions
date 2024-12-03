@@ -401,6 +401,10 @@ public class ProceduralLevelGenerator : MonoBehaviour
     {
         int index = 0;
         float min_room_x = float.MaxValue;
+
+        float max_room_x = float.MinValue;
+
+        GameObject right_most_room = null;
         
         foreach(Room room in rooms)
         {
@@ -439,6 +443,13 @@ public class ProceduralLevelGenerator : MonoBehaviour
                 min_room_x = room.room_center_position.x;       
             }
 
+            if(room.room_center_position.x > min_room_x)
+            {
+                max_room_x = room.room_center_position.x;
+
+                right_most_room = roomGO;
+            }
+
             BoxCollider2D collider = roomGO.GetComponent<BoxCollider2D>();
             collider.size = new Vector2(room.room_world_size.x, room.room_world_size.y);
             collider.offset = Vector2.zero;
@@ -454,6 +465,7 @@ public class ProceduralLevelGenerator : MonoBehaviour
             index++;
         }
 
+        right_most_room.GetComponent<RoomController>().last_room = true;
         
     }
 

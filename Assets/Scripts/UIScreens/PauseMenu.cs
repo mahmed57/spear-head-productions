@@ -19,6 +19,11 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        if(musicSlider == null)
+        {
+            return;
+        }
+
         float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
         float savedSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
@@ -32,24 +37,6 @@ public class PauseMenu : MonoBehaviour
         sfxSlider.onValueChanged.AddListener(delegate { UpdateSFXVolume(); });
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (optionsMenuUI.activeSelf)
-            {
-                ExitOptionsMenu();
-            }
-            else if (pauseMenuUI.activeSelf)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-    }
 
     public void Resume()
     {

@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 public class RoomController : MonoBehaviour
 {
     public Room room;
     public Tilemap floorTilemap;
+
+    public bool last_room = false;
     public float enemyspawnRadius = 10f; 
 
     public BoxCollider2D roomCollider;
@@ -38,6 +42,16 @@ public class RoomController : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if(hasSpawnedEnemies && last_room)
+        {
+            if(GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStatistics>().crystal_count > 0)
+            {
+                SceneManager.LoadScene(3);
+            }
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!hasSpawnedEnemies && other.CompareTag("Player"))

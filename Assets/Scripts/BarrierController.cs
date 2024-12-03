@@ -29,8 +29,6 @@ public class BarrierController : MonoBehaviour
     {
         float distance = Vector3.Distance(player.position, transform.position);
 
-        Debug.Log(game_manager_obj.GetComponentInChildren<PlayerStatistics>().crystal_count);
-
         if (!barrierDeactivated && (player.position.x < transform.position.x))
         {
             
@@ -60,7 +58,6 @@ public class BarrierController : MonoBehaviour
 
                         barrierDeactivated = true;
 
-                        Debug.Log ("barrier deactivated");
                     }
                 }
             }
@@ -79,8 +76,6 @@ public class BarrierController : MonoBehaviour
 
                     barrierChild1.gameObject.SetActive(true);
                     barrierChild2.gameObject.SetActive(true);
-
-                    //game_manager_obj.GetComponentInChildren<PlayerStatistics>().crystal_count -= 1;
 
                     barrierDeactivated = false;
                 }

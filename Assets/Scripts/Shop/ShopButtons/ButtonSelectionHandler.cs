@@ -13,7 +13,7 @@ public class ButtonSelectionHandler : MonoBehaviour, ISelectHandler, IDeselectHa
             targetObject = transform.GetChild(0).gameObject;
         }
     }
-
+    
     public void OnSelect(BaseEventData eventData)
     {
         if (targetObject != null)

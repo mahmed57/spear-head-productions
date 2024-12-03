@@ -17,6 +17,7 @@ TagManager:
   - GameOverScreen
   - Wall
   - Ring
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

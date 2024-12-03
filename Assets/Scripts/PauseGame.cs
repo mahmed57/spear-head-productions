@@ -16,6 +16,11 @@ public class PauseGame : MonoBehaviour
 
     void Start()
     {
+
+        if(pause_menu == null)
+        {
+            pause_menu = GameObject.FindGameObjectWithTag("PauseMenu");
+        }
         shop.SetActive(false);
         pause_menu.SetActive(false);
         Time.timeScale = 1.2f;
@@ -37,6 +42,11 @@ public class PauseGame : MonoBehaviour
 
             if (input_condition_pause_menu){
                 pause_menu.SetActive(true);
+
+                pause_menu.transform.GetChild(0).gameObject.SetActive(true);
+
+                pause_menu.transform.GetChild(1).gameObject.SetActive(false);
+                
                 shop.SetActive(false);
             }
 
