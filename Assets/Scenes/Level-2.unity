@@ -8474,7 +8474,7 @@ MonoBehaviour:
   - {fileID: 1728025746}
   - {fileID: 402765469}
   - {fileID: 1853117988}
-  cooldown: 10
+  cooldown: 15
 --- !u!4 &745888435
 Transform:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class SpawnEnemiesSpawnPoints : MonoBehaviour
         while (true)
         {
             // Wait for 10 seconds before spawning the next enemy
-            yield return new WaitForSeconds(cooldown - 5f);
+            yield return new WaitForSeconds(cooldown);
 
             // Select a random spawn point
             int spawnIndex = Random.Range(0, spawnPoints.Count);
@@ -45,11 +45,6 @@ public class SpawnEnemiesSpawnPoints : MonoBehaviour
             else
             {
                 Debug.LogError("Enemy prefab not found: " + enemyName);
-            }
-
-            if(cooldown < 10)
-            {
-                    cooldown = cooldown + 5f;
             }
 
             
