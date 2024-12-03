@@ -10102,7 +10102,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 31e9f2c4d7b093547b20dfa50abbc526, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10366,8 +10366,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 131.4, y: -219}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 207.48291, y: -381.6}
+  m_SizeDelta: {x: 274.7737, y: 63.088}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1565421915
 MonoBehaviour:
@@ -10390,7 +10390,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.40784314}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -15401,8 +15401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.3, y: -219}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -160.27905, y: -381.6}
+  m_SizeDelta: {x: 274.7737, y: 68.2578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727609772
 MonoBehaviour:
@@ -15425,7 +15425,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.42745098}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -15510,6 +15510,7 @@ GameObject:
   - component: {fileID: 2066795800}
   - component: {fileID: 2066795799}
   - component: {fileID: 2066795798}
+  - component: {fileID: 2066795801}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15600,6 +15601,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2066795801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066795796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440aaf1a37628fd4b92063309cb171c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetButton: {fileID: 1727609772}
 --- !u!1001 &5454499137182039056
 PrefabInstance:
   m_ObjectHideFlags: 0
