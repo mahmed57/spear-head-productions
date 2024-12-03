@@ -8,11 +8,9 @@ public class EnemyAudio : MonoBehaviour
 
     [Header("Audio Clips")]
     public AudioClip attackSound;
-    public AudioClip walkSound;
 
     [Header("Volume Settings")]
     [Range(0f, 1f)] public float attackVolume = 0.4f;
-    [Range(0f, 1f)] public float walkVolume = 0.85f;
 
     void Start()
     {
@@ -27,14 +25,6 @@ public class EnemyAudio : MonoBehaviour
         if (audioSource != null && attackSound != null)
         {
             audioSource.PlayOneShot(attackSound, attackVolume);
-        }
-    }
-
-    public void PlayWalkSound()
-    {
-        if (audioSource != null && walkSound != null)
-        {
-            audioSource.PlayOneShot(walkSound, walkVolume);
         }
     }
 }
