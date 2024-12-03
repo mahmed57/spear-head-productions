@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7425055975003471574}
   - component: {fileID: 6703596783377281122}
   - component: {fileID: 1061506671540450658}
+  - component: {fileID: -3833829621720339730}
   m_Layer: 6
   m_Name: Despair
   m_TagString: Despair
@@ -326,6 +327,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9474812, y: 3.2164283}
   m_EdgeRadius: 0
+--- !u!114 &-3833829621720339730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306736061870350038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f19327377329a478b2cb9e20211e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  damage: 0.25
+  burn_particle_effect: {fileID: 1260164252713971195}
 --- !u!1 &1260164252713971195
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1463013975884379846
 Transform:
   m_ObjectHideFlags: 0

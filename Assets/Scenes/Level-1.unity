@@ -16575,6 +16575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number_of_enemies_killed: 0
   crystal_count: 0
+  sword: {fileID: 2055045026}
   start_pos: {x: 0, y: 0, z: 0}
 --- !u!114 &1040409241
 MonoBehaviour:
@@ -18628,7 +18629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4929042821435766765, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: attackRange
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5151707397487619458, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18749,6 +18750,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9211244561316864684, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1935739532}
+    - targetCorrespondingSourceObject: {fileID: 9211244561316864684, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1935739543}
+    - targetCorrespondingSourceObject: {fileID: 5489664482744521491, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984935358}
+    - targetCorrespondingSourceObject: {fileID: 7438168496330259904, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2055045030}
+    - targetCorrespondingSourceObject: {fileID: 5402049916579388520, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1523789993}
   m_SourcePrefab: {fileID: 100100000, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
 --- !u!1 &1177316983
 GameObject:
@@ -25171,6 +25184,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5402049916579388520, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
   m_PrefabInstance: {fileID: 1174267413}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1523789993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523789989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f61c910810637348ae5ca8cacfbdd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_attack: {fileID: 1935739537}
+  cooldown: 3
 --- !u!1 &1525417157
 GameObject:
   m_ObjectHideFlags: 0
@@ -32798,6 +32825,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83eb5c5d2ff3900479276bb30d215eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1935739537 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4929042821435766765, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+  m_PrefabInstance: {fileID: 1174267413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758907561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba3bf6b94d69a44bad66cf1ab3f8263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1935739543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758907561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b85fa352b3b11f42934684820afc922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rol_enabled: 0
+  cooldown: 3
+  radius: 2.4
+  damage: 2
+  whatIsEnemeies:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1942284530
 GameObject:
   m_ObjectHideFlags: 0
@@ -34068,6 +34125,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5489664482744521491, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
   m_PrefabInstance: {fileID: 1174267413}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1984935358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984935354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade781dda9817b9439a735041fe17866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 1
+  radius: 9.8
+  damage: 2
+  whatIsEnemeies:
+    serializedVersion: 2
+    m_Bits: 64
+  speed: 15
 --- !u!1 &1986866879
 GameObject:
   m_ObjectHideFlags: 0
@@ -35193,6 +35269,25 @@ SpriteShapeRenderer:
     m_Center: {x: -0.10334182, y: 0.050000012, z: 0}
     m_Extent: {x: 0.97834194, y: 0.8250001, z: 0}
   m_SpriteSortPoint: 0
+--- !u!1 &2055045026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7438168496330259904, guid: 01fe4c07b9795004497598adb161fd3e, type: 3}
+  m_PrefabInstance: {fileID: 1174267413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2055045030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055045026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cdaf723b964c24ba5bcc1c804f3b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enable: 0
+  shop: {fileID: 110543644}
 --- !u!1 &2060477467
 GameObject:
   m_ObjectHideFlags: 0

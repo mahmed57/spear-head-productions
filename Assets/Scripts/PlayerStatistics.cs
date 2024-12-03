@@ -11,11 +11,14 @@ public class PlayerStatistics : MonoBehaviour
 
     private GameObject[] rooms;
 
+    public GameObject sword;
 
     public Vector3 start_pos = new Vector3(0, 0, 0);
 
     public void increment_enemy_counter(GameObject enemy)
     {
+        sword.GetComponent<FuryController>().enable = true;
+
         rooms = GameObject.FindGameObjectsWithTag("Room");
 
         foreach(GameObject room in rooms)
