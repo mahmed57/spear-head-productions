@@ -2251,7 +2251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1694095792
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2831,10 +2831,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Subhan Mehmood \u2013 Producer/Team Lead\r\nRyan Chew \u2013 Designer\r\nWilson
-    Huang - Artist\r\nRichie Nguyen \u2013 Artist\r\nMohammed Adil Ahmed \u2013 Engineer\r\nSai
-    Kiran Peruru \u2013 Engineer\r\nSteven Nguyen \u2013 Sound Engineer \r\nDanny
-    Nguyen \u2013 Sound Engineer\r"
+  m_text: "Subhan Mehmood \u2013 Producer/Engineer (Team Lead) \nWilson Huang \u2013
+    Artist/Animator\nRichie Nguyen \u2013 Artist\nMohammed Adil Ahmed \u2013 Engineer
+    \nSai Kiran Peruru \u2013 Engineer \nRyan Chew \u2013 Designer/Sound Engineer\nSteven
+    Nguyen - Sound Engineer/Artist\nDanny Nguyen \u2013 Artist/Animator"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2861,8 +2861,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
