@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
   public Transform player;
   public float smoothing;
   public Vector3 offset;
+  
   void Update(){
     if(player != null){
     
